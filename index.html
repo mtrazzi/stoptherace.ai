@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop The AI Race — March 21, 2026 — San Francisco</title>
+  <meta name="description" content="Join 1,000 people in front of Anthropic's office to ask Dario Amodei to publicly commit to a conditional global pause on frontier AI development.">
+  <meta property="og:title" content="Stop The AI Race Protest — March 21, 2026">
+  <meta property="og:description" content="Asking Dario Amodei to commit to a conditional global pause. 12PM, 500 Howard St, San Francisco.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://stoptherace.ai">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #e8e8e8;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at center, rgba(220, 38, 38, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-label {
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #dc2626;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      max-width: 900px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 .accent {
+      color: #dc2626;
+    }
+
+    .hero-details {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      color: #999;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 2rem;
+      justify-content: center;
+    }
+
+    .hero-details span {
+      white-space: nowrap;
+    }
+
+    .hero-details .separator {
+      color: #333;
+    }
+
+    .cta-container {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #dc2626;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 1rem 3rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cta-button:hover {
+      background: #b91c1c;
+      transform: translateY(-1px);
+    }
+
+    .cta-subtext {
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #333;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+    }
+
+    section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    section p {
+      margin-bottom: 1.5rem;
+      color: #bbb;
+      font-size: 1.05rem;
+    }
+
+    .quote {
+      border-left: 3px solid #dc2626;
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      color: #ccc;
+    }
+
+    .demand-box {
+      background: rgba(220, 38, 38, 0.08);
+      border: 1px solid rgba(220, 38, 38, 0.25);
+      border-radius: 6px;
+      padding: 2rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+
+    .demand-box h3 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #dc2626;
+      margin-bottom: 0.75rem;
+    }
+
+    .demand-box p {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0;
+    }
+
+    .location-section {
+      text-align: center;
+    }
+
+    .location-section .address {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .location-section .city {
+      color: #777;
+      font-size: 1rem;
+    }
+
+    .location-section .map-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #dc2626;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .location-section .map-link:hover {
+      text-decoration: underline;
+    }
+
+    .bottom-cta {
+      text-align: center;
+      padding: 5rem 2rem 6rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .bottom-cta h2 {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .bottom-cta p {
+      color: #777;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .divider {
+      max-width: 720px;
+      margin: 0 auto;
+      border: none;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #333;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 2rem 1.25rem; }
+      section { padding: 3rem 1.25rem; }
+      .cta-button { padding: 0.9rem 2rem; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-label">Nonviolent Protest</div>
+    <h1>Stop The <span class="accent">AI Race</span></h1>
+    <div class="hero-details">
+      <span>Saturday, March 21, 2026</span>
+      <span class="separator">|</span>
+      <span>12:00 PM &ndash; 2:00 PM</span>
+      <span class="separator">|</span>
+      <span>San Francisco, CA</span>
+    </div>
+    <div class="cta-container">
+      <a
+        href="https://lu.ma/event/evt-Z5HH4SH7Sjy27Ps"
+        class="luma-checkout--button cta-button"
+        data-luma-action="checkout"
+        data-luma-event-id="evt-Z5HH4SH7Sjy27Ps"
+      >
+        RSVP &mdash; Join the Protest
+      </a>
+      <div class="cta-subtext">Free &middot; 500 Howard St, San Francisco</div>
+    </div>
+    <div class="scroll-hint">&darr; Learn more</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- About -->
+  <section>
+    <h2>Asking Dario to Commit to a Conditional Global Pause</h2>
+
+    <p>In September 2025, we asked Demis Hassabis to publicly commit to stopping the AI race if every other AI lab in the world, including in China and the US, also stopped. Last month, he said he would be open to it, but international coordination was one of the key bottlenecks in getting there.</p>
+
+    <p><strong>Public pressure works.</strong> Now we're bringing that same ask to Dario Amodei, CEO of Anthropic.</p>
+
+    <div class="quote">
+      <p>"I wish we had 5 to 10 years."</p>
+    </div>
+
+    <p>Dario said in a recent interview. In another, he admitted that what keeps him up at night is the "incredible market race" between top AI companies. But he argues he can't slow down because "we have geopolitical adversaries building the same technology at a similar pace."</p>
+
+    <p>This is reckless, and everyone knows it. Very few people are in favor of the current AI arms race. But slowing down requires coordination, not unilateral action.</p>
+
+    <p>Dario himself has said he would slow down if he could. At Davos, he told the audience that if coordination were possible, he'd meet with Demis Hassabis "right now" and agree to pause. We're asking him to make that coordination possible, by publicly committing to stop if others do the same.</p>
+
+    <p>That's what a <strong>pause in principle</strong> means: committing to stop developing frontier models if every other lab in the world credibly does the same, with independent auditors ensuring compliance.</p>
+
+    <p>Demis has taken the first step. Now it's Dario's turn.</p>
+
+    <div class="demand-box">
+      <h3>Our Demand</h3>
+      <p>Dario publicly commits to a conditional global pause.</p>
+    </div>
+
+    <p>On Saturday, March 21, 2026 at 12pm, we're aiming to gather 1,000 people in front of Anthropic's office to deliver that ask. The protest will be nonviolent.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Location -->
+  <section class="location-section">
+    <h2>Location</h2>
+    <p class="address">500 Howard St</p>
+    <p class="city">San Francisco, CA 94105, USA</p>
+    <a class="map-link" href="https://maps.google.com/?q=500+Howard+St,+San+Francisco,+CA+94105" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+  </section>
+
+  <hr class="divider">
+
+  <!-- Bottom CTA -->
+  <div class="bottom-cta">
+    <h2>Will you be there?</h2>
+    <p>Join 1,000 people asking Dario to commit to a conditional global pause.</p>
+    <a
+      href="https://lu.ma/event/evt-Z5HH4SH7Sjy27Ps"
+      class="luma-checkout--button cta-button"
+      data-luma-action="checkout"
+      data-luma-event-id="evt-Z5HH4SH7Sjy27Ps"
+    >
+      RSVP Now
+    </a>
+  </div>
+
+  <footer>
+    stoptherace.ai
+  </footer>
+
+  <!-- Luma Checkout Widget -->
+  <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
+
+</body>
+</html>
