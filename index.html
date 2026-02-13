@@ -1,379 +1,898 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stop The AI Race — March 21, 2026 — San Francisco</title>
-  <meta name="description" content="Join 1,000 people in front of Anthropic's office to ask Dario Amodei to publicly commit to a conditional global pause on frontier AI development.">
-  <meta property="og:title" content="Stop The AI Race Protest — March 21, 2026">
-  <meta property="og:description" content="Asking Dario Amodei to commit to a conditional global pause. 12PM, 500 Howard St, San Francisco.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://stoptherace.ai">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stop The Race · March 21, 2026</title>
+<meta name="description" content="Join 1,000 people in front of Anthropic's office to ask Dario Amodei to publicly commit to a conditional global pause on frontier AI development.">
+<meta property="og:title" content="Stop The AI Race · March 21, 2026">
+<meta property="og:description" content="Asking Dario Amodei to commit to a conditional global pause. 12PM, 500 Howard St, San Francisco.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://stoptherace.ai">
+<meta property="og:image" content="https://stoptherace.ai/stoptheairace.avif">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://stoptherace.ai/stoptheairace.avif">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f0ece4;
+    --red: #d62828;
+    --red-dark: #a31f1f;
+    --red-glow: #ff3333;
+    --gray: #888;
+    --font-display: 'Outfit', sans-serif;
+    --font-body: 'Libre Baskerville', serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
 
-    html { scroll-behavior: smooth; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0a0a0a;
-      color: #e8e8e8;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+  ::selection {
+    background: var(--red);
+    color: var(--white);
+  }
 
-    a { color: inherit; }
+  html {
+    scroll-behavior: smooth;
+  }
 
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    cursor: default;
+  }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(ellipse at center, rgba(220, 38, 38, 0.08) 0%, transparent 60%);
-      pointer-events: none;
-    }
+  /* ---- GRAIN OVERLAY ---- */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
 
-    .hero-label {
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #dc2626;
-      margin-bottom: 1.5rem;
-    }
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+  }
 
-    .hero h1 {
-      font-size: clamp(2.5rem, 7vw, 5.5rem);
-      font-weight: 900;
-      line-height: 1.05;
-      max-width: 900px;
-      letter-spacing: -0.03em;
-    }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(214,40,40,0.4), transparent);
+  }
 
-    .hero h1 .accent {
-      color: #dc2626;
-    }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(3rem, 11vw, 8rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
 
-    .hero-details {
-      margin-top: 2rem;
-      font-size: 1.2rem;
-      color: #999;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem 2rem;
-      justify-content: center;
-    }
+  .hero-title .red { color: var(--red); }
 
-    .hero-details span {
-      white-space: nowrap;
-    }
+  .hero-subtitle {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    max-width: 550px;
+    margin: 1.5rem auto 0;
+    line-height: 1.6;
+    color: rgba(240, 236, 228, 0.8);
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
 
-    .hero-details .separator {
-      color: #333;
-    }
+  .hero-cta {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--red);
+    color: var(--white);
+    padding: 1.2rem 3.5rem;
+    margin-top: 2.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
 
-    .cta-container {
-      margin-top: 3rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
+  .hero-cta:hover {
+    background: var(--red-glow);
+    box-shadow: 0 0 40px rgba(214,40,40,0.4);
+    transform: translateY(-2px);
+  }
 
-    .cta-button {
-      display: inline-block;
-      background: #dc2626;
-      color: #fff;
-      font-family: inherit;
-      font-size: 1.15rem;
-      font-weight: 700;
-      padding: 1rem 3rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      transition: background 0.2s, transform 0.2s;
-    }
+  /* ---- DEMAND ---- */
+  .demand {
+    padding: 6rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
 
-    .cta-button:hover {
-      background: #b91c1c;
-      transform: translateY(-1px);
-    }
+  .demand::before {
+    content: '"';
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 18rem;
+    color: var(--red);
+    opacity: 0.06;
+    position: absolute;
+    top: -1rem;
+    left: -2rem;
+    line-height: 1;
+    pointer-events: none;
+  }
 
-    .cta-subtext {
-      font-size: 0.85rem;
-      color: #555;
-    }
+  .demand-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 2rem;
+    padding-left: 0;
+  }
 
-    .scroll-hint {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #333;
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      animation: pulse 2s ease-in-out infinite;
-    }
+  .demand-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.8; }
-    }
+  .demand-text .highlight {
+    color: var(--red);
+  }
 
-    section {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 5rem 2rem;
-    }
+  /* ---- CONTEXT / ARGUMENT ---- */
+  .context {
+    padding: 4rem 2rem 6rem;
+    max-width: 680px;
+    margin: 0 auto;
+  }
 
-    section h2 {
-      font-size: 1.8rem;
-      font-weight: 900;
-      margin-bottom: 2rem;
-      color: #fff;
-      letter-spacing: -0.02em;
-    }
+  .context p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: rgba(240, 236, 228, 0.85);
+  }
 
-    section p {
-      margin-bottom: 1.5rem;
-      color: #bbb;
-      font-size: 1.05rem;
-    }
+  .context p:first-child::first-letter {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 3.5rem;
+    float: left;
+    line-height: 0.8;
+    margin-right: 0.15em;
+    margin-top: 0.1em;
+    color: var(--red);
+  }
 
-    .quote {
-      margin: 2.5rem 0;
-      padding: 2rem 0;
-      text-align: center;
-    }
+  .context strong {
+    color: var(--white);
+    font-weight: 700;
+  }
 
-    .quote p {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.4;
-      margin-bottom: 0.5rem;
-    }
+  .context .quote-block {
+    border-left: 3px solid var(--red);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: rgba(240, 236, 228, 0.9);
+  }
 
-    .quote .attribution {
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: #666;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
+  .context .quote-block cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-top: 0.75rem;
+    letter-spacing: 0.05em;
+  }
 
-    .demand-box {
-      background: rgba(220, 38, 38, 0.08);
-      border: 1px solid rgba(220, 38, 38, 0.25);
-      border-radius: 6px;
-      padding: 2rem;
-      margin: 3rem 0;
-      text-align: center;
-    }
+  /* ---- DARIO'S WORDS ---- */
+  .dario-words {
+    padding: 5rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
 
-    .demand-box h3 {
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #dc2626;
-      margin-bottom: 0.75rem;
-    }
+  .dario-words::before,
+  .dario-words::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(214,40,40,0.3), transparent);
+  }
+  .dario-words::before { top: 0; }
+  .dario-words::after { bottom: 0; }
 
-    .demand-box p {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 0;
-    }
+  .dario-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: rgba(240, 236, 228, 0.08);
+    margin-bottom: 0.25rem;
+    text-align: center;
+  }
 
-    .location-section {
-      text-align: center;
-    }
+  .dario-role {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    text-align: center;
+    margin-bottom: 3rem;
+  }
 
-    .location-section .address {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 0.5rem;
-    }
+  .dario-quotes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-left: 2px solid var(--red);
+    padding-left: 2rem;
+    margin-left: 1rem;
+  }
 
-    .location-section .city {
-      color: #777;
-      font-size: 1rem;
-    }
+  .dario-quote blockquote {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    line-height: 1.7;
+    color: rgba(240, 236, 228, 0.9);
+  }
 
-    .location-section .map-link {
-      display: inline-block;
-      margin-top: 1rem;
-      color: #dc2626;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
+  /* ---- EVENT DETAILS ---- */
+  .event {
+    padding: 6rem 2rem;
+    text-align: center;
+    background: linear-gradient(180deg, transparent, rgba(214,40,40,0.04), transparent);
+  }
 
-    .location-section .map-link:hover {
-      text-decoration: underline;
-    }
+  .event-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 2rem;
+  }
 
-    .bottom-cta {
-      text-align: center;
-      padding: 5rem 2rem 6rem;
-      max-width: 720px;
-      margin: 0 auto;
-    }
+  .event-date {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
 
-    .bottom-cta h2 {
-      font-size: 2rem;
-      font-weight: 900;
-      margin-bottom: 1rem;
-      color: #fff;
-    }
+  .event-time {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 2rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
 
-    .bottom-cta p {
-      color: #777;
-      margin-bottom: 2rem;
-      font-size: 1.05rem;
-    }
+  .event-location {
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+    font-weight: 700;
+  }
 
-    .divider {
-      max-width: 720px;
-      margin: 0 auto;
-      border: none;
-      border-top: 1px solid #1a1a1a;
-    }
+  .event-address-link {
+    display: inline-block;
+    margin-top: 0.2rem;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--gray);
+    text-decoration: none;
+    border-bottom: 1px dotted transparent;
+    transition: all 0.2s;
+    margin-bottom: 3rem;
+  }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: #333;
-      font-size: 0.8rem;
-    }
+  .event-address-link:hover {
+    color: var(--red);
+    border-bottom-color: var(--red);
+  }
 
-    @media (max-width: 600px) {
-      .hero { padding: 2rem 1.25rem; }
-      section { padding: 3rem 1.25rem; }
-      .cta-button { padding: 0.9rem 2rem; font-size: 1rem; }
-    }
-  </style>
+  /* ---- CTA BUTTONS ---- */
+  .cta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cta-primary {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--red);
+    color: var(--white);
+    padding: 1.1rem 3rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .cta-primary:hover {
+    background: var(--red-glow);
+    box-shadow: 0 0 30px rgba(214,40,40,0.4);
+    transform: translateY(-1px);
+  }
+
+  .cta-secondary {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    color: var(--gray);
+    padding: 0.75rem 2rem;
+    border: 1px solid rgba(136,136,136,0.3);
+    transition: all 0.2s ease;
+  }
+
+  .cta-secondary:hover {
+    color: var(--white);
+    border-color: var(--white);
+  }
+
+  /* ---- SHARE ---- */
+  .share-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  .share-btn {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: var(--gray);
+    padding: 0.5rem 1.25rem;
+    border: 1px solid rgba(136,136,136,0.2);
+    background: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .share-btn:hover {
+    color: var(--white);
+    border-color: rgba(136,136,136,0.5);
+  }
+
+  /* ---- FAQ ---- */
+  .faq {
+    padding: 5rem 2rem;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    margin-bottom: 3rem;
+  }
+
+  .faq-question {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .faq-answer {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(240, 236, 228, 0.8);
+  }
+
+  /* ---- FOOTER ---- */
+
+
+  footer a {
+    color: var(--red);
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* ---- FLOATING CTA ---- */
+  .floating-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(214,40,40,0.3);
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .floating-cta.visible {
+    transform: translateY(0);
+  }
+
+  .floating-cta.hide {
+    transform: translateY(100%);
+  }
+
+  .floating-cta-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--gray);
+    letter-spacing: 0.05em;
+  }
+
+  .floating-cta-btn {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--red);
+    color: var(--white);
+    padding: 0.6rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .floating-cta-btn:hover {
+    background: var(--red-glow);
+  }
+
+  .kbd {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    background: rgba(240, 236, 228, 0.1);
+    color: var(--white);
+    padding: 0.15rem 0.45rem;
+    border-radius: 3px;
+    border: 1px solid rgba(240, 236, 228, 0.15);
+    margin-left: 0.25rem;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 600px) {
+    .kbd { display: none; }
+    .floating-cta-text { display: none; }
+  }
+
+  /* ---- VIDEO MODAL ---- */
+  .video-trigger {
+    color: var(--white);
+    font-weight: 700;
+    cursor: pointer;
+    border-bottom: 1px dotted rgba(214, 40, 40, 0.5);
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+  
+  .video-trigger:hover {
+    color: var(--red);
+    border-bottom: 1px solid var(--red);
+  }
+
+  .video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .video-modal.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .video-container {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    max-width: 90vw;
+    max-height: 80vh;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Tech corners */
+  .video-container::before,
+  .video-container::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--red);
+    transition: all 0.3s ease;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .video-container::before {
+    top: -1px;
+    left: -1px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .video-container::after {
+    bottom: -1px;
+    right: -1px;
+    border-left: none;
+    border-top: none;
+  }
+
+  .video-container:hover::before,
+  .video-container:hover::after {
+    opacity: 1;
+    width: 30px;
+    height: 30px;
+  }
+
+  .video-container video {
+    display: block;
+    max-width: 100%;
+    max-height: 70vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: contrast(1.1);
+  }
+
+  .close-video {
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--gray);
+    font-size: 1.5rem;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .close-video:hover {
+    color: var(--red);
+  }
+
+  .video-caption {
+    margin-top: 1rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    max-width: 90%;
+  }
+
+  .video-caption a {
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .video-caption a:hover {
+    color: var(--red);
+    text-decoration: underline;
+  }
+
+  .subtle-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 1px solid transparent; /* Hidden by default */
+    transition: all 0.2s ease;
+  }
+
+  .subtle-link:hover {
+    color: var(--white);
+    border-bottom-color: rgba(214, 40, 40, 0.4);
+    text-shadow: 0 0 8px rgba(214, 40, 40, 0.2);
+  }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---- MOBILE ---- */
+  @media (max-width: 600px) {
+    .demand { padding: 4rem 1.5rem; }
+    .context { padding: 3rem 1.5rem; }
+    .cta-primary { padding: 1rem 2rem; width: 100%; max-width: 320px; text-align: center; }
+    .cta-secondary { width: 100%; max-width: 320px; text-align: center; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- Hero -->
-  <div class="hero">
-    <div class="hero-label">Nonviolent Protest</div>
-    <h1>Stop The <span class="accent">AI Race</span></h1>
-    <div class="hero-details">
-      <span>Saturday, March 21, 2026</span>
-      <span class="separator">|</span>
-      <span>12:00 PM &ndash; 2:00 PM</span>
-      <span class="separator">|</span>
-      <span>San Francisco, CA</span>
+<!-- HERO -->
+<section class="hero">
+  <h1 class="hero-title">Stop The<br><span class="red">AI Race</span></h1>
+  <p class="hero-subtitle">1,000 people asking Dario Amodei to pause if others do.</p>
+  <a href="https://luma.com/s0k8wvee?from=embed&tk=9dond4" target="_blank" rel="noopener" class="hero-cta">Join the Protest</a>
+</section>
+
+<!-- THE DEMAND -->
+<section class="demand reveal">
+  <p class="demand-label">Our Single Demand</p>
+  <p class="demand-text">
+    Dario Amodei must <span class="highlight">publicly commit</span> to pausing frontier model development <span class="highlight">if every frontier lab</span> credibly does the same.
+  </p>
+</section>
+
+<!-- DARIO'S OWN WORDS -->
+<section class="dario-words reveal">
+  <p class="dario-name">Dario Amodei</p>
+  <p class="dario-role">CEO of Anthropic</p>
+
+  <div class="dario-quotes-list">
+    <div class="dario-quote">
+      <blockquote><a href="https://youtu.be/NnVW9epLlTM?si=nH3Gc5cfv7dDNUqt&t=1377" target="_blank" rel="noopener" class="subtle-link">"I wish we had 5 to 10 years."</a></blockquote>
     </div>
-    <div class="cta-container">
-      <a
-        href="https://lu.ma/event/evt-Z5HH4SH7Sjy27Ps"
-        class="luma-checkout--button cta-button"
-        data-luma-action="checkout"
-        data-luma-event-id="evt-Z5HH4SH7Sjy27Ps"
-      >
-        RSVP &mdash; Join the Protest
-      </a>
-      <div class="cta-subtext">Free &middot; 500 Howard St, San Francisco</div>
+    <div class="dario-quote">
+      <blockquote><a href="https://youtu.be/tjW_gms7CME?si=hsduHXd9Okujv7uE&t=1001" target="_blank" rel="noopener" class="subtle-link">"The thing that keeps me up at night is the incredible market race between top AI companies."</a></blockquote>
     </div>
-    <div class="scroll-hint">&darr; Learn more</div>
+    <div class="dario-quote">
+      <blockquote><a href="https://www.darioamodei.com/essay/the-adolescence-of-technology#:~:text=This%20is%20the%20trap%3A%20AI%20is%20so%20powerful%2C%20such%20a%20glittering%20prize%2C%20that%20it%20is%20very%20difficult%20for%20human%20civilization%20to%20impose%20any%20restraints%20on%20it%20at%20all." target="_blank" rel="noopener" class="subtle-link">"This is the trap: AI is so powerful, such a glittering prize, that it is very difficult for human civilization to impose any restraints on it at all."</a></blockquote>
+    </div>
   </div>
+</section>
 
-  <hr class="divider">
+<!-- CONTEXT -->
+<section class="context reveal">
+  <p>Dario knows the race is reckless. He's said so himself, repeatedly. But he argues he can't slow down because <a href="https://youtu.be/NnVW9epLlTM?si=nH3Gc5cfv7dDNUqt&t=1377" target="_blank" rel="noopener" class="subtle-link">"we have geopolitical adversaries building the same technology at a similar pace."</a></p>
 
-  <!-- About -->
-  <section>
-    <h2>Asking Dario to Commit to a Conditional Global Pause</h2>
+  <p>We're not asking him to stop alone. Just to say: <strong>if the others pause, I will too.</strong></p>
 
-    <p>In September 2025, we asked Demis Hassabis to publicly commit to stopping the AI race if every other AI lab in the world, including in China and the US, also stopped. Last month, he said he would be open to it, but international coordination was one of the key bottlenecks in getting there.</p>
+  <p>In September 2025, we protested at Google DeepMind with the same demand. <span class="video-trigger" id="demis-trigger">Demis Hassabis said yes.</span> Now it's Dario's turn.</p>
 
-    <p><strong>Public pressure works.</strong> Now we're bringing that same ask to Dario Amodei, CEO of Anthropic.</p>
+  <p>Anthropic says it's the safety company. <strong>Prove it.</strong></p>
+</section>
 
-    <div class="quote">
-      <p>"I wish we had 5 to 10 years."</p>
-      <div class="attribution">&mdash; Dario Amodei, CEO of Anthropic</div>
-    </div>
-
-    <p>He admitted that what keeps him up at night is the "incredible market race" between top AI companies. But he argues he can't slow down because "we have geopolitical adversaries building the same technology at a similar pace."</p>
-
-    <p>This is reckless, and everyone knows it. Very few people are in favor of the current AI arms race. But slowing down requires coordination, not unilateral action.</p>
-
-    <div class="quote">
-      <p>"If coordination were possible, I'd meet with Demis right now and agree to pause."</p>
-      <div class="attribution">&mdash; Dario Amodei, Davos 2026</div>
-    </div>
-
-    <p>We're asking him to make that coordination possible, by publicly committing to stop if others do the same.</p>
-
-    <p>That's what a <strong>pause in principle</strong> means: committing to stop developing frontier models if every other lab in the world credibly does the same, with independent auditors ensuring compliance.</p>
-
-    <p>Demis has taken the first step. Now it's Dario's turn.</p>
-
-    <div class="demand-box">
-      <h3>Our Demand</h3>
-      <p>Dario publicly commits to a conditional global pause.</p>
-    </div>
-
-    <p>On Saturday, March 21, 2026 at 12pm, we're aiming to gather 1,000 people in front of Anthropic's office to deliver that ask. The protest will be nonviolent.</p>
-  </section>
-
-  <hr class="divider">
-
-  <!-- Location -->
-  <section class="location-section">
-    <h2>Location</h2>
-    <p class="address">500 Howard St</p>
-    <p class="city">San Francisco, CA 94105, USA</p>
-    <a class="map-link" href="https://maps.google.com/?q=500+Howard+St,+San+Francisco,+CA+94105" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
-  </section>
-
-  <hr class="divider">
-
-  <!-- Bottom CTA -->
-  <div class="bottom-cta">
-    <h2>Will you be there?</h2>
-    <p>Join 1,000 people asking Dario to commit to a conditional global pause.</p>
-    <a
-      href="https://lu.ma/event/evt-Z5HH4SH7Sjy27Ps"
-      class="luma-checkout--button cta-button"
-      data-luma-action="checkout"
-      data-luma-event-id="evt-Z5HH4SH7Sjy27Ps"
-    >
-      RSVP Now
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="video-modal">
+  <div class="video-container">
+    <video id="demis-video" controls playsinline>
+      <source src="demis_pause.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <button class="close-video" id="close-video">CLOSE ×</button>
+  </div>
+  <div class="video-caption">
+    <a href="https://youtu.be/Xcyox1CP1Wk?si=I0cW8MZfDcbjpr6T&t=704" target="_blank" rel="noopener">
+      Demis Hassabis on an AI Shift Bigger Than Industrial Age<br>
+      Bloomberg · Davos · Jan 20th, 2026
     </a>
   </div>
+</div>
 
-  <footer>
-    stoptherace.ai
-  </footer>
+<!-- EVENT DETAILS -->
+<section class="event reveal">
+  <p class="event-label">Be There</p>
+  <p class="event-date">Saturday, March 21</p>
+  <p class="event-time">12:00 PM – 2:00 PM PT</p>
+  <p class="event-location">Anthropic HQ</p>
+  <a href="https://maps.app.goo.gl/anthropic" target="_blank" rel="noopener" class="event-address-link">500 Howard St, San Francisco, CA 94105</a>
 
-  <!-- Luma Checkout Widget -->
-  <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
+  <div class="cta-group">
+    <a href="https://luma.com/s0k8wvee?from=embed&tk=9dond4" target="_blank" rel="noopener" class="cta-primary">Register on Luma</a>
+    <a href="https://partiful.com/e/hlLlRjuwrecvOsKchIyD" target="_blank" rel="noopener" class="cta-secondary">Or register anonymously on Partiful</a>
+    <div class="share-row">
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=I%E2%80%99m%20joining%201%2C000%20people%20in%20front%20of%20Anthropic%20on%20March%2021%20to%20ask%20Dario%20to%20commit%20to%20a%20conditional%20global%20pause.%20Will%20you%3F%20stoptherace.ai" target="_blank" rel="noopener">Share on X</a>
+      <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://stoptherace.ai" target="_blank" rel="noopener">Share on LinkedIn</a>
+      <button class="share-btn" onclick="navigator.clipboard.writeText('https://stoptherace.ai').then(()=>{this.textContent='✓ Copied'})">Copy Link</button>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<!-- FAQ -->
+<section class="faq reveal">
+  <div class="faq-item">
+    <div class="faq-question">Are you against Anthropic or AI?</div>
+    <div class="faq-answer">
+      No. We are not protesting the technology; we are protesting the <strong>reckless race</strong> to build it. We are here to give Dario Amodei the public mandate he needs to stop racing and start coordinating.
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">Is this protest nonviolent?</div>
+    <div class="faq-answer">
+      Yes. This is a peaceful assembly of concerned citizens, families, and researchers. We are not here to disrupt, and we welcome Anthropic employees to join us.
+    </div>
+  </div>
+</section>
+
+<!-- FLOATING CTA -->
+<div class="floating-cta" id="floating-cta">
+  <span class="floating-cta-text">Register now <kbd class="kbd">R</kbd></span>
+  <a href="https://luma.com/s0k8wvee?from=embed&tk=9dond4" target="_blank" rel="noopener" class="floating-cta-btn">Register</a>
+</div>
+
+<!-- FOOTER -->
+
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Floating CTA: show after scrolling past hero, hide when event section is visible
+  const floatingCta = document.getElementById('floating-cta');
+  const heroSection = document.querySelector('.hero');
+  const eventSection = document.querySelector('.event');
+
+  const floatObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.target === heroSection) {
+        // Show floating bar once hero is scrolled past
+        if (!entry.isIntersecting) {
+          floatingCta.classList.add('visible');
+          floatingCta.classList.remove('hide');
+        } else {
+          floatingCta.classList.remove('visible');
+        }
+      }
+      if (entry.target === eventSection) {
+        // Hide when event section (with register buttons) is on screen
+        if (entry.isIntersecting) {
+          floatingCta.classList.add('hide');
+        } else if (!heroSection.getBoundingClientRect().bottom > 0) {
+          floatingCta.classList.remove('hide');
+        }
+      }
+    });
+  }, { threshold: 0.1 });
+
+  floatObserver.observe(heroSection);
+  floatObserver.observe(eventSection);
+
+  // Keyboard shortcut: press R to open registration
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'r' || e.key === 'R') {
+      // Don't trigger if user is typing in an input
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      window.open('https://luma.com/s0k8wvee?from=embed&tk=9dond4', '_blank');
+    }
+    // Close video on ESC
+    if (e.key === 'Escape') {
+       closeVideoModal();
+    }
+  });
+
+  // Video Modal Logic
+  const demisTrigger = document.getElementById('demis-trigger');
+  const videoModal = document.getElementById('video-modal');
+  const demisVideo = document.getElementById('demis-video');
+  const closeVideo = document.getElementById('close-video');
+
+  function openVideoModal() {
+    videoModal.classList.add('active');
+    demisVideo.play();
+  }
+
+  function closeVideoModal() {
+    videoModal.classList.remove('active');
+    demisVideo.pause();
+    demisVideo.currentTime = 0;
+  }
+
+  if (demisTrigger) {
+    demisTrigger.addEventListener('click', openVideoModal);
+  }
+  
+  if (closeVideo) {
+    closeVideo.addEventListener('click', closeVideoModal);
+  }
+
+  // Close on backdrop click
+  if (videoModal) {
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) {
+        closeVideoModal();
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
