@@ -231,8 +231,8 @@
     letter-spacing: 0.05em;
   }
 
-  /* ---- DARIO'S WORDS ---- */
-  .dario-words {
+  /* ---- CEO WORDS ---- */
+  .ceo-words {
     padding: 5rem 2rem;
     max-width: 800px;
     margin: 0 auto;
@@ -240,8 +240,8 @@
     overflow: hidden;
   }
 
-  .dario-words::before,
-  .dario-words::after {
+  .ceo-words::before,
+  .ceo-words::after {
     content: '';
     position: absolute;
     left: 0;
@@ -249,10 +249,10 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(214,40,40,0.3), transparent);
   }
-  .dario-words::before { top: 0; }
-  .dario-words::after { bottom: 0; }
+  .ceo-words::before { top: 0; }
+  .ceo-words::after { bottom: 0; }
 
-  .dario-name {
+  .ceo-name {
     font-family: var(--font-display);
     font-weight: 800;
     font-size: clamp(2rem, 5vw, 3.5rem);
@@ -263,7 +263,7 @@
     text-align: center;
   }
 
-  .dario-role {
+  .ceo-role {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.25em;
@@ -273,21 +273,29 @@
     margin-bottom: 3rem;
   }
 
-  .dario-quotes-list {
+  .ceo-quotes-list {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
     border-left: 2px solid var(--red);
     padding-left: 2rem;
     margin-left: 1rem;
   }
 
-  .dario-quote blockquote {
+  .ceo-quote blockquote {
     font-family: var(--font-body);
     font-style: italic;
     font-size: clamp(1.1rem, 2.2vw, 1.4rem);
     line-height: 1.7;
     color: rgba(240, 236, 228, 0.9);
+    margin-bottom: 0.75rem;
+  }
+
+  .quote-author {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--red);
+    letter-spacing: 0.05em;
   }
 
   /* ---- EVENT DETAILS ---- */
@@ -792,33 +800,36 @@
   </p>
 </section>
 
-<!-- DARIO'S OWN WORDS -->
-<section class="dario-words reveal">
-  <p class="dario-name">Dario Amodei</p>
-  <p class="dario-role">CEO of Anthropic</p>
+<!-- CEO OWN WORDS -->
+<section class="ceo-words reveal">
+  <p class="ceo-name">In Their Own Words</p>
+  <p class="ceo-role">The Architects of the AI Race</p>
 
-  <div class="dario-quotes-list">
-    <div class="dario-quote">
-      <blockquote><a href="https://youtu.be/NnVW9epLlTM?si=nH3Gc5cfv7dDNUqt&t=1377" target="_blank" rel="noopener" class="subtle-link">"I wish we had 5 to 10 years."</a></blockquote>
+  <div class="ceo-quotes-list">
+    <div class="ceo-quote">
+      <blockquote><a href="https://www.youtube.com/watch?v=dXhoTrU1Kkw" target="_blank" rel="noopener" class="subtle-link">"The bad case — and I think this is important to say — is, like, lights out for all of us."</a></blockquote>
+      <div class="quote-author">Sam Altman, CEO of OpenAI</div>
     </div>
-    <div class="dario-quote">
-      <blockquote><a href="https://youtu.be/tjW_gms7CME?si=hsduHXd9Okujv7uE&t=1001" target="_blank" rel="noopener" class="subtle-link">"The thing that keeps me up at night is the incredible market race between top AI companies."</a></blockquote>
+    <div class="ceo-quote">
+      <blockquote><a href="https://www.cnbc.com/2018/03/13/elon-musk-at-sxsw-a-i-is-more-dangerous-than-nuclear-weapons.html#:~:text=And%20mark%20my%20words%2C%20AI%20is%20far%20more%20dangerous%20than%20nukes.%20Far.%20So%20why%20do%20we%20have%20no%20regulatory%20oversight%3F%20This%20is%20insane." target="_blank" rel="noopener" class="subtle-link">"And mark my words, AI is far more dangerous than nukes. Far. So why do we have no regulatory oversight? This is insane."</a></blockquote>
+      <div class="quote-author">Elon Musk, CEO of xAI</div>
     </div>
-    <div class="dario-quote">
+    <div class="ceo-quote">
       <blockquote><a href="https://www.darioamodei.com/essay/the-adolescence-of-technology#:~:text=This%20is%20the%20trap%3A%20AI%20is%20so%20powerful%2C%20such%20a%20glittering%20prize%2C%20that%20it%20is%20very%20difficult%20for%20human%20civilization%20to%20impose%20any%20restraints%20on%20it%20at%20all." target="_blank" rel="noopener" class="subtle-link">"This is the trap: AI is so powerful, such a glittering prize, that it is very difficult for human civilization to impose any restraints on it at all."</a></blockquote>
+      <div class="quote-author">Dario Amodei, CEO of Anthropic</div>
     </div>
   </div>
 </section>
 
 <!-- CONTEXT -->
 <section class="context reveal">
-  <p>Dario knows the race is reckless. He's said so himself, repeatedly. But he argues he can't slow down because <a href="https://youtu.be/NnVW9epLlTM?si=nH3Gc5cfv7dDNUqt&t=1377" target="_blank" rel="noopener" class="subtle-link">"we have geopolitical adversaries building the same technology at a similar pace."</a></p>
+  <p>The architects of these systems know the race is reckless. They've warned us about the existential risks themselves, repeatedly. But each argues they can't slow down because they need to beat the others and geopolitical adversaries.</p>
 
   <p>We're not asking anyone to stop alone. Just to say: <strong>if the others pause, I will too.</strong></p>
 
   <p>In September 2025, we protested at Google DeepMind with the same demand. <span class="video-trigger" id="demis-trigger">Demis Hassabis said he'd be open to it</span> — but that international coordination was the key bottleneck. Public commitments from lab leaders are what create the conditions for that coordination. Now it's Elon, Sam, and Dario's turn.</p>
 
-  <p>Anthropic says it's the safety company. <strong>Prove it.</strong></p>
+  <p>They claim they are building safely for the benefit of humanity. <strong>It's time they prove it.</strong></p>
 </section>
 
 <!-- VIDEO MODAL -->
