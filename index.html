@@ -231,8 +231,8 @@
     letter-spacing: 0.05em;
   }
 
-  /* ---- CEO WORDS ---- */
-  .ceo-words {
+  /* ---- DARIO'S WORDS ---- */
+  .dario-words {
     padding: 5rem 2rem;
     max-width: 800px;
     margin: 0 auto;
@@ -240,8 +240,8 @@
     overflow: hidden;
   }
 
-  .ceo-words::before,
-  .ceo-words::after {
+  .dario-words::before,
+  .dario-words::after {
     content: '';
     position: absolute;
     left: 0;
@@ -249,10 +249,10 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(214,40,40,0.3), transparent);
   }
-  .ceo-words::before { top: 0; }
-  .ceo-words::after { bottom: 0; }
+  .dario-words::before { top: 0; }
+  .dario-words::after { bottom: 0; }
 
-  .ceo-name {
+  .dario-name {
     font-family: var(--font-display);
     font-weight: 800;
     font-size: clamp(2rem, 5vw, 3.5rem);
@@ -263,7 +263,7 @@
     text-align: center;
   }
 
-  .ceo-role {
+  .dario-role {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.25em;
@@ -273,28 +273,52 @@
     margin-bottom: 3rem;
   }
 
-  .ceo-quotes-list {
+  .dario-quotes-list {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
     border-left: 2px solid var(--red);
     padding-left: 2rem;
     margin-left: 1rem;
   }
 
-  .ceo-quote blockquote {
+  .dario-quote blockquote {
     font-family: var(--font-body);
     font-style: italic;
     font-size: clamp(1.1rem, 2.2vw, 1.4rem);
     line-height: 1.7;
     color: rgba(240, 236, 228, 0.9);
-    margin-bottom: 0.75rem;
   }
 
-  .quote-author {
+  .ceo-other-quotes {
+    margin-top: 3rem;
+    padding-left: 2rem;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(240, 236, 228, 0.45);
+  }
+
+  .ceo-other-quotes a {
+    color: rgba(240, 236, 228, 0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .ceo-other-quotes a:hover {
+    color: rgba(240, 236, 228, 0.75);
+  }
+
+  .ceo-other-quotes .quote-author {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--red);
+    font-style: normal;
+    font-size: 0.7rem;
+    color: rgba(240, 236, 228, 0.3);
     letter-spacing: 0.05em;
   }
 
@@ -801,22 +825,30 @@
 </section>
 
 <!-- CEO OWN WORDS -->
-<section class="ceo-words reveal">
-  <p class="ceo-name">In Their Own Words</p>
-  <p class="ceo-role">The Architects of the AI Race</p>
+<section class="dario-words reveal">
+  <p class="dario-name">In Their Own Words</p>
+  <p class="dario-role">The Architects of the AI Race</p>
 
-  <div class="ceo-quotes-list">
-    <div class="ceo-quote">
-      <blockquote><a href="https://www.youtube.com/watch?v=dXhoTrU1Kkw" target="_blank" rel="noopener" class="subtle-link">"The bad case — and I think this is important to say — is, like, lights out for all of us."</a></blockquote>
-      <div class="quote-author">Sam Altman, CEO of OpenAI</div>
+  <div class="dario-quotes-list">
+    <div class="dario-quote">
+      <blockquote><a href="https://youtu.be/NnVW9epLlTM?si=nH3Gc5cfv7dDNUqt&t=1377" target="_blank" rel="noopener" class="subtle-link">"I wish we had 5 to 10 years."</a></blockquote>
     </div>
-    <div class="ceo-quote">
-      <blockquote><a href="https://www.cnbc.com/2018/03/13/elon-musk-at-sxsw-a-i-is-more-dangerous-than-nuclear-weapons.html#:~:text=And%20mark%20my%20words%2C%20AI%20is%20far%20more%20dangerous%20than%20nukes.%20Far.%20So%20why%20do%20we%20have%20no%20regulatory%20oversight%3F%20This%20is%20insane." target="_blank" rel="noopener" class="subtle-link">"And mark my words, AI is far more dangerous than nukes. Far. So why do we have no regulatory oversight? This is insane."</a></blockquote>
-      <div class="quote-author">Elon Musk, CEO of xAI</div>
+    <div class="dario-quote">
+      <blockquote><a href="https://youtu.be/tjW_gms7CME?si=hsduHXd9Okujv7uE&t=1001" target="_blank" rel="noopener" class="subtle-link">"The thing that keeps me up at night is the incredible market race between top AI companies."</a></blockquote>
     </div>
-    <div class="ceo-quote">
+    <div class="dario-quote">
       <blockquote><a href="https://www.darioamodei.com/essay/the-adolescence-of-technology#:~:text=This%20is%20the%20trap%3A%20AI%20is%20so%20powerful%2C%20such%20a%20glittering%20prize%2C%20that%20it%20is%20very%20difficult%20for%20human%20civilization%20to%20impose%20any%20restraints%20on%20it%20at%20all." target="_blank" rel="noopener" class="subtle-link">"This is the trap: AI is so powerful, such a glittering prize, that it is very difficult for human civilization to impose any restraints on it at all."</a></blockquote>
-      <div class="quote-author">Dario Amodei, CEO of Anthropic</div>
+    </div>
+  </div>
+
+  <div class="ceo-other-quotes">
+    <div>
+      <a href="https://www.youtube.com/watch?v=dXhoTrU1Kkw" target="_blank" rel="noopener">"The bad case — and I think this is important to say — is, like, lights out for all of us."</a>
+      <div class="quote-author">— Sam Altman, CEO of OpenAI</div>
+    </div>
+    <div>
+      <a href="https://www.cnbc.com/2018/03/13/elon-musk-at-sxsw-a-i-is-more-dangerous-than-nuclear-weapons.html#:~:text=And%20mark%20my%20words%2C%20AI%20is%20far%20more%20dangerous%20than%20nukes.%20Far.%20So%20why%20do%20we%20have%20no%20regulatory%20oversight%3F%20This%20is%20insane." target="_blank" rel="noopener">"AI is far more dangerous than nukes. Far. So why do we have no regulatory oversight? This is insane."</a>
+      <div class="quote-author">— Elon Musk, CEO of xAI</div>
     </div>
   </div>
 </section>
