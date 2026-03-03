@@ -789,7 +789,7 @@
 <section class="hero">
   <h1 class="hero-title">Stop The<br><span class="red">AI Race</span></h1>
   <p class="hero-subtitle">Asking Elon Musk, Sam Altman and Dario Amodei to commit to a conditional global pause.</p>
-  <a href="https://luma.com/s0k8wvee?from=embed&tk=9dond4" target="_blank" rel="noopener" class="hero-cta">Join the March</a>
+  <a href="http://lu.ma/s0k8wvee?utm_source=website" target="_blank" rel="noopener" class="hero-cta">Join the March</a>
 </section>
 
 <!-- THE DEMAND -->
@@ -835,8 +835,8 @@
 <!-- VIDEO MODAL -->
 <div class="video-modal" id="video-modal">
   <div class="video-container">
-    <video id="demis-video" controls playsinline>
-      <source src="demis_pause.mp4" type="video/mp4">
+    <video id="demis-video" controls playsinline preload="none">
+      <source data-src="demis_pause.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <button class="close-video" id="close-video">CLOSE ×</button>
@@ -899,7 +899,7 @@
   </div>
 
   <div class="cta-group">
-    <a href="https://luma.com/s0k8wvee?from=embed&tk=9dond4" target="_blank" rel="noopener" class="cta-primary">Register on Luma</a>
+    <a href="http://lu.ma/s0k8wvee?utm_source=website" target="_blank" rel="noopener" class="cta-primary">Register on Luma</a>
     <a href="https://partiful.com/e/hlLlRjuwrecvOsKchIyD" target="_blank" rel="noopener" class="cta-secondary">Or register anonymously on Partiful</a>
     <div class="share-row">
       <a class="share-btn" href="https://twitter.com/intent/tweet?text=I%E2%80%99m%20marching%20to%20Anthropic%2C%20OpenAI%2C%20and%20xAI%20on%20March%2021%20to%20ask%20AI%20CEOs%20to%20commit%20to%20a%20conditional%20global%20pause.%20Will%20you%3F%20stoptherace.ai" target="_blank" rel="noopener">Share on X</a>
@@ -932,7 +932,7 @@
 <div class="faq-item">
   <div class="faq-question">Want to help organize?</div>
   <div class="faq-answer">
-    Join our <a href="https://discord.gg/JBhkZ6fX" target="_blank" rel="noopener" style="color: var(--red); text-decoration: none; border-bottom: 1px dotted var(--red);">Discord</a>
+    Join our <a href="https://discord.gg/guwEYe3k9z" target="_blank" rel="noopener" style="color: var(--red); text-decoration: none; border-bottom: 1px dotted var(--red);">Discord</a>
   </div>
 </div>
 </section>
@@ -940,7 +940,7 @@
 <!-- FLOATING CTA -->
 <div class="floating-cta" id="floating-cta">
   <span class="floating-cta-text">Register now <kbd class="kbd">R</kbd></span>
-  <a href="https://luma.com/s0k8wvee?from=embed&tk=9dond4" target="_blank" rel="noopener" class="floating-cta-btn">Register</a>
+  <a href="http://lu.ma/s0k8wvee?utm_source=website" target="_blank" rel="noopener" class="floating-cta-btn">Register</a>
 </div>
 
 <!-- FOOTER -->
@@ -990,7 +990,7 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'r' || e.key === 'R') {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-      window.open('https://luma.com/s0k8wvee?from=embed&tk=9dond4', '_blank');
+      window.open('http://lu.ma/s0k8wvee?utm_source=website', '_blank');
     }
     if (e.key === 'Escape') {
        closeVideoModal();
@@ -1004,6 +1004,11 @@
   const closeVideo = document.getElementById('close-video');
 
   function openVideoModal() {
+    var source = demisVideo.querySelector('source');
+    if (source.dataset.src) {
+      source.src = source.dataset.src;
+      demisVideo.load();
+    }
     videoModal.classList.add('active');
     demisVideo.play();
   }
