@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Press · Stop The AI Race</title>
+<meta name="description" content="Press release: Protesters March on Anthropic, OpenAI, and xAI with One Simple Demand: Stop the AI Race. March 21, 2026, San Francisco.">
+<meta property="og:title" content="Press · Stop The AI Race">
+<meta property="og:description" content="Protesters March on Anthropic, OpenAI, and xAI with One Simple Demand: Stop the AI Race.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://stoptherace.ai/press">
+<meta property="og:image" content="https://stoptherace.ai/stoptheairace.avif">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://stoptherace.ai/stoptheairace.avif">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HN7TDTHLH6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HN7TDTHLH6');
+</script>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f0ece4;
+    --red: #d62828;
+    --red-dark: #a31f1f;
+    --red-glow: #ff3333;
+    --gray: #888;
+    --font-display: 'Outfit', sans-serif;
+    --font-body: 'Libre Baskerville', serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  ::selection {
+    background: var(--red);
+    color: var(--white);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* GRAIN OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  a {
+    color: var(--red);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--red-glow);
+    text-decoration: underline;
+  }
+
+  /* BACK NAV */
+  .back-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    padding: 1.2rem 2rem;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(214,40,40,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .back-link {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,236,228,0.3);
+  }
+
+  /* PRESS HEADER */
+  .press-header {
+    padding: 8rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .press-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(214,40,40,0.4), transparent);
+  }
+
+  .press-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.5rem;
+  }
+
+  .press-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .press-title .red { color: var(--red); }
+
+  .press-date {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-top: 1.5rem;
+    letter-spacing: 0.05em;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  /* HERO IMAGE */
+  .press-hero-image {
+    max-width: 800px;
+    margin: 3rem auto 0;
+    padding: 0 2rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .press-hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid rgba(240,236,228,0.08);
+    filter: contrast(1.05);
+  }
+
+  .press-hero-caption {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--gray);
+    text-align: center;
+    margin-top: 0.75rem;
+    letter-spacing: 0.03em;
+    line-height: 1.6;
+  }
+
+  /* PRESS BODY */
+  .press-body {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .press-body p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: rgba(240, 236, 228, 0.85);
+  }
+
+  .press-body p strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .press-body p:first-child {
+    font-size: 1.15rem;
+  }
+
+  /* SCHEDULE TABLE */
+  .schedule-block {
+    margin: 2.5rem 0;
+    border-left: 2px solid var(--red);
+    padding-left: 1.5rem;
+  }
+
+  .schedule-block .schedule-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+  }
+
+  .schedule-item {
+    display: flex;
+    gap: 1.2rem;
+    padding: 0.5rem 0;
+    align-items: baseline;
+  }
+
+  .schedule-time {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--red);
+    white-space: nowrap;
+    min-width: 5rem;
+  }
+
+  .schedule-desc {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: rgba(240, 236, 228, 0.85);
+    line-height: 1.5;
+  }
+
+  /* ABOUT SECTION */
+  .about-block {
+    margin: 2.5rem 0;
+    padding: 2rem;
+    background: rgba(214, 40, 40, 0.04);
+    border: 1px solid rgba(214, 40, 40, 0.12);
+  }
+
+  .about-block h3 {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .about-block p {
+    font-size: 1rem !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* CONTACT BLOCK */
+  .contact-block {
+    margin: 2.5rem 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(240, 236, 228, 0.08);
+  }
+
+  .contact-block h3 {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+  }
+
+  .contact-block p {
+    font-size: 0.95rem !important;
+    line-height: 1.8 !important;
+    color: rgba(240, 236, 228, 0.7) !important;
+  }
+
+  .contact-block a {
+    border-bottom: 1px dotted var(--red);
+  }
+
+  .contact-block a:hover {
+    text-decoration: none;
+    border-bottom-style: solid;
+  }
+
+  /* FOOTER CTA */
+  .press-footer-cta {
+    text-align: center;
+    padding: 4rem 2rem 5rem;
+    position: relative;
+  }
+
+  .press-footer-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(214,40,40,0.3), transparent);
+  }
+
+  .press-footer-cta .cta-primary {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--red);
+    color: var(--white);
+    padding: 1.1rem 3rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .press-footer-cta .cta-primary:hover {
+    background: var(--red-glow);
+    box-shadow: 0 0 30px rgba(214,40,40,0.4);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  .press-footer-cta p {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-top: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .press-header { padding: 7rem 1.5rem 2.5rem; }
+    .press-body { padding: 2.5rem 1.5rem 4rem; }
+    .schedule-item { flex-direction: column; gap: 0.2rem; }
+    .about-block { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BACK NAV -->
+<nav class="back-nav">
+  <a href="/" class="back-link">&larr; stoptherace.ai</a>
+  <span class="nav-label">Press</span>
+</nav>
+
+<!-- HEADER -->
+<header class="press-header">
+  <p class="press-label">For Immediate Release</p>
+  <h1 class="press-title">Protesters March on Anthropic, OpenAI, and xAI with One Simple Demand: <span class="red">"Stop the AI Race"</span></h1>
+  <p class="press-date">March 6, 2026</p>
+</header>
+
+<!-- HERO IMAGE -->
+<div class="press-hero-image">
+  <img src="quitgpt-protest.jpeg" alt="QuitGPT protest at OpenAI headquarters, March 3rd, 2026">
+  <p class="press-hero-caption">QuitGPT protest at OpenAI headquarters, March 3rd, 2026. The largest anti-OpenAI protest to date.</p>
+</div>
+
+<!-- PRESS BODY -->
+<article class="press-body reveal">
+
+  <p><strong>San Francisco, CA</strong> &mdash; On Saturday, March 21st, Stop the AI Race (<a href="https://stoptherace.ai">stoptherace.ai</a>) will lead a march across San Francisco from the headquarters of Anthropic to OpenAI to xAI, calling on three CEOs by name &mdash; Dario Amodei, Sam Altman, and Elon Musk &mdash; to publicly commit to pausing frontier AI development if other leading AI companies commit to doing the same.</p>
+
+  <p>The march is organized by Stop the AI Race (<a href="https://stoptherace.ai">stoptherace.ai</a>), a protest movement led by veteran activist Guido Reichstadter alongside filmmaker, activist and former AI safety researcher Micha&#235;l Trazzi, who have conducted hunger strikes and nonviolent protests at the doors of AI companies on two continents.</p>
+
+  <p>Dr. David Krueger &mdash; an AI professor at the University of Montreal, founder of the nonprofit <a href="https://evitable.com/">Evitable</a>, and co-author of research with AI pioneers Yoshua Bengio and Geoffrey Hinton &mdash; will speak at the rally. Krueger is a longtime advocate for AI risk awareness, having previously initiated the <a href="https://www.safe.ai/work/statement-on-ai-risk">CAIS Statement on AI Risk</a>, appeared on <a href="https://x.com/GMB/status/1664161142791454720">British national TV</a>, and helped found the <a href="https://www.aisi.gov.uk/">UK AI Security Institute</a>. This year, Krueger has published op-ed columns in <a href="https://www.theguardian.com/commentisfree/2026/mar/06/moltbook-risk-ai-agents-artificial-life"><em>The Guardian</em></a> and <a href="https://www.usatoday.com/story/opinion/2026/01/24/ai-chip-manufacturing-data-centers-humanity/88215945007/"><em>USA Today</em></a>, urging policymakers to fight back against agentic AI and get rid of the AI compute. In his words: "The CEOs of these companies expect their work to cause mass unemployment and quite possibly human extinction. They should not be pursuing this work. At a bare minimum, they should agree to stop if others do, and governments should help coordinate if they can't."</p>
+
+  <p>Nate Soares, CEO of the Machine Intelligence Research Institute (MIRI), and co-author of NYT Best Seller "If Anyone Builds It Everyone Dies" <a href="https://x.com/So8res/status/2030019062244278783?s=20">publicly endorsed</a> the demand, writing: "I think 'commit to pause if everyone else will too' is a decent ask." He added that AI CEOs "clearly and plainly stating 'this is an emergency and it'd be better if we were all slowed' is a good first step." Will Fithian, Professor of Statistics at UC Berkeley, will also attend, adding to a growing list of academics raising concerns about the pace of AI development.</p>
+
+  <p>In September 2025, Trazzi protested at Google DeepMind's London headquarters, calling on CEO Demis Hassabis to publicly commit to a conditional pause. Then, at Davos in January 2026, Hassabis <a href="https://fortune.com/2026/01/23/deepmind-demis-hassabis-anthropic-dario-amodei-yann-lecun-ai-davos/">suggested</a> he would be open to it, but that international coordination was the key bottleneck. Today, momentum is moving in the wrong direction: In February 2026, Anthropic <a href="https://time.com/7380854/exclusive-anthropic-drops-flagship-safety-pledge/">quietly dropped</a> its "Responsible Scaling Policy," which had committed the company to pause development if its AI became too dangerous. OpenAI's charter includes a similar commitment to stop competing if another company is closer to AGI, yet the company has been <a href="https://news.bloomberglaw.com/daily-labor-report/openai-gives-pentagon-access-to-models-after-anthropic-dustup">weakening</a> its safety commitments as it restructures into a for-profit corporation.</p>
+
+  <p>To reverse Big Tech's dangerous momentum, Stop the AI Race is calling on frontier lab CEOs to make a simple public commitment: if every other major AI lab in the world pauses development of more powerful AI systems, they will too. A "QuitGPT" protest was held on Tuesday, March 3rd, attracting more than 75 people in front of OpenAI's headquarters &mdash; the <a href="https://x.com/MichaelTrazzi/status/2029031790246232254">largest anti-OpenAI protest to date</a>. This followed a <a href="https://pauseai.info/protest-london-feb-2026">PauseAI protest in London</a> last month.</p>
+
+  <!-- SCHEDULE -->
+  <div class="schedule-block">
+    <p class="schedule-title">Schedule</p>
+    <div class="schedule-item">
+      <span class="schedule-time">12:00 PM</span>
+      <span class="schedule-desc">Rally at Anthropic, 500 Howard St</span>
+    </div>
+    <div class="schedule-item">
+      <span class="schedule-time">12:30 PM</span>
+      <span class="schedule-desc">Speeches in front of Anthropic, including one by David Krueger</span>
+    </div>
+    <div class="schedule-item">
+      <span class="schedule-time">1:00 PM</span>
+      <span class="schedule-desc">March to OpenAI, 1455 3rd St, Mission Bay</span>
+    </div>
+    <div class="schedule-item">
+      <span class="schedule-time">2:00 PM</span>
+      <span class="schedule-desc">March to xAI, 3180 18th St, Mission District</span>
+    </div>
+    <div class="schedule-item">
+      <span class="schedule-time">3:00 PM</span>
+      <span class="schedule-desc">Celebration at Dolores Park</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="about-block">
+    <h3>About Stop the AI Race</h3>
+    <p>Stop the AI Race exists to give AI company CEOs the public mandate they need to stop racing and start coordinating. This is a nonviolent, peaceful assembly of concerned citizens, families, and researchers. Employees of AI companies are welcome to join.</p>
+  </div>
+
+  <!-- MEDIA -->
+  <div class="contact-block">
+    <h3>Media</h3>
+    <p>Reichstadter, Trazzi and Krueger are available for phone or video interview in advance of the march. Photo opportunities and b-roll will be made available on site. Press kit will be made available at <a href="https://stoptherace.ai/press">stoptherace.ai/press</a>.</p>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-block">
+    <h3>Contact</h3>
+    <p>
+      Stop the AI Race: <a href="/cdn-cgi/l/email-protection#12717d7c66737166343124262961667d62667a77607371773c737b">contact&#64;stoptherace.ai</a><br>
+      Guido Reichstadter: <a href="/cdn-cgi/l/email-protection#ea988f838982999e8b8e9e8f98c48dccc9dcded18d878b8386c4898587">reichstadter.g&#64;gmail.com</a><br>
+      Micha&#235;l Trazzi: mtrazzi.99 on Signal<br>
+      David Krueger: <a href="/cdn-cgi/l/email-protection#aaeecbdcc3ce84f9c9c5dede84e1d8dfcfcdcfd88c899c9e91cdc7cbc3c684c9c5c7">David.Scott.Krueger&#64;gmail.com</a>
+    </p>
+  </div>
+
+</article>
+
+<!-- FOOTER CTA -->
+<div class="press-footer-cta">
+  <a href="http://lu.ma/s0k8wvee?utm_source=press" target="_blank" rel="noopener" class="cta-primary">Register for the March</a>
+  <p>Saturday, March 21 &middot; San Francisco</p>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new I
