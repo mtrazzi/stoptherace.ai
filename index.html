@@ -1097,17 +1097,17 @@
   const dotStyle = { radius: 6, fillColor: '#d62828', color: '#f0ece4', weight: 2.5, fillOpacity: 1 };
 
   const stops = [
-    { coord: leg1[0], label: 'Anthropic', sub: '500 Howard St' },
-    { coord: leg1[11], label: 'OpenAI', sub: '1455 3rd St' },
-    { coord: [leg2[10][0]*0.55+leg2[11][0]*0.45, leg2[10][1]*0.55+leg2[11][1]*0.45], label: 'xAI', sub: '3180 18th St' },
-    { coord: leg2[12], label: 'Dolores Park', sub: null }
+    { coord: leg1[0], label: 'Anthropic', sub: '500 Howard St', side: 'right' },
+    { coord: leg1[11], label: 'OpenAI', sub: '1455 3rd St', side: 'right' },
+    { coord: [leg2[10][0]*0.55+leg2[11][0]*0.45, leg2[10][1]*0.55+leg2[11][1]*0.45], label: 'xAI', sub: '3180 18th St', side: 'right' },
+    { coord: leg2[12], label: 'Dolores Park', sub: null, side: 'left' }
   ];
 
-  stops.forEach(({ coord, label, sub }) => {
+  stops.forEach(({ coord, label, sub, side }) => {
     L.circleMarker(coord, dotStyle).addTo(map);
     const html = `<div style="white-space:nowrap;"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;color:#f0ece4;text-shadow:0 0 6px #0a0a0a,0 0 6px #0a0a0a;">${label}</span>${sub ? `<br><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#888;text-shadow:0 0 4px #0a0a0a,0 0 4px #0a0a0a;">${sub}</span>` : ''}</div>`;
     L.marker(coord, {
-      icon: L.divIcon({ className: '', html: html, iconSize: [0,0], iconAnchor: [-10, 14] }),
+      icon: L.divIcon({ className: '', html: html, iconSize: [0,0], iconAnchor: side === 'left' ? [97, 14] : [-10, 14] }),
       interactive: false
     }).addTo(map);
   });
