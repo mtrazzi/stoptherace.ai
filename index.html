@@ -480,20 +480,66 @@
   }
 
   .faq-item {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(214,40,40,0.2);
+    padding-bottom: 1.5rem;
   }
 
-  .faq-question {
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .faq-item summary {
     font-family: var(--font-mono);
     font-size: 0.85rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--red);
-    margin-bottom: 1rem;
     font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::after {
+    content: '+';
+    font-size: 1.2rem;
+    font-weight: 400;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] summary::after {
+    content: '−';
   }
 
   .faq-answer {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(240, 236, 228, 0.8);
+    margin-top: 1rem;
+  }
+
+  .faq-cta {
+    margin-bottom: 1.5rem;
+  }
+
+  .faq-cta-label {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .faq-cta-content {
     font-size: 1.05rem;
     line-height: 1.7;
     color: rgba(240, 236, 228, 0.8);
@@ -926,46 +972,46 @@
 
 <!-- FAQ -->
 <section class="faq reveal">
-  <div class="faq-item">
-    <div class="faq-question">Are you against these companies or AI?</div>
+  <details class="faq-item">
+    <summary>Are you against these companies or AI?</summary>
     <div class="faq-answer">
       No. We are not protesting the technology; we are protesting the <strong>reckless race</strong> to build it. We are here to give AI lab CEOs the public mandate they need to stop racing and start coordinating.
     </div>
-  </div>
-  
-  <div class="faq-item">
-    <div class="faq-question">Is this protest nonviolent?</div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Is this protest nonviolent?</summary>
     <div class="faq-answer">
       Yes. This is a peaceful assembly of concerned citizens, families, and researchers. We are not here to disrupt, and we welcome employees of these companies to join us.
     </div>
-  </div>
+  </details>
 
-  <div class="faq-item">
-    <div class="faq-question">What about China?</div>
+  <details class="faq-item">
+    <summary>What about China?</summary>
     <div class="faq-answer">
       China would also need to pause. Any agreement only works if it includes all major AI labs globally. The MIRI Technical Governance Team published a <a href="https://techgov.intelligence.org/research/an-international-agreement-to-prevent-the-premature-creation-of-artificial-superintelligence" target="_blank" rel="noopener" style="color: var(--red); text-decoration: none; border-bottom: 1px dotted var(--red);">detailed proposal</a> for an international agreement centered on a coalition led by the US and China, with verification mechanisms including AI chip tracking. Public commitments from Western lab CEOs are a first step toward the kind of international coordination that makes this possible.
     </div>
-  </div>
+  </details>
 
-  <div class="faq-item">
-    <div class="faq-question">What would a pause look like in practice?</div>
+  <details class="faq-item">
+    <summary>What would a pause look like in practice?</summary>
     <div class="faq-answer">
       No new training runs of larger or more general frontier models. The teams currently working on improving the capabilities of these models would move to narrow AI applications or alignment research instead. Current models stay available. Narrow AI applications are fine. The principle is more important than the specific definition of "frontier," but for a detailed technical proposal, see <a href="https://arxiv.org/abs/2511.10783" target="_blank" rel="noopener" style="color: var(--red); text-decoration: none; border-bottom: 1px dotted var(--red);">MIRI's international agreement paper</a>, which operationalizes limits through compute thresholds (FLOP caps) and restricts research that advances toward superintelligence while preserving access to current AI.
     </div>
-  </div>
+  </details>
 
-<div class="faq-item">
-  <div class="faq-question">Have questions?</div>
-  <div class="faq-answer">
-    Reach us at <a href="mailto:contact@stoptherace.ai" style="color: var(--red); text-decoration: none; border-bottom: 1px dotted var(--red);">contact@stoptherace.ai</a>
+  <div class="faq-cta">
+    <div class="faq-cta-label">Have questions?</div>
+    <div class="faq-cta-content">
+      Reach us at <a href="mailto:contact@stoptherace.ai" style="color: var(--red); text-decoration: none; border-bottom: 1px dotted var(--red);">contact@stoptherace.ai</a>
+    </div>
   </div>
-</div>
-<div class="faq-item">
-  <div class="faq-question">Want to help organize?</div>
-  <div class="faq-answer">
-    Join our <a href="https://signal.group/#CjQKII4dmeVPfVysu6RZHew2_kFUI3z-8PSzxqifwXWcvX9lEhBCkMW6DhOacl6zvfQAeboD" target="_blank" rel="noopener" style="color: var(--red); text-decoration: none; border-bottom: 1px dotted var(--red);">Signal group</a>
+  <div class="faq-cta">
+    <div class="faq-cta-label">Want to help organize?</div>
+    <div class="faq-cta-content">
+      Join our <a href="https://signal.group/#CjQKII4dmeVPfVysu6RZHew2_kFUI3z-8PSzxqifwXWcvX9lEhBCkMW6DhOacl6zvfQAeboD" target="_blank" rel="noopener" style="color: var(--red); text-decoration: none; border-bottom: 1px dotted var(--red);">Signal group</a>
+    </div>
   </div>
-</div>
 </section>
 
 <!-- FLOATING CTA -->
