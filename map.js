@@ -24,25 +24,18 @@ function initRouteMap(elementId) {
   var leg1 = [
     [37.7884, -122.3963],    // 500 Howard St (START)
     [37.7868, -122.3983],    // Howard & 2nd
-    [37.7825, -122.3929],    // 2nd & South Park
-    [37.7807, -122.3951],    // South Park & 3rd
-    [37.7795, -122.3936],    // 3rd St (heading southeast)
-    [37.77776, -122.39142],  // 3rd St (bend)
-    [37.77754, -122.39113],  // 3rd St (Berry St)
-    [37.77716, -122.39070],  // 3rd St (approaching bridge)
-    [37.7769, -122.3904],    // 3rd St (north end of bridge)
-    [37.7765, -122.3901],    // 3rd St (south end of bridge)
-    [37.7762, -122.3900],    // 3rd St (just past bridge)
+    [37.78186, -122.39209],  // 2nd & Brannan (OSM node 65315466)
+    [37.77829, -122.39661],  // Brannan & 4th (OSM node 65315477)
+    [37.77442, -122.39159],  // 4th & Channel (OSM node 768247156, nudged south)
+    [37.77453, -122.38974],  // Channel & 3rd (OSM node 293820891)
     [37.7701, -122.3893],    // 1455 3rd St (MIDPOINT)
   ];
 
   // === LEG 2: 1455 3rd St to Dolores Park ===
   var leg2 = [
     [37.7701, -122.3893],    // 0: 1455 3rd St (MIDPOINT)
-    [37.7688, -122.3892],    // 1: 3rd & Gene Friend Way
-    [37.7687, -122.3910],    // 2: Gene Friend Way & 4th St
-    [37.7668, -122.3908],    // 3: 4th & 16th
-    [37.76655, -122.39490],  // 4: 16th & Mississippi (nudged east)
+    [37.76693, -122.38898],  // 1: 3rd & 16th (OSM node)
+    [37.76655, -122.39490],  // 2: 16th & Mississippi (nudged east)
     [37.76525, -122.39486],  // 5: Mississippi & 17th (OSM node 65317334)
     [37.76415, -122.41290],  // 6: 17th approaching Harrison (extended)
     [37.76406, -122.41313],  // 7: bend wp (OSM node 4183593002)
@@ -72,9 +65,9 @@ function initRouteMap(elementId) {
 
   var stops = [
     { coord: leg1[0], label: 'Anthropic', sub: '500 Howard St', side: 'right' },
-    { coord: leg1[11], label: 'OpenAI', sub: '1455 3rd St', side: 'right' },
-    { coord: [leg2[10][0]*0.55+leg2[11][0]*0.45, leg2[10][1]*0.55+leg2[11][1]*0.45], label: 'xAI', sub: '3180 18th St', side: 'right' },
-    { coord: leg2[12], label: 'Dolores Park', sub: null, side: 'left' },
+    { coord: leg1[6], label: 'OpenAI', sub: '1455 3rd St', side: 'right' },
+    { coord: [leg2[8][0]*0.55+leg2[9][0]*0.45, leg2[8][1]*0.55+leg2[9][1]*0.45], label: 'xAI', sub: '3180 18th St', side: 'right' },
+    { coord: leg2[10], label: 'Dolores Park', sub: null, side: 'left' },
   ];
 
   stops.forEach(function(stop) {
