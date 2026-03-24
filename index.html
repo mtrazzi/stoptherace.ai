@@ -113,6 +113,338 @@
 
   .hero-title .red { color: var(--red); }
 
+  .hero-subtitle {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    max-width: 550px;
+    margin: 1.5rem auto 0;
+    line-height: 1.6;
+    color: rgba(240, 236, 228, 0.8);
+    animation: fadeUp 0.8s 0.2s ease both;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- DEMAND ---- */
+  .demand {
+    padding: 6rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .demand::before {
+    content: '"';
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 18rem;
+    color: var(--red);
+    opacity: 0.06;
+    position: absolute;
+    top: -1rem;
+    left: -2rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .demand-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 2rem;
+    padding-left: 0;
+  }
+
+  .demand-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .demand-text .highlight {
+    color: var(--red);
+  }
+
+  /* ---- CONTEXT / ARGUMENT ---- */
+  .context {
+    padding: 4rem 2rem 2rem;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .context p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: rgba(240, 236, 228, 0.85);
+  }
+
+  .context p:first-child::first-letter {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 3.5rem;
+    float: left;
+    line-height: 0.8;
+    margin-right: 0.15em;
+    margin-top: 0.1em;
+    color: var(--red);
+  }
+
+  .context strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .context .quote-block {
+    border-left: 3px solid var(--red);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: rgba(240, 236, 228, 0.9);
+  }
+
+  .context .quote-block cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-top: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ---- DARIO'S WORDS ---- */
+  .dario-words {
+    padding: 5rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dario-words::before,
+  .dario-words::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(214,40,40,0.3), transparent);
+  }
+  .dario-words::before { top: 0; }
+  .dario-words::after { bottom: 0; }
+
+  .dario-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: rgba(240, 236, 228, 0.08);
+    margin-bottom: 0.25rem;
+    text-align: center;
+  }
+
+  .dario-role {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .dario-quotes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-left: 2px solid var(--red);
+    padding-left: 2rem;
+    margin-left: 1rem;
+  }
+
+  .dario-quote blockquote {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    line-height: 1.7;
+    color: rgba(240, 236, 228, 0.9);
+  }
+
+  /* ---- CTA BUTTONS ---- */
+  .cta-primary {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--red);
+    color: var(--white);
+    padding: 1.1rem 3rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .cta-primary:hover {
+    background: var(--red-glow);
+    box-shadow: 0 0 30px rgba(214,40,40,0.4);
+    transform: translateY(-1px);
+  }
+
+  .subtle-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(240, 236, 228, 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .subtle-link:hover {
+    color: var(--white);
+    border-bottom-color: rgba(214, 40, 40, 0.4);
+    text-shadow: 0 0 8px rgba(214, 40, 40, 0.2);
+  }
+
+  /* ---- VIDEO MODAL ---- */
+  .video-trigger {
+    color: var(--white);
+    font-weight: 700;
+    cursor: pointer;
+    border-bottom: 1px dotted rgba(214, 40, 40, 0.5);
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+
+  .video-trigger:hover {
+    color: var(--red);
+    border-bottom: 1px solid var(--red);
+  }
+
+  .video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .video-modal.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .video-container {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    max-width: 90vw;
+    max-height: 80vh;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .video-container::before,
+  .video-container::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--red);
+    transition: all 0.3s ease;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .video-container::before {
+    top: -1px;
+    left: -1px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .video-container::after {
+    bottom: -1px;
+    right: -1px;
+    border-left: none;
+    border-top: none;
+  }
+
+  .video-container:hover::before,
+  .video-container:hover::after {
+    opacity: 1;
+    width: 30px;
+    height: 30px;
+  }
+
+  .video-container video {
+    display: block;
+    max-width: 100%;
+    max-height: 70vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: contrast(1.1);
+  }
+
+  .close-video {
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--gray);
+    font-size: 1.5rem;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .close-video:hover {
+    color: var(--red);
+  }
+
+  .video-caption {
+    margin-top: 1rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    max-width: 90%;
+  }
+
+  .video-caption a {
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .video-caption a:hover {
+    color: var(--red);
+    text-decoration: underline;
+  }
+
   /* ---- EMAIL SIGNUP ---- */
   .signup {
     padding: 4rem 2rem;
@@ -290,6 +622,12 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  @media (max-width: 600px) {
+    .demand { padding: 4rem 1.5rem; }
+    .context { padding: 3rem 1.5rem; }
+    .cta-primary { padding: 1rem 2rem; width: 100%; max-width: 320px; text-align: center; }
+  }
 </style>
 </head>
 <body>
@@ -297,7 +635,68 @@
 <!-- HERO -->
 <section class="hero">
   <h1 class="hero-title">Stop The<br><span class="red">AI Race</span></h1>
+  <a href="/join" class="cta-primary" style="position: relative; z-index: 1; margin-top: 2rem; animation: fadeUp 0.8s 0.2s ease both;">Join the Movement</a>
 </section>
+
+<!-- THE DEMAND -->
+<section class="demand reveal">
+  <p class="demand-label">Our Single Demand</p>
+  <p class="demand-text">
+    Every major AI lab CEO must <span class="highlight">publicly commit</span> to pausing frontier model development <span class="highlight">if every other major lab in the world</span> credibly does the same.
+  </p>
+</section>
+
+<!-- DARIO'S OWN WORDS -->
+<section class="dario-words reveal">
+  <p class="dario-name">Dario Amodei</p>
+  <p class="dario-role">CEO of Anthropic</p>
+
+  <div class="dario-quotes-list">
+    <div class="dario-quote">
+      <blockquote><a href="https://youtu.be/NnVW9epLlTM?si=nH3Gc5cfv7dDNUqt&t=1377" target="_blank" rel="noopener" class="subtle-link">"I wish we had 5 to 10 years."</a></blockquote>
+    </div>
+    <div class="dario-quote">
+      <blockquote><a href="https://youtu.be/tjW_gms7CME?si=hsduHXd9Okujv7uE&t=1001" target="_blank" rel="noopener" class="subtle-link">"The thing that keeps me up at night is the incredible market race between top AI companies."</a></blockquote>
+    </div>
+    <div class="dario-quote">
+      <blockquote><a href="https://www.darioamodei.com/essay/the-adolescence-of-technology#:~:text=This%20is%20the%20trap%3A%20AI%20is%20so%20powerful%2C%20such%20a%20glittering%20prize%2C%20that%20it%20is%20very%20difficult%20for%20human%20civilization%20to%20impose%20any%20restraints%20on%20it%20at%20all." target="_blank" rel="noopener" class="subtle-link">"This is the trap: AI is so powerful, such a glittering prize, that it is very difficult for human civilization to impose any restraints on it at all."</a></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- CONTEXT -->
+<section class="context reveal">
+  <p>The architects of these systems <a href="https://www.safe.ai/statement-on-ai-risk" target="_blank" rel="noopener" class="subtle-link">know the race is reckless</a>. They've <a href="https://www.youtube.com/watch?v=dXhoTrU1Kkw" target="_blank" rel="noopener" class="subtle-link">warned</a> <a href="https://www.cnbc.com/2018/03/13/elon-musk-at-sxsw-a-i-is-more-dangerous-than-nuclear-weapons.html" target="_blank" rel="noopener" class="subtle-link">us</a> about the <a href="https://superintelligence-statement.org/" target="_blank" rel="noopener" class="subtle-link">existential risks</a> themselves, repeatedly. But each argues they can't slow down because they need to beat the others and geopolitical adversaries.</p>
+
+  <p>We're not asking anyone to stop alone. Just to say: <strong>if the others pause, I will too.</strong></p>
+
+  <p>In September 2025, we protested at Google DeepMind with the same demand. <span class="video-trigger" id="demis-trigger">Demis Hassabis said he'd be open to it</span>, but that international coordination was the key bottleneck. Public commitments from lab leaders are what create the conditions for that coordination. On March 21, 2026, nearly 200 people marched to all three, the largest AI pause protest in the US.</p>
+
+  <p>In February 2026, Dario Amodei's Anthropic <a href="https://www.lesswrong.com/posts/HzKuzrKfaDJvQqmjh/responsible-scaling-policy-v3" target="_blank" rel="noopener" class="subtle-link">dropped its commitment to pause development</a> if its own AI became too dangerous. Holden Karnofsky, former CEO of Open Philanthropy and now at Anthropic, admitted there was "enormous pressure" to downplay risks, because triggering a pause would hurt the company. Their solution? Remove the commitment entirely.</p>
+
+  <p>They claim they are building safely for the benefit of humanity. <strong>It's time they prove it.</strong></p>
+
+  <div style="text-align: center; margin-top: 2.5rem;">
+    <a href="/press" class="cta-primary">Read the Press Release</a>
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="video-modal">
+  <div class="video-container">
+    <video id="demis-video" controls playsinline preload="none">
+      <source data-src="/demis_pause.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <button class="close-video" id="close-video">CLOSE ×</button>
+  </div>
+  <div class="video-caption">
+    <a href="https://youtu.be/Xcyox1CP1Wk?si=I0cW8MZfDcbjpr6T&t=704" target="_blank" rel="noopener">
+      Demis Hassabis on an AI Shift Bigger Than Industrial Age<br>
+      Bloomberg · Davos · Jan 20th, 2026
+    </a>
+  </div>
+</div>
 
 <!-- FAQ -->
 <section class="faq reveal">
@@ -365,6 +764,50 @@
     });
   }, { threshold: 0.15 });
   reveals.forEach(el => observer.observe(el));
+
+  // Video Modal Logic
+  const demisTrigger = document.getElementById('demis-trigger');
+  const videoModal = document.getElementById('video-modal');
+  const demisVideo = document.getElementById('demis-video');
+  const closeVideo = document.getElementById('close-video');
+
+  function openVideoModal() {
+    var source = demisVideo.querySelector('source');
+    if (source.dataset.src) {
+      source.src = source.dataset.src;
+      demisVideo.load();
+    }
+    videoModal.classList.add('active');
+    demisVideo.play();
+  }
+
+  function closeVideoModal() {
+    videoModal.classList.remove('active');
+    demisVideo.pause();
+    demisVideo.currentTime = 0;
+  }
+
+  if (demisTrigger) {
+    demisTrigger.addEventListener('click', openVideoModal);
+  }
+
+  if (closeVideo) {
+    closeVideo.addEventListener('click', closeVideoModal);
+  }
+
+  if (videoModal) {
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) {
+        closeVideoModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeVideoModal();
+    }
+  });
 </script>
 
 <script>
