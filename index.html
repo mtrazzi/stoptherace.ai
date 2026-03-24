@@ -79,6 +79,14 @@
     text-align: center;
     padding: 4rem 2rem;
     position: relative;
+    background: url('/frontpage.jpeg') center center / cover no-repeat;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.55);
   }
 
   .hero::after {
@@ -94,11 +102,13 @@
   .hero-title {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: clamp(3rem, 11vw, 8rem);
+    font-size: clamp(4.5rem, 16.5vw, 12rem);
     line-height: 0.95;
     text-transform: uppercase;
     letter-spacing: -0.03em;
     animation: fadeUp 0.8s 0.1s ease both;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-title .red { color: var(--red); }
