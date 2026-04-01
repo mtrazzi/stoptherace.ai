@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stop The AI Race</title>
-<meta name="description" content="Asking the CEOs of AI companies to commit to a pause.">
-<meta property="og:title" content="Stop The AI Race">
-<meta property="og:description" content="Asking the CEOs of AI companies to commit to a pause.">
+<title>Stop The Race · Join The Movement</title>
+<meta name="description" content="We marched to Anthropic, OpenAI, and xAI. Now join the movement to stop the AI race.">
+<meta property="og:title" content="Stop The AI Race · Join The Movement">
+<meta property="og:description" content="We marched to Anthropic, OpenAI, and xAI. Now join the movement to stop the AI race.">
+<meta property="og:image" content="https://stoptherace.ai/march-banner.jpeg">
+<meta name="twitter:image" content="https://stoptherace.ai/march-banner.jpeg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://stoptherace.ai">
-<meta property="og:image" content="https://stoptherace.ai/stoptheairace.avif">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://stoptherace.ai/stoptheairace.avif">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -79,14 +80,7 @@
     text-align: center;
     padding: 4rem 2rem;
     position: relative;
-    background: url('/frontpage.jpeg') center center / cover no-repeat;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(10, 10, 10, 0.55);
+    background: linear-gradient(rgba(10,10,10,0.55), rgba(10,10,10,0.75)), url('march-banner.jpeg') center/cover no-repeat;
   }
 
   .hero::after {
@@ -107,24 +101,44 @@
     text-transform: uppercase;
     letter-spacing: -0.03em;
     animation: fadeUp 0.8s 0.1s ease both;
-    position: relative;
-    z-index: 1;
   }
 
   .hero-title .red { color: var(--red); }
 
   .hero-subtitle {
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: clamp(1.1rem, 3vw, 1.5rem);
-    max-width: 550px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    max-width: 600px;
     margin: 1.5rem auto 0;
-    line-height: 1.6;
-    color: rgba(240, 236, 228, 0.9);
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 1), 0 4px 24px rgba(0, 0, 0, 0.8);
+    line-height: 1.5;
+    color: var(--white);
+    text-shadow: 0 2px 12px rgba(0,0,0,0.7);
     animation: fadeUp 0.8s 0.2s ease both;
-    position: relative;
-    z-index: 1;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--red);
+    color: var(--white);
+    padding: 1.5rem 4.5rem;
+    margin-top: 2.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-cta:hover {
+    background: var(--red-glow);
+    box-shadow: 0 0 40px rgba(214,40,40,0.4);
+    transform: translateY(-2px);
   }
 
   /* ---- DEMAND ---- */
@@ -279,7 +293,146 @@
     color: rgba(240, 236, 228, 0.9);
   }
 
+
+  /* ---- EVENT DETAILS ---- */
+  .event {
+    padding: 6rem 2rem;
+    text-align: center;
+    background: linear-gradient(180deg, transparent, rgba(214,40,40,0.04), transparent);
+  }
+
+  .event-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 2rem;
+  }
+
+  .event-date {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .event-time {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 2rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .event-location {
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+    font-weight: 700;
+  }
+
+  .event-address-link {
+    display: inline-block;
+    margin-top: 0.2rem;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--gray);
+    text-decoration: none;
+    border-bottom: 1px dotted transparent;
+    transition: all 0.2s;
+    margin-bottom: 3rem;
+  }
+
+  .event-address-link:hover {
+    color: var(--red);
+    border-bottom-color: var(--red);
+  }
+
+  /* ---- MARCH SCHEDULE ---- */
+  .march-schedule {
+    max-width: 480px;
+    margin: 0 auto 3rem;
+    text-align: left;
+  }
+
+  .march-stop {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(240, 236, 228, 0.06);
+  }
+
+  .march-stop:last-child {
+    border-bottom: none;
+  }
+
+  .march-time {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--red);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    min-width: 5.5rem;
+  }
+
+  .march-place {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--white);
+  }
+
+  .march-address {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--gray);
+    margin-top: 0.15rem;
+    letter-spacing: 0.02em;
+  }
+
+  .march-address a {
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .march-address a:hover {
+    color: var(--red);
+  }
+
+  .march-connector {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 0.3rem 0;
+  }
+
+  .march-connector-spacer {
+    min-width: 5.5rem;
+  }
+
+  .march-connector-line {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: rgba(214, 40, 40, 0.3);
+    letter-spacing: 0.1em;
+  }
+
   /* ---- CTA BUTTONS ---- */
+  .cta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .cta-primary {
     display: inline-block;
     font-family: var(--font-mono);
@@ -303,148 +456,23 @@
     transform: translateY(-1px);
   }
 
-  .subtle-link {
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(240, 236, 228, 0.3);
-    transition: all 0.2s ease;
-  }
-
-  .subtle-link:hover {
-    color: var(--white);
-    border-bottom-color: rgba(214, 40, 40, 0.4);
-    text-shadow: 0 0 8px rgba(214, 40, 40, 0.2);
-  }
-
-  /* ---- VIDEO MODAL ---- */
-  .video-trigger {
-    color: var(--white);
-    font-weight: 700;
-    cursor: pointer;
-    border-bottom: 1px dotted rgba(214, 40, 40, 0.5);
-    transition: all 0.2s ease;
+  .cta-secondary {
     display: inline-block;
-  }
-
-  .video-trigger:hover {
-    color: var(--red);
-    border-bottom: 1px solid var(--red);
-  }
-
-  .video-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 2000;
-    background: rgba(0, 0, 0, 0.95);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .video-modal.active {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .video-container {
-    position: relative;
-    width: fit-content;
-    height: fit-content;
-    max-width: 90vw;
-    max-height: 80vh;
-    background: #000;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .video-container::before,
-  .video-container::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--red);
-    transition: all 0.3s ease;
-    opacity: 0.5;
-    pointer-events: none;
-    z-index: 10;
-  }
-
-  .video-container::before {
-    top: -1px;
-    left: -1px;
-    border-right: none;
-    border-bottom: none;
-  }
-
-  .video-container::after {
-    bottom: -1px;
-    right: -1px;
-    border-left: none;
-    border-top: none;
-  }
-
-  .video-container:hover::before,
-  .video-container:hover::after {
-    opacity: 1;
-    width: 30px;
-    height: 30px;
-  }
-
-  .video-container video {
-    display: block;
-    max-width: 100%;
-    max-height: 70vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    filter: contrast(1.1);
-  }
-
-  .close-video {
-    position: absolute;
-    top: -2.5rem;
-    right: 0;
-    background: none;
-    border: none;
-    color: var(--gray);
-    font-size: 1.5rem;
-    font-family: var(--font-mono);
-    cursor: pointer;
-    transition: color 0.2s;
-  }
-
-  .close-video:hover {
-    color: var(--red);
-  }
-
-  .video-caption {
-    margin-top: 1rem;
-    text-align: center;
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    line-height: 1.6;
-    max-width: 90%;
-  }
-
-  .video-caption a {
-    color: var(--gray);
+    letter-spacing: 0.1em;
     text-decoration: none;
-    transition: color 0.2s;
+    color: var(--gray);
+    padding: 0.75rem 2rem;
+    border: 1px solid rgba(136,136,136,0.3);
+    transition: all 0.2s ease;
   }
 
-  .video-caption a:hover {
-    color: var(--red);
-    text-decoration: underline;
+  .cta-secondary:hover {
+    color: var(--white);
+    border-color: var(--white);
   }
+
 
   /* ---- EMAIL SIGNUP ---- */
   .signup {
@@ -607,6 +635,350 @@
     color: rgba(240, 236, 228, 0.8);
   }
 
+  /* ---- FOOTER ---- */
+
+  footer a {
+    color: var(--red);
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* ---- FLOATING CTA ---- */
+  .floating-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(214,40,40,0.3);
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .floating-cta.visible {
+    transform: translateY(0);
+  }
+
+  .floating-cta.hide {
+    transform: translateY(100%);
+  }
+
+  .floating-cta-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--gray);
+    letter-spacing: 0.05em;
+  }
+
+  .floating-cta-btn {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--red);
+    color: var(--white);
+    padding: 0.6rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .floating-cta-btn:hover {
+    background: var(--red-glow);
+  }
+
+  .kbd {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    background: rgba(240, 236, 228, 0.1);
+    color: var(--white);
+    padding: 0.15rem 0.45rem;
+    border-radius: 3px;
+    border: 1px solid rgba(240, 236, 228, 0.15);
+    margin-left: 0.25rem;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 600px) {
+    .kbd { display: none; }
+    .floating-cta-text { display: none; }
+  }
+
+  /* ---- VIDEO MODAL ---- */
+  .video-trigger {
+    color: var(--white);
+    font-weight: 700;
+    cursor: pointer;
+    border-bottom: 1px dotted rgba(214, 40, 40, 0.5);
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+  
+  .video-trigger:hover {
+    color: var(--red);
+    border-bottom: 1px solid var(--red);
+  }
+
+  .video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .video-modal.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .video-container {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    max-width: 90vw;
+    max-height: 80vh;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Tech corners */
+  .video-container::before,
+  .video-container::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--red);
+    transition: all 0.3s ease;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .video-container::before {
+    top: -1px;
+    left: -1px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .video-container::after {
+    bottom: -1px;
+    right: -1px;
+    border-left: none;
+    border-top: none;
+  }
+
+  .video-container:hover::before,
+  .video-container:hover::after {
+    opacity: 1;
+    width: 30px;
+    height: 30px;
+  }
+
+  .video-container video {
+    display: block;
+    max-width: 100%;
+    max-height: 70vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: contrast(1.1);
+  }
+
+  .close-video {
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--gray);
+    font-size: 1.5rem;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .close-video:hover {
+    color: var(--red);
+  }
+
+  .video-caption {
+    margin-top: 1rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    max-width: 90%;
+  }
+
+  .video-caption a {
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .video-caption a:hover {
+    color: var(--red);
+    text-decoration: underline;
+  }
+
+  .subtle-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(240, 236, 228, 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .subtle-link:hover {
+    color: var(--white);
+    border-bottom-color: rgba(214, 40, 40, 0.4);
+    text-shadow: 0 0 8px rgba(214, 40, 40, 0.2);
+  }
+
+  /* ---- MEDIA KIT CAROUSEL ---- */
+  .media-kit {
+    padding: 5rem 2rem 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .media-kit-title {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  .carousel {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(214,40,40,0.3);
+    background: #000;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 520px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(10, 10, 10, 0.7);
+    border: 1px solid rgba(214,40,40,0.4);
+    color: var(--white);
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 10;
+  }
+
+  .carousel-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+  }
+
+  .carousel-btn--prev { left: 0.75rem; }
+  .carousel-btn--next { right: 0.75rem; }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(240, 236, 228, 0.2);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    padding: 0;
+  }
+
+  .carousel-dot.active {
+    background: var(--red);
+  }
+
+  .media-kit-credit {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--gray);
+    margin-top: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  .media-kit-download {
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .carousel-slide img {
+      height: 280px;
+    }
+    .carousel-btn {
+      width: 36px;
+      height: 36px;
+      font-size: 1.2rem;
+    }
+  }
+
   /* ---- ANIMATIONS ---- */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -624,10 +996,31 @@
     transform: translateY(0);
   }
 
+  /* ---- MOBILE ---- */
+  /* ---- EMBEDDED MAP ---- */
+  #route-map {
+    background: #0a0a0a;
+  }
+  #route-map .leaflet-control-attribution {
+    background: rgba(10,10,10,0.8) !important;
+    color: #555 !important;
+    font-size: 9px !important;
+  }
+  #route-map .leaflet-control-attribution a {
+    color: #666 !important;
+  }
+  #route-map .leaflet-control-zoom a {
+    background: rgba(10,10,10,0.85) !important;
+    color: #f0ece4 !important;
+    border-color: rgba(214,40,40,0.3) !important;
+  }
+
   @media (max-width: 600px) {
     .demand { padding: 4rem 1.5rem; }
     .context { padding: 3rem 1.5rem; }
     .cta-primary { padding: 1rem 2rem; width: 100%; max-width: 320px; text-align: center; }
+    .cta-secondary { width: 100%; max-width: 320px; text-align: center; }
+    .march-schedule { padding: 0 1rem; }
   }
 </style>
 </head>
@@ -636,8 +1029,8 @@
 <!-- HERO -->
 <section class="hero">
   <h1 class="hero-title">Stop The<br><span class="red">AI Race</span></h1>
-  <p class="hero-subtitle">Asking the CEOs of AI companies to commit to a pause.</p>
-  <a href="/join" class="cta-primary" style="position: relative; z-index: 1; margin-top: 2rem; animation: fadeUp 0.8s 0.2s ease both;">Join the Movement</a>
+  <p class="hero-subtitle">We marched on Anthropic, OpenAI, and xAI, calling on AI company CEOs to commit to a conditional pause.</p>
+  <a href="https://signal.group/#CjQKIJnXqcsGae3-VO4zTCy6ZaBy4iacrp78iOpQEI5FmxUHEhAHWnaAf0BMcPAKbSdtz0-i" target="_blank" rel="noopener" class="hero-cta">Join the Movement</a>
 </section>
 
 <!-- THE DEMAND -->
@@ -672,13 +1065,11 @@
 
   <p>We're not asking anyone to stop alone. Just to say: <strong>if the others pause, I will too.</strong></p>
 
-  <p>In September 2025, we protested at Google DeepMind with the same demand. <span class="video-trigger" id="demis-trigger">Demis Hassabis said he'd be open to it</span>, but that international coordination was the key bottleneck. Public commitments from lab leaders are what create the conditions for that coordination.</p>
+  <p>In September 2025, we protested at Google DeepMind with the same demand. <span class="video-trigger" id="demis-trigger">Demis Hassabis said he'd be open to it</span> — but that international coordination was the key bottleneck. Public commitments from lab leaders are what create the conditions for that coordination. Now it's Elon, Sam, and Dario's turn.</p>
 
   <p>In February 2026, Dario Amodei's Anthropic <a href="https://www.lesswrong.com/posts/HzKuzrKfaDJvQqmjh/responsible-scaling-policy-v3" target="_blank" rel="noopener" class="subtle-link">dropped its commitment to pause development</a> if its own AI became too dangerous. Holden Karnofsky, former CEO of Open Philanthropy and now at Anthropic, admitted there was "enormous pressure" to downplay risks, because triggering a pause would hurt the company. Their solution? Remove the commitment entirely.</p>
 
-  <p>On March 21, 2026, we marched to the offices of Elon Musk, Sam Altman, and Dario Amodei to demand they commit to a conditional pause. <strong>Nearly 200 people showed up, making it the largest AI pause protest in the US.</strong></p>
-
-  <p>They claim they are building safely for the benefit of humanity. It's time they prove it.</p>
+  <p>They claim they are building safely for the benefit of humanity. <strong>It's time they prove it.</strong></p>
 
   <div style="text-align: center; margin-top: 2.5rem;">
     <a href="/press" class="cta-primary">Read the Press Release</a>
@@ -689,7 +1080,7 @@
 <div class="video-modal" id="video-modal">
   <div class="video-container">
     <video id="demis-video" controls playsinline preload="none">
-      <source data-src="/demis_pause.mp4" type="video/mp4">
+      <source data-src="demis_pause.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <button class="close-video" id="close-video">CLOSE ×</button>
@@ -702,6 +1093,91 @@
   </div>
 </div>
 
+<!-- EVENT DETAILS -->
+<section class="event reveal">
+  <p class="event-label">The March</p>
+  <p class="event-date">Saturday, March 21</p>
+  <p class="event-time">12:00 PM – 4:00 PM PT</p>
+
+  <div class="march-schedule">
+    <div class="march-stop">
+      <span class="march-time">12:00 PM</span>
+      <div>
+        <div class="march-place">Rally at Anthropic</div>
+        <div class="march-address"><a href="https://maps.google.com/?q=500+Howard+St+San+Francisco+CA" target="_blank" rel="noopener">500 Howard St</a></div>
+      </div>
+    </div>
+    <div class="march-stop">
+      <span class="march-time">1:00 PM</span>
+      <div>
+        <div class="march-place">Speeches at Anthropic</div>
+      </div>
+    </div>
+    <div class="march-connector">
+      <span class="march-connector-spacer"></span>
+      <span class="march-connector-line">↓</span>
+    </div>
+    <div class="march-stop">
+      <span class="march-time">1:30 PM</span>
+      <div>
+        <div class="march-place">Walk to OpenAI</div>
+        <div class="march-address"><a href="https://maps.google.com/?q=1455+3rd+St+San+Francisco+CA" target="_blank" rel="noopener">1455 3rd St</a></div>
+      </div>
+    </div>
+    <div class="march-stop">
+      <span class="march-time">2:15 PM</span>
+      <div>
+        <div class="march-place">Speeches at OpenAI</div>
+      </div>
+    </div>
+    <div class="march-connector">
+      <span class="march-connector-spacer"></span>
+      <span class="march-connector-line">↓</span>
+    </div>
+    <div class="march-stop">
+      <span class="march-time">2:45 PM</span>
+      <div>
+        <div class="march-place">Walk to xAI</div>
+        <div class="march-address"><a href="https://maps.google.com/?q=3180+18th+St+San+Francisco+CA" target="_blank" rel="noopener">3180 18th St</a></div>
+      </div>
+    </div>
+    <div class="march-stop">
+      <span class="march-time">3:30 PM</span>
+      <div>
+        <div class="march-place">Speeches at xAI (short)</div>
+      </div>
+    </div>
+    <div class="march-connector">
+      <span class="march-connector-spacer"></span>
+      <span class="march-connector-line">↓</span>
+    </div>
+    <div class="march-stop">
+      <span class="march-time">3:45 PM</span>
+      <div>
+        <div class="march-place">Walk to Dolores Park</div>
+      </div>
+    </div>
+    <div class="march-stop">
+      <span class="march-time">4:00 PM</span>
+      <div>
+        <div class="march-place">Celebration at Dolores Park</div>
+        <div class="march-address"><a href="https://maps.google.com/?q=Dolores+Park+San+Francisco+CA" target="_blank" rel="noopener">Dolores Park</a></div>
+      </div>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-bottom: 2rem;"><a href="/schedule" style="font-family:'IBM Plex Mono',monospace; font-size:14px; color:#d62828; letter-spacing:0.5px;">View Full Schedule with Speakers &rarr;</a></p>
+
+  <!-- EMBEDDED ROUTE MAP -->
+  <div style="max-width: 680px; margin: 0 auto 2.5rem; border: 1px solid rgba(214,40,40,0.3);">
+    <div id="route-map" style="width: 100%; height: 380px;"></div>
+  </div>
+
+  <div class="cta-group">
+    <a href="https://signal.group/#CjQKIJnXqcsGae3-VO4zTCy6ZaBy4iacrp78iOpQEI5FmxUHEhAHWnaAf0BMcPAKbSdtz0-i" target="_blank" rel="noopener" class="cta-primary">Join the Movement</a>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="faq reveal">
   <details class="faq-item">
@@ -712,9 +1188,9 @@
   </details>
 
   <details class="faq-item">
-    <summary>Is this movement nonviolent?</summary>
+    <summary>Is this protest nonviolent?</summary>
     <div class="faq-answer">
-      Yes. This is a peaceful movement of concerned citizens, families, and researchers. We are not here to disrupt, and we welcome employees of these companies to join us.
+      Yes. This is a peaceful assembly of concerned citizens, families, and researchers. We are not here to disrupt, and we welcome employees of these companies to join us.
     </div>
   </details>
 
@@ -757,6 +1233,42 @@
   <p class="signup-thanks" id="signup-thanks">Thanks for signing up!</p>
 </section>
 
+<!-- MEDIA KIT -->
+<section class="media-kit reveal">
+  <p class="media-kit-title">Media Kit</p>
+  <div class="carousel" id="media-carousel">
+    <div class="carousel-track" id="carousel-track">
+      <div class="carousel-slide"><img src="media-kit/petr_salba_protest_3_21-5.jpg" alt="March protest photo by Petr Salba" loading="lazy"></div>
+      <div class="carousel-slide"><img src="media-kit/petr_salba_protest_3_21-8.jpg" alt="March protest photo by Petr Salba" loading="lazy"></div>
+      <div class="carousel-slide"><img src="media-kit/petr_salba_protest_3_21-9.jpg" alt="March protest photo by Petr Salba" loading="lazy"></div>
+      <div class="carousel-slide"><img src="media-kit/petr_salba_protest_3_21-12.jpg" alt="March protest photo by Petr Salba" loading="lazy"></div>
+      <div class="carousel-slide"><img src="media-kit/petr_salba_protest_3_21-18.jpg" alt="March protest photo by Petr Salba" loading="lazy"></div>
+      <div class="carousel-slide"><img src="media-kit/jeff_baker_1.jpeg" alt="March photo by Jeff Baker" loading="lazy"></div>
+      <div class="carousel-slide"><img src="media-kit/jeff_baker_2.jpg" alt="March photo by Jeff Baker" loading="lazy"></div>
+      <div class="carousel-slide"><img src="media-kit/jeff_baker_3.jpg" alt="March photo by Jeff Baker" loading="lazy"></div>
+      <div class="carousel-slide"><img src="media-kit/rachel_shu_3.jpg" alt="March photo by Rachel Shu" loading="lazy"></div>
+      <div class="carousel-slide"><img src="media-kit/rachel_shu_5.jpg" alt="March photo by Rachel Shu" loading="lazy"></div>
+    </div>
+    <button class="carousel-btn carousel-btn--prev" id="carousel-prev">&#8249;</button>
+    <button class="carousel-btn carousel-btn--next" id="carousel-next">&#8250;</button>
+  </div>
+  <div class="carousel-dots" id="carousel-dots"></div>
+  <p class="media-kit-credit" id="carousel-credit"></p>
+  <p class="media-kit-credit" style="margin-top: 1rem; color: rgba(240, 236, 228, 0.5);">Please credit the photographer when using these photos.</p>
+  <div class="media-kit-download">
+    <a href="https://we.tl/t-KUKO3N0GmukLSsuR" target="_blank" rel="noopener" class="cta-secondary">Download All Photos ↓</a>
+  </div>
+</section>
+
+<!-- FLOATING CTA -->
+<div class="floating-cta" id="floating-cta">
+  <span class="floating-cta-text">Join the movement <kbd class="kbd">R</kbd></span>
+  <a href="https://signal.group/#CjQKIJnXqcsGae3-VO4zTCy6ZaBy4iacrp78iOpQEI5FmxUHEhAHWnaAf0BMcPAKbSdtz0-i" target="_blank" rel="noopener" class="floating-cta-btn">Join</a>
+</div>
+
+<!-- FOOTER -->
+
+<!-- Google tag (gtag.js) -->
 <script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
@@ -768,6 +1280,45 @@
     });
   }, { threshold: 0.15 });
   reveals.forEach(el => observer.observe(el));
+
+  // Floating CTA: show after scrolling past hero, hide when event section is visible
+  const floatingCta = document.getElementById('floating-cta');
+  const heroSection = document.querySelector('.hero');
+  const eventSection = document.querySelector('.event');
+
+  const floatObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.target === heroSection) {
+        if (!entry.isIntersecting) {
+          floatingCta.classList.add('visible');
+          floatingCta.classList.remove('hide');
+        } else {
+          floatingCta.classList.remove('visible');
+        }
+      }
+      if (entry.target === eventSection) {
+        if (entry.isIntersecting) {
+          floatingCta.classList.add('hide');
+        } else if (!heroSection.getBoundingClientRect().bottom > 0) {
+          floatingCta.classList.remove('hide');
+        }
+      }
+    });
+  }, { threshold: 0.1 });
+
+  floatObserver.observe(heroSection);
+  floatObserver.observe(eventSection);
+
+  // Keyboard shortcut: press R to open registration
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'r' || e.key === 'R') {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      window.open('https://signal.group/#CjQKIJnXqcsGae3-VO4zTCy6ZaBy4iacrp78iOpQEI5FmxUHEhAHWnaAf0BMcPAKbSdtz0-i', '_blank');
+    }
+    if (e.key === 'Escape') {
+       closeVideoModal();
+    }
+  });
 
   // Video Modal Logic
   const demisTrigger = document.getElementById('demis-trigger');
@@ -794,7 +1345,7 @@
   if (demisTrigger) {
     demisTrigger.addEventListener('click', openVideoModal);
   }
-
+  
   if (closeVideo) {
     closeVideo.addEventListener('click', closeVideoModal);
   }
@@ -806,15 +1357,72 @@
       }
     });
   }
+</script>
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeVideoModal();
-    }
-  });
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/map.js"></script>
+<script>
+  initRouteMap('route-map');
 </script>
 
 <script>
+  // Media Kit Carousel
+  (function() {
+    const track = document.getElementById('carousel-track');
+    const slides = track.querySelectorAll('.carousel-slide');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const dotsContainer = document.getElementById('carousel-dots');
+    const creditEl = document.getElementById('carousel-credit');
+    let current = 0;
+    const total = slides.length;
+
+    const credits = {
+      'stop_the_ai_race': '',
+      'petr_salba': 'Photo by Petr Salba',
+      'jeff_baker': 'Photo by Jeff Baker',
+      'rachel_shu': 'Photo by Rachel Shu'
+    };
+
+    function getCredit(index) {
+      const src = slides[index].querySelector('img').src;
+      for (const [key, val] of Object.entries(credits)) {
+        if (src.includes(key)) return val;
+      }
+      return '';
+    }
+
+    // Create dots
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('carousel-dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    }
+
+    function goTo(index) {
+      current = ((index % total) + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+      creditEl.textContent = getCredit(current);
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+    creditEl.textContent = getCredit(0);
+
+    // Swipe support
+    let startX = 0;
+    track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
+    track.addEventListener('touchend', (e) => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+    });
+  })();
+
   // Email signup form
   const signupForm = document.getElementById('signup-form');
   const signupThanks = document.getElementById('signup-thanks');

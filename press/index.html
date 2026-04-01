@@ -356,6 +356,141 @@
     letter-spacing: 0.05em;
   }
 
+  /* ---- MEDIA KIT CAROUSEL ---- */
+  .media-kit {
+    padding: 5rem 2rem 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .media-kit-title {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  .carousel {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(214,40,40,0.3);
+    background: #000;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 520px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(10, 10, 10, 0.7);
+    border: 1px solid rgba(214,40,40,0.4);
+    color: var(--white);
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 10;
+  }
+
+  .carousel-btn:hover {
+    background: var(--red);
+    border-color: var(--red);
+  }
+
+  .carousel-btn--prev { left: 0.75rem; }
+  .carousel-btn--next { right: 0.75rem; }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(240, 236, 228, 0.2);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    padding: 0;
+  }
+
+  .carousel-dot.active {
+    background: var(--red);
+  }
+
+  .media-kit-credit {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--gray);
+    margin-top: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  .media-kit-download {
+    margin-top: 1.5rem;
+  }
+
+  .cta-secondary {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    color: var(--gray);
+    padding: 0.75rem 2rem;
+    border: 1px solid rgba(136,136,136,0.3);
+    transition: all 0.2s ease;
+  }
+
+  .cta-secondary:hover {
+    color: var(--white);
+    border-color: var(--white);
+    text-decoration: none;
+  }
+
+  @media (max-width: 600px) {
+    .carousel-slide img {
+      height: 280px;
+    }
+    .carousel-btn {
+      width: 36px;
+      height: 36px;
+      font-size: 1.2rem;
+    }
+  }
+
   /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -487,6 +622,33 @@
 
 </article>
 
+<!-- MEDIA KIT -->
+<section class="media-kit reveal">
+  <p class="media-kit-title">Media Kit</p>
+  <div class="carousel" id="media-carousel">
+    <div class="carousel-track" id="carousel-track">
+      <div class="carousel-slide"><img src="../media-kit/petr_salba_protest_3_21-5.jpg" alt="March protest photo by Petr Salba" loading="lazy"></div>
+      <div class="carousel-slide"><img src="../media-kit/petr_salba_protest_3_21-8.jpg" alt="March protest photo by Petr Salba" loading="lazy"></div>
+      <div class="carousel-slide"><img src="../media-kit/petr_salba_protest_3_21-9.jpg" alt="March protest photo by Petr Salba" loading="lazy"></div>
+      <div class="carousel-slide"><img src="../media-kit/petr_salba_protest_3_21-12.jpg" alt="March protest photo by Petr Salba" loading="lazy"></div>
+      <div class="carousel-slide"><img src="../media-kit/petr_salba_protest_3_21-18.jpg" alt="March protest photo by Petr Salba" loading="lazy"></div>
+      <div class="carousel-slide"><img src="../media-kit/jeff_baker_1.jpeg" alt="March photo by Jeff Baker" loading="lazy"></div>
+      <div class="carousel-slide"><img src="../media-kit/jeff_baker_2.jpg" alt="March photo by Jeff Baker" loading="lazy"></div>
+      <div class="carousel-slide"><img src="../media-kit/jeff_baker_3.jpg" alt="March photo by Jeff Baker" loading="lazy"></div>
+      <div class="carousel-slide"><img src="../media-kit/rachel_shu_3.jpg" alt="March photo by Rachel Shu" loading="lazy"></div>
+      <div class="carousel-slide"><img src="../media-kit/rachel_shu_5.jpg" alt="March photo by Rachel Shu" loading="lazy"></div>
+    </div>
+    <button class="carousel-btn carousel-btn--prev" id="carousel-prev">&#8249;</button>
+    <button class="carousel-btn carousel-btn--next" id="carousel-next">&#8250;</button>
+  </div>
+  <div class="carousel-dots" id="carousel-dots"></div>
+  <p class="media-kit-credit" id="carousel-credit"></p>
+  <p class="media-kit-credit" style="margin-top: 1rem; color: rgba(240, 236, 228, 0.5);">Please credit the photographer when using these photos.</p>
+  <div class="media-kit-download">
+    <a href="https://we.tl/t-KUKO3N0GmukLSsuR" target="_blank" rel="noopener" class="cta-secondary">Download All Photos ↓</a>
+  </div>
+</section>
+
 <!-- FOOTER CTA -->
 <div class="press-footer-cta">
   <a href="http://lu.ma/s0k8wvee?utm_source=press" target="_blank" rel="noopener" class="cta-primary">Register for the March</a>
@@ -503,6 +665,62 @@
     });
   }, { threshold: 0.05 });
   reveals.forEach(el => observer.observe(el));
+</script>
+
+<script>
+  // Media Kit Carousel
+  (function() {
+    const track = document.getElementById('carousel-track');
+    const slides = track.querySelectorAll('.carousel-slide');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const dotsContainer = document.getElementById('carousel-dots');
+    const creditEl = document.getElementById('carousel-credit');
+    let current = 0;
+    const total = slides.length;
+
+    const credits = {
+      'petr_salba': 'Photo by Petr Salba',
+      'jeff_baker': 'Photo by Jeff Baker',
+      'rachel_shu': 'Photo by Rachel Shu'
+    };
+
+    function getCredit(index) {
+      const src = slides[index].querySelector('img').src;
+      for (const [key, val] of Object.entries(credits)) {
+        if (src.includes(key)) return val;
+      }
+      return '';
+    }
+
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('carousel-dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    }
+
+    function goTo(index) {
+      current = ((index % total) + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+      creditEl.textContent = getCredit(current);
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+    creditEl.textContent = getCredit(0);
+
+    let startX = 0;
+    track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
+    track.addEventListener('touchend', (e) => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+    });
+  })();
 </script>
 
 </body>
