@@ -1030,7 +1030,7 @@
 <section class="hero">
   <h1 class="hero-title">Stop The<br><span class="red">AI Race</span></h1>
   <p class="hero-subtitle">We marched on Anthropic, OpenAI, and xAI, calling on AI company CEOs to commit to a conditional pause.</p>
-  <a href="https://signal.group/#CjQKIJnXqcsGae3-VO4zTCy6ZaBy4iacrp78iOpQEI5FmxUHEhAHWnaAf0BMcPAKbSdtz0-i" target="_blank" rel="noopener" class="hero-cta">Join the Movement</a>
+  <a href="/join" class="hero-cta">Join the Movement</a>
 </section>
 
 <!-- THE DEMAND -->
@@ -1174,7 +1174,7 @@
   </div>
 
   <div class="cta-group">
-    <a href="https://signal.group/#CjQKIJnXqcsGae3-VO4zTCy6ZaBy4iacrp78iOpQEI5FmxUHEhAHWnaAf0BMcPAKbSdtz0-i" target="_blank" rel="noopener" class="cta-primary">Join the Movement</a>
+    <a href="/join" class="cta-primary">Join the Movement</a>
   </div>
 </section>
 
@@ -1263,7 +1263,7 @@
 <!-- FLOATING CTA -->
 <div class="floating-cta" id="floating-cta">
   <span class="floating-cta-text">Join the movement <kbd class="kbd">R</kbd></span>
-  <a href="https://signal.group/#CjQKIJnXqcsGae3-VO4zTCy6ZaBy4iacrp78iOpQEI5FmxUHEhAHWnaAf0BMcPAKbSdtz0-i" target="_blank" rel="noopener" class="floating-cta-btn">Join</a>
+  <a href="/join" class="floating-cta-btn">Join</a>
 </div>
 
 <!-- FOOTER -->
@@ -1313,7 +1313,7 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'r' || e.key === 'R') {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-      window.open('https://signal.group/#CjQKIJnXqcsGae3-VO4zTCy6ZaBy4iacrp78iOpQEI5FmxUHEhAHWnaAf0BMcPAKbSdtz0-i', '_blank');
+      window.location.href = '/join';
     }
     if (e.key === 'Escape') {
        closeVideoModal();
