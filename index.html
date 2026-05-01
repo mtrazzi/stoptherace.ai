@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://stoptherace.ai">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /> -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -1029,8 +1029,8 @@
 <!-- HERO -->
 <section class="hero">
   <h1 class="hero-title">Stop The<br><span class="red">AI Race</span></h1>
-  <p class="hero-subtitle">We marched on Anthropic, OpenAI, and xAI, calling on AI company CEOs to commit to a conditional pause.</p>
-  <a href="/join" class="hero-cta">Join the Movement</a>
+  <p class="hero-subtitle">On March 21st, we marched on Anthropic, OpenAI, and xAI, calling on AI company CEOs to commit to a conditional pause. They still haven't, so we go again.</p>
+  <a href="https://luma.com/w1sko93e" target="_blank" rel="noopener" class="hero-cta">Join us on June 27th</a>
 </section>
 
 <!-- THE DEMAND -->
@@ -1065,9 +1065,11 @@
 
   <p>We're not asking anyone to stop alone. Just to say: <strong>if the others pause, I will too.</strong></p>
 
-  <p>In September 2025, we protested at Google DeepMind with the same demand. <span class="video-trigger" id="demis-trigger">Demis Hassabis said he'd be open to it</span> — but that international coordination was the key bottleneck. Public commitments from lab leaders are what create the conditions for that coordination. Now it's Elon, Sam, and Dario's turn.</p>
+  <p>In September 2025, we protested at Google DeepMind with the same demand. <span class="video-trigger" id="demis-trigger">Demis Hassabis said he'd be open to it</span> — but that international coordination was the key bottleneck. Public commitments from lab leaders are what create the conditions for that coordination.</p>
 
   <p>In February 2026, Dario Amodei's Anthropic <a href="https://www.lesswrong.com/posts/HzKuzrKfaDJvQqmjh/responsible-scaling-policy-v3" target="_blank" rel="noopener" class="subtle-link">dropped its commitment to pause development</a> if its own AI became too dangerous. Holden Karnofsky, former CEO of Open Philanthropy and now at Anthropic, admitted there was "enormous pressure" to downplay risks, because triggering a pause would hurt the company. Their solution? Remove the commitment entirely.</p>
+
+  <p>On March 21st, 200 people came out to advocate for a better solution, to call for these companies to commit to slowing down together. Since then, OpenAI's Sam Altman has <a href="https://openai.com/index/our-principles/" target="_blank" rel="noopener" class="subtle-link">acknowledged</a> that "we expect there will be periods where we need to collaborate with governments, international agencies, and other AGI efforts to ensure that we have sufficiently solved serious alignment, safety, or societal problems before proceeding further with our work." Days later, Google signed an unrestricted Pentagon contract, with no binding limits on mass surveillance or autonomous weapons. <strong>We're going to march again.</strong></p>
 
   <p>They claim they are building safely for the benefit of humanity. <strong>It's time they prove it.</strong></p>
 
@@ -1095,10 +1097,12 @@
 
 <!-- EVENT DETAILS -->
 <section class="event reveal">
-  <p class="event-label">The March</p>
-  <p class="event-date">Saturday, March 21</p>
+  <p class="event-label">The Second March</p>
+  <p class="event-date">Saturday, June 27</p>
   <p class="event-time">12:00 PM – 4:00 PM PT</p>
+  <p class="event-location">Downtown San Francisco</p>
 
+  <!-- HIDDEN: schedule + route map. Restore (and uncomment leaflet CSS in <head> and leaflet/map scripts at end of body) when finalized.
   <div class="march-schedule">
     <div class="march-stop">
       <span class="march-time">12:00 PM</span>
@@ -1168,13 +1172,15 @@
 
   <p style="text-align:center; margin-bottom: 2rem;"><a href="/schedule" style="font-family:'IBM Plex Mono',monospace; font-size:14px; color:#d62828; letter-spacing:0.5px;">View Full Schedule with Speakers &rarr;</a></p>
 
-  <!-- EMBEDDED ROUTE MAP -->
   <div style="max-width: 680px; margin: 0 auto 2.5rem; border: 1px solid rgba(214,40,40,0.3);">
     <div id="route-map" style="width: 100%; height: 380px;"></div>
   </div>
+  -->
+
+  <p style="text-align:center; margin: 2.5rem auto; max-width: 600px; font-size: 1.05rem; line-height: 1.6;">Stay tuned here and on the <a href="https://luma.com/w1sko93e" target="_blank" rel="noopener" style="color:#d62828;">event page</a> for the schedule and route!</p>
 
   <div class="cta-group">
-    <a href="/join" class="cta-primary">Join the Movement</a>
+    <a href="https://luma.com/w1sko93e" target="_blank" rel="noopener" class="cta-primary">Join us on June 27th</a>
   </div>
 </section>
 
@@ -1262,8 +1268,8 @@
 
 <!-- FLOATING CTA -->
 <div class="floating-cta" id="floating-cta">
-  <span class="floating-cta-text">Join the movement <kbd class="kbd">R</kbd></span>
-  <a href="/join" class="floating-cta-btn">Join</a>
+  <span class="floating-cta-text">Join us June 27th <kbd class="kbd">R</kbd></span>
+  <a href="https://luma.com/w1sko93e" target="_blank" rel="noopener" class="floating-cta-btn">Join</a>
 </div>
 
 <!-- FOOTER -->
@@ -1313,7 +1319,7 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'r' || e.key === 'R') {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-      window.location.href = '/join';
+      window.open('https://luma.com/w1sko93e', '_blank', 'noopener');
     }
     if (e.key === 'Escape') {
        closeVideoModal();
@@ -1359,11 +1365,13 @@
   }
 </script>
 
+<!--
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="/map.js"></script>
 <script>
   initRouteMap('route-map');
 </script>
+-->
 
 <script>
   // Media Kit Carousel
