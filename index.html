@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://stoptherace.ai">
 <meta name="twitter:card" content="summary_large_image">
-<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /> -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -1155,37 +1155,21 @@
 <section class="event reveal">
   <p class="event-label">The Second March</p>
   <p class="event-date">Saturday, July 11</p>
-  <p class="event-time">12:00 PM – 4:00 PM PT</p>
+  <p class="event-time">12:00 PM – 3:00 PM PT</p>
   <p class="event-location">Downtown San Francisco</p>
 
-  <!-- HIDDEN: schedule + route map. Restore (and uncomment leaflet CSS in <head> and leaflet/map scripts at end of body) when finalized.
+  <p style="text-align:center; font-family:'IBM Plex Mono',monospace; font-size:0.75rem; letter-spacing:0.25em; color:var(--red); margin: 2rem 0 1.25rem; text-transform:uppercase;">Tentative Route &middot; Subject to Change</p>
+
   <div class="march-schedule">
     <div class="march-stop">
       <span class="march-time">12:00 PM</span>
       <div>
-        <div class="march-place">Rally at Anthropic</div>
-        <div class="march-address"><a href="https://maps.google.com/?q=500+Howard+St+San+Francisco+CA" target="_blank" rel="noopener">500 Howard St</a></div>
-      </div>
-    </div>
-    <div class="march-stop">
-      <span class="march-time">1:00 PM</span>
-      <div>
-        <div class="march-place">Speeches at Anthropic</div>
-      </div>
-    </div>
-    <div class="march-connector">
-      <span class="march-connector-spacer"></span>
-      <span class="march-connector-line">↓</span>
-    </div>
-    <div class="march-stop">
-      <span class="march-time">1:30 PM</span>
-      <div>
-        <div class="march-place">Walk to OpenAI</div>
+        <div class="march-place">Rally at OpenAI</div>
         <div class="march-address"><a href="https://maps.google.com/?q=1455+3rd+St+San+Francisco+CA" target="_blank" rel="noopener">1455 3rd St</a></div>
       </div>
     </div>
     <div class="march-stop">
-      <span class="march-time">2:15 PM</span>
+      <span class="march-time">12:30 PM</span>
       <div>
         <div class="march-place">Speeches at OpenAI</div>
       </div>
@@ -1195,16 +1179,16 @@
       <span class="march-connector-line">↓</span>
     </div>
     <div class="march-stop">
-      <span class="march-time">2:45 PM</span>
+      <span class="march-time">1:00 PM</span>
       <div>
-        <div class="march-place">Walk to xAI</div>
-        <div class="march-address"><a href="https://maps.google.com/?q=3180+18th+St+San+Francisco+CA" target="_blank" rel="noopener">3180 18th St</a></div>
+        <div class="march-place">Walk to Anthropic</div>
+        <div class="march-address"><a href="https://maps.google.com/?q=500+Howard+St+San+Francisco+CA" target="_blank" rel="noopener">500 Howard St</a></div>
       </div>
     </div>
     <div class="march-stop">
-      <span class="march-time">3:30 PM</span>
+      <span class="march-time">1:45 PM</span>
       <div>
-        <div class="march-place">Speeches at xAI (short)</div>
+        <div class="march-place">Speeches at Anthropic</div>
       </div>
     </div>
     <div class="march-connector">
@@ -1212,28 +1196,37 @@
       <span class="march-connector-line">↓</span>
     </div>
     <div class="march-stop">
-      <span class="march-time">3:45 PM</span>
+      <span class="march-time">2:15 PM</span>
       <div>
-        <div class="march-place">Walk to Dolores Park</div>
+        <div class="march-place">Walk to Google DeepMind</div>
+        <div class="march-address"><a href="https://maps.google.com/?q=345+Spear+St+San+Francisco+CA" target="_blank" rel="noopener">345 Spear St (Rincon Park)</a></div>
       </div>
     </div>
     <div class="march-stop">
-      <span class="march-time">4:00 PM</span>
+      <span class="march-time">2:30 PM</span>
       <div>
-        <div class="march-place">Celebration at Dolores Park</div>
-        <div class="march-address"><a href="https://maps.google.com/?q=Dolores+Park+San+Francisco+CA" target="_blank" rel="noopener">Dolores Park</a></div>
+        <div class="march-place">Speeches at Google DeepMind</div>
+      </div>
+    </div>
+    <div class="march-connector">
+      <span class="march-connector-spacer"></span>
+      <span class="march-connector-line">↓</span>
+    </div>
+    <div class="march-stop">
+      <span class="march-time">3:00 PM</span>
+      <div>
+        <div class="march-place">After-party in Rincon Park</div>
       </div>
     </div>
   </div>
 
-  <p style="text-align:center; margin-bottom: 2rem;"><a href="/schedule" style="font-family:'IBM Plex Mono',monospace; font-size:14px; color:#d62828; letter-spacing:0.5px;">View Full Schedule with Speakers &rarr;</a></p>
+  <!-- <p style="text-align:center; margin-bottom: 2rem;"><a href="/schedule" style="font-family:'IBM Plex Mono',monospace; font-size:14px; color:#d62828; letter-spacing:0.5px;">View Full Schedule &rarr;</a></p> -->
 
   <div style="max-width: 680px; margin: 0 auto 2.5rem; border: 1px solid rgba(214,40,40,0.3);">
     <div id="route-map" style="width: 100%; height: 380px;"></div>
   </div>
-  -->
 
-  <p style="text-align:center; margin: 2.5rem auto; max-width: 600px; font-size: 1.05rem; line-height: 1.6;">Stay tuned here and on the <a href="https://luma.com/w1sko93e" target="_blank" rel="noopener" style="color:#d62828;">event page</a> for the schedule and route!</p>
+  <p style="text-align:center; margin: 2.5rem auto; max-width: 600px; font-size: 1.05rem; line-height: 1.6;">Route and times are tentative &mdash; watch the <a href="https://luma.com/w1sko93e" target="_blank" rel="noopener" style="color:#d62828;">event page</a> for the final program.</p>
 
   <div class="cta-group">
     <a href="https://luma.com/w1sko93e" target="_blank" rel="noopener" class="cta-primary">Join us on July 11th</a>
@@ -1388,13 +1381,11 @@
   }
 </script>
 
-<!--
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="/map.js"></script>
 <script>
   initRouteMap('route-map');
 </script>
--->
 
 <script>
   // Media Kit Carousel
