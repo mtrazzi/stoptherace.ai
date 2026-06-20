@@ -595,6 +595,36 @@
     }
   }
 
+  /* ---- SOCIAL ---- */
+  .social-links {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(214, 40, 40, 0.3);
+    border-radius: 50%;
+    color: rgba(240, 236, 228, 0.7);
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+
+  .social-links a:hover {
+    color: var(--white);
+    border-color: var(--red);
+    background: rgba(214, 40, 40, 0.12);
+  }
+
+  .social-links svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
   /* ---- FAQ ---- */
   .faq {
     padding: 5rem 2rem;
@@ -1276,6 +1306,25 @@
     <div class="faq-cta-label">Want to help organize?</div>
     <div class="faq-cta-content">
       Join our <a href="https://signal.group/#CjQKII4dmeVPfVysu6RZHew2_kFUI3z-8PSzxqifwXWcvX9lEhBCkMW6DhOacl6zvfQAeboD" target="_blank" rel="noopener" style="color: var(--red); text-decoration: none; border-bottom: 1px dotted var(--red);">Signal group</a>
+    </div>
+  </div>
+  <div class="faq-cta">
+    <div class="faq-cta-label">Follow us</div>
+    <div class="faq-cta-content">
+      <div class="social-links" style="margin-top: 0.5rem;">
+        <a href="https://www.instagram.com/stoptherace.ai" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C20.32 1.35 19.65.94 18.86.63 18.1.33 17.22.13 15.95.07 14.67.01 14.26 0 12 0z"/>
+            <path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4z"/>
+            <circle cx="18.41" cy="5.59" r="1.44"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@stoptherace.ai" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M16.6 5.82a4.28 4.28 0 0 1-1.05-2.82h-3.3v13.18a2.59 2.59 0 0 1-2.59 2.59 2.59 2.59 0 1 1 .73-5.07v-3.36a5.9 5.9 0 0 0-.73-.05 5.95 5.95 0 1 0 5.95 5.95V9.01a7.55 7.55 0 0 0 4.4 1.41V7.12a4.28 4.28 0 0 1-3.41-1.3z"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>
