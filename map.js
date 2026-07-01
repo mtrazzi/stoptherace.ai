@@ -21,24 +21,27 @@ function initRouteMap(elementId) {
   if (tilePane) tilePane.style.filter = 'saturate(0) brightness(0.35) contrast(1.2)';
 
   // === LEG 1: 1455 3rd St (OpenAI) -> 500 Howard (Anthropic) ===
-  // N up 3rd to Channel, W on Channel to 4th, NW up 4th to Howard, NE on Howard to Anthropic
+  // N up 3rd over the bridge, right on King, left up 2nd, right on Mission, right down 1st to Anthropic
   var leg1 = [
     [37.7701, -122.3893],     // 0: 1455 3rd St (OpenAI) - START
     [37.77646659734041, -122.39011389051585], // 3rd bridge
     [37.77709691866833, -122.39059424543301], // post bridge
-    [37.785000222708426, -122.40050793066582], // 3rd / Howard
-    [37.78838571623302, -122.39641255924988], // anthropic
+    [37.77803897536382, -122.39173674435317], // right on King St
+    [37.779819740119144, -122.38952654411443], // left on 2nd St
+    [37.78805899667852, -122.39980306212492], // right on Mission St
+    [37.789763229458174, -122.39758209999967], // right on 1st St
+    [37.78853889743718, -122.39608752638394], // Howard / 1st
+    [37.78838571623302, -122.39641255924988], // 500 Howard (Anthropic) - END
   ];
 
   // === LEG 2: 500 Howard (Anthropic) -> Rincon Park opposite 345 Spear (Google DeepMind) ===
-  // NE on Howard to Spear, SE on Spear past 345 Spear, wrap around the south side of
-  // the block, then NW to the gathering point on the Embarcadero / Rincon Park side
+  // Continue SE down 1st, left on Folsom NE to the Embarcadero, right to stop opposite 345 Spear
   var leg2 = [
-    [37.78838571623302, -122.39641255924988], // anthropic
-    [37.7913253940075, -122.3925230058142], // howard / spear
-    [37.788883, -122.389469], // 4: south corner of wrap
-    [37.789528, -122.388621], // 5: east corner of wrap
-    [37.789969, -122.389304], // 6: Rincon Park, opposite 345 Spear (Google DeepMind) - END
+    [37.78838571623302, -122.39641255924988], // anthropic (500 Howard)
+    [37.78853889743718, -122.39608752638394], // Howard / 1st
+    [37.78736370243833, -122.39453512673774], // left on Folsom
+    [37.79078060887867, -122.3901469914879], // right on Embarcadero
+    [37.789969, -122.389304], // Rincon Park, opposite 345 Spear (Google DeepMind) - END
   ];
 
   var route = leg1.concat(leg2.slice(1));
