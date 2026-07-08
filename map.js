@@ -21,13 +21,15 @@ function initRouteMap(elementId) {
   if (tilePane) tilePane.style.filter = 'saturate(0) brightness(0.35) contrast(1.2)';
 
   // === LEG 1: 1455 3rd St (OpenAI) -> 500 Howard (Anthropic) ===
-  // N up 3rd over the bridge, right on King, left up 2nd, right on Mission, right down 1st to Anthropic
+  // N up 3rd, left on Mission Bay Blvd N, right up 4th over the bridge,
+  // right on Townsend, left up 2nd, right on Mission, right down 1st to Anthropic
   var leg1 = [
     [37.7701, -122.3893],     // 0: 1455 3rd St (OpenAI) - START
-    [37.77646659734041, -122.39011389051585], // 3rd bridge
-    [37.77709691866833, -122.39059424543301], // post bridge
-    [37.77803897536382, -122.39173674435317], // right on King St
-    [37.779819740119144, -122.38952654411443], // left on 2nd St
+    [37.77111814524673, -122.38942225044988], // left on Mission Bay Blvd North
+    [37.771021853540326, -122.3912372507816], // right on 4th St
+    [37.774476307391, -122.39160244881813], // slight left to stay on 4th (bridge)
+    [37.77711626979975, -122.39499403460314], // right on Townsend St
+    [37.78063159078087, -122.39055144862938], // left on 2nd St
     [37.78805899667852, -122.39980306212492], // right on Mission St
     [37.789763229458174, -122.39758209999967], // right on 1st St
     [37.78853889743718, -122.39608752638394], // Howard / 1st
