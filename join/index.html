@@ -109,6 +109,39 @@
 
   .back-link:hover { color: var(--red); }
 
+  /* ---- SOCIAL ICONS ---- */
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-top: 1.75rem;
+    animation: fadeUp 0.8s 0.35s ease both;
+  }
+
+  .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(214, 40, 40, 0.3);
+    border-radius: 50%;
+    color: rgba(240, 236, 228, 0.7);
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+
+  .social-links a:hover {
+    color: var(--white);
+    border-color: var(--red);
+    background: rgba(214, 40, 40, 0.12);
+  }
+
+  .social-links svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
   /* ---- CARDS ---- */
   .cards {
     max-width: 680px;
@@ -271,6 +304,25 @@
   <a href="/" class="back-link">&larr; stoptherace.ai</a>
   <h1>Join the <span class="red">Movement</span></h1>
   <p class="blurb">On July 11, 2026, about 400 of us marched on OpenAI, Anthropic, and Google DeepMind, the largest AI pause protest in the US. We're just getting started.</p>
+  <div class="social-links">
+    <a href="https://discord.gg/qyKNJbaRY" target="_blank" rel="noopener" aria-label="Discord">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+      </svg>
+    </a>
+    <a href="https://www.instagram.com/stoptherace.ai" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C20.32 1.35 19.65.94 18.86.63 18.1.33 17.22.13 15.95.07 14.67.01 14.26 0 12 0z"/>
+        <path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4z"/>
+        <circle cx="18.41" cy="5.59" r="1.44"/>
+      </svg>
+    </a>
+    <a href="https://www.tiktok.com/@stoptherace.ai" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M16.6 5.82a4.28 4.28 0 0 1-1.05-2.82h-3.3v13.18a2.59 2.59 0 0 1-2.59 2.59 2.59 2.59 0 1 1 .73-5.07v-3.36a5.9 5.9 0 0 0-.73-.05 5.95 5.95 0 1 0 5.95 5.95V9.01a7.55 7.55 0 0 0 4.4 1.41V7.12a4.28 4.28 0 0 1-3.41-1.3z"/>
+      </svg>
+    </a>
+  </div>
 </header>
 
 <div class="cards reveal">
@@ -286,29 +338,12 @@
     <div class="card-desc">Talk strategy, share ideas, and connect with others in the movement.</div>
   </a>
 
-  <a href="https://discord.gg/qyKNJbaRY" class="card" target="_blank" rel="noopener">
-    <div class="card-label">Discord</div>
-    <div class="card-title">Join the Discord</div>
-    <div class="card-desc">Coordinate on the different projects we're currently doing.</div>
-  </a>
-
   <a href="/volunteer" class="card">
     <div class="card-label">Form</div>
     <div class="card-title">Volunteer</div>
     <div class="card-desc">Tell us your skills and how you'd like to contribute.</div>
   </a>
 
-  <a href="https://www.instagram.com/stoptherace.ai" class="card" target="_blank" rel="noopener">
-    <div class="card-label">Instagram</div>
-    <div class="card-title">Follow on Instagram</div>
-    <div class="card-desc">Photos and updates from our actions.</div>
-  </a>
-
-  <a href="https://www.tiktok.com/@stoptherace.ai" class="card" target="_blank" rel="noopener">
-    <div class="card-label">TikTok</div>
-    <div class="card-title">Follow on TikTok</div>
-    <div class="card-desc">Videos from the movement.</div>
-  </a>
 </div>
 
 <!-- EMAIL SIGNUP -->
