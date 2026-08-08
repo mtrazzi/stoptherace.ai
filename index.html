@@ -1392,6 +1392,7 @@
   // Keyboard shortcut: press R to join the movement
   document.addEventListener('keydown', (e) => {
     if (e.key === 'r' || e.key === 'R') {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
       window.location.href = '/join';
     }
