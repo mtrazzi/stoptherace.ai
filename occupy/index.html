@@ -158,9 +158,23 @@
 
   /* ---- EMBEDS ---- */
   .embeds {
-    padding: 2rem 2rem 4rem;
-    max-width: 680px;
+    padding: 2rem 2rem 3rem;
+    max-width: 1160px;
     margin: 0 auto;
+  }
+
+  .embeds-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .embeds-row .embed-block {
+    flex: 1 1 340px;
+    max-width: 550px;
+    margin-bottom: 0;
   }
 
   .embeds-label {
@@ -242,10 +256,17 @@
 </header>
 
 <section class="embeds reveal">
-  <div class="embed-block">
-    <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
-      <a href="https://twitter.com/MichaelTrazzi/status/2082878640979939555"></a>
-    </blockquote>
+  <div class="embeds-row">
+    <div class="embed-block">
+      <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
+        <a href="https://twitter.com/MichaelTrazzi/status/2082878640979939555"></a>
+      </blockquote>
+    </div>
+    <div class="embed-block">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DbbnBcAEsI1/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+        <a href="https://www.instagram.com/p/DbbnBcAEsI1/" target="_blank" rel="noopener" style="display:block; padding:16px; text-decoration:none;">View this post on Instagram</a>
+      </blockquote>
+    </div>
   </div>
 </section>
 
@@ -261,6 +282,7 @@
 </section>
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async src="https://www.instagram.com/embed.js"></script>
 
 <script>
   // Scroll reveal
