@@ -22,7 +22,6 @@
   "url": "https://stoptherace.ai"
 }
 </script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -1079,24 +1078,6 @@
   }
 
   /* ---- MOBILE ---- */
-  /* ---- EMBEDDED MAP ---- */
-  #route-map {
-    background: #0a0a0a;
-  }
-  #route-map .leaflet-control-attribution {
-    background: rgba(10,10,10,0.8) !important;
-    color: #555 !important;
-    font-size: 9px !important;
-  }
-  #route-map .leaflet-control-attribution a {
-    color: #666 !important;
-  }
-  #route-map .leaflet-control-zoom a {
-    background: rgba(10,10,10,0.85) !important;
-    color: #f0ece4 !important;
-    border-color: rgba(214,40,40,0.3) !important;
-  }
-
   @media (max-width: 600px) {
     .demand { padding: 4rem 1.5rem; }
     .context { padding: 3rem 1.5rem; }
@@ -1212,85 +1193,12 @@
   </div>
 </div>
 
-<!-- EVENT DETAILS -->
+<!-- OCCUPY CTA -->
 <section class="event reveal">
-  <p class="event-label">The Second March</p>
-  <p class="event-date">Saturday, July 11</p>
-  <p class="event-time">12:00 PM – 3:00 PM PT</p>
-  <p class="event-location">Downtown San Francisco</p>
-
-  <p style="text-align:center; font-family:'IBM Plex Mono',monospace; font-size:0.75rem; letter-spacing:0.25em; color:var(--red); margin: 2rem 0 1.25rem; text-transform:uppercase;">The Route We Marched</p>
-
-  <div class="march-schedule">
-    <div class="march-stop">
-      <span class="march-time">12:00 PM</span>
-      <div>
-        <div class="march-place">Rally at OpenAI</div>
-        <div class="march-address"><a href="https://maps.google.com/?q=1455+3rd+St+San+Francisco+CA" target="_blank" rel="noopener">1455 3rd St</a></div>
-      </div>
-    </div>
-    <div class="march-stop">
-      <span class="march-time">12:30 PM</span>
-      <div>
-        <div class="march-place">Speeches at OpenAI</div>
-      </div>
-    </div>
-    <div class="march-connector">
-      <span class="march-connector-spacer"></span>
-      <span class="march-connector-line">↓</span>
-    </div>
-    <div class="march-stop">
-      <span class="march-time">1:00 PM</span>
-      <div>
-        <div class="march-place">Walk to Anthropic</div>
-        <div class="march-address"><a href="https://maps.google.com/?q=500+Howard+St+San+Francisco+CA" target="_blank" rel="noopener">500 Howard St</a></div>
-      </div>
-    </div>
-    <div class="march-stop">
-      <span class="march-time">1:45 PM</span>
-      <div>
-        <div class="march-place">Speeches at Anthropic</div>
-      </div>
-    </div>
-    <div class="march-connector">
-      <span class="march-connector-spacer"></span>
-      <span class="march-connector-line">↓</span>
-    </div>
-    <div class="march-stop">
-      <span class="march-time">2:15 PM</span>
-      <div>
-        <div class="march-place">Walk to Google DeepMind</div>
-        <div class="march-address"><a href="https://maps.google.com/?q=345+Spear+St+San+Francisco+CA" target="_blank" rel="noopener">345 Spear St (Rincon Park)</a></div>
-      </div>
-    </div>
-    <div class="march-stop">
-      <span class="march-time">2:30 PM</span>
-      <div>
-        <div class="march-place">Speeches at Google DeepMind</div>
-      </div>
-    </div>
-    <div class="march-connector">
-      <span class="march-connector-spacer"></span>
-      <span class="march-connector-line">↓</span>
-    </div>
-    <div class="march-stop">
-      <span class="march-time">3:00 PM</span>
-      <div>
-        <div class="march-place">After-party in Rincon Park</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- <p style="text-align:center; margin-bottom: 2rem;"><a href="/schedule" style="font-family:'IBM Plex Mono',monospace; font-size:14px; color:#d62828; letter-spacing:0.5px;">View Full Schedule &rarr;</a></p> -->
-
-  <div style="max-width: 680px; margin: 0 auto 2.5rem; border: 1px solid rgba(214,40,40,0.3);">
-    <div id="route-map" style="width: 100%; height: 380px;"></div>
-  </div>
-
-  <p style="text-align:center; margin: 2.5rem auto; max-width: 600px; font-size: 1.05rem; line-height: 1.6;">More actions are coming &mdash; <a href="/join" style="color:#d62828;">join the movement</a> to hear about them first.</p>
-
+  <p class="event-label">The Occupation</p>
+  <p style="text-align:center; margin: 1.5rem auto 2.5rem; max-width: 600px; font-size: 1.05rem; line-height: 1.6;">Since July 22, we've been Occupying OpenAI.</p>
   <div class="cta-group">
-    <a href="/join" class="cta-primary">Join the Movement</a>
+    <a href="/occupy" class="cta-primary">Occupy OpenAI</a>
   </div>
 </section>
 
@@ -1460,12 +1368,6 @@
       }
     });
   }
-</script>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="/map.js"></script>
-<script>
-  initRouteMap('route-map');
 </script>
 
 <script>
