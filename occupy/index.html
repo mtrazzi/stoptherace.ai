@@ -177,6 +177,15 @@
     padding: 0.85rem 1.75rem;
     background: var(--red);
     border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .where-when .box:hover {
+    background: var(--red-glow);
+    box-shadow: 0 0 40px rgba(214, 40, 40, 0.4);
+    transform: translateY(-2px);
   }
 
   .where-when .line {
@@ -360,10 +369,10 @@
 
 <section class="where-when reveal">
   <div class="label">Join us outside OpenAI</div>
-  <div class="box">
+  <a class="box" href="https://maps.app.goo.gl/XnuGjSh1WLuNW6sL6" target="_blank" rel="noopener">
     <div class="line">550 Terry A Francois Blvd, SF</div>
     <div class="line">9am &ndash; 6pm, every weekday</div>
-  </div>
+  </a>
 </section>
 
 <section class="embeds reveal">
