@@ -69,7 +69,7 @@
 
   /* ---- HEADER ---- */
   .page-header {
-    padding: 6rem 2rem 3rem;
+    padding: 6rem 2rem 1.5rem;
     text-align: center;
   }
 
@@ -156,9 +156,47 @@
     font-weight: 700;
   }
 
+  /* ---- WHERE / WHEN ---- */
+  .where-when {
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .where-when .label {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.75rem;
+  }
+
+  .where-when .box {
+    display: inline-block;
+    padding: 0.85rem 1.75rem;
+    background: var(--red);
+    border-radius: 8px;
+  }
+
+  .where-when .line {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    color: var(--white);
+  }
+
+  .where-when .line + .line {
+    margin-top: 0.2rem;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: rgba(240, 236, 228, 0.85);
+  }
+
   /* ---- EMBEDS ---- */
   .embeds {
-    padding: 2rem 2rem 3rem;
+    padding: 1.25rem 2rem 3rem;
     max-width: 1160px;
     margin: 0 auto;
   }
@@ -319,6 +357,14 @@
   <h1>Occupy <span class="red">OpenAI</span></h1>
   <p class="blurb">Since July 22, we've been outside the offices of OpenAI in San Francisco, asking Sam Altman to call for an AI Treaty.</p>
 </header>
+
+<section class="where-when reveal">
+  <div class="label">Join us outside OpenAI</div>
+  <div class="box">
+    <div class="line">550 Terry A Francois Blvd, SF</div>
+    <div class="line">9am &ndash; 6pm, every weekday</div>
+  </div>
+</section>
 
 <section class="embeds reveal">
   <div class="embeds-row">
