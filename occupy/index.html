@@ -172,35 +172,79 @@
     margin-bottom: 0.75rem;
   }
 
-  .where-when .box {
-    display: inline-block;
-    padding: 0.85rem 1.75rem;
-    background: var(--red);
-    border-radius: 8px;
+  .where-when .placards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0 0.5rem;
+  }
+
+  .placard {
+    position: relative;
+    width: min(340px, 100%);
+    background: #e9e2d0;
+    color: #131310;
+    border: 3px solid #131310;
+    box-shadow: 8px 8px 0 var(--red);
+    padding: 2rem 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
     text-decoration: none;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: transform 0.25s;
   }
 
-  .where-when .box:hover {
-    background: var(--red-glow);
-    box-shadow: 0 0 40px rgba(214, 40, 40, 0.4);
-    transform: translateY(-2px);
+  .placard.tilt-l { transform: rotate(-1.6deg); }
+  .placard.tilt-r { transform: rotate(1.3deg); }
+  .placard:hover { transform: rotate(0deg) translateY(-3px); }
+
+  .placard .city {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 3.2rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
   }
 
-  .where-when .line {
-    font-family: var(--font-body);
+  .placard .addr {
+    font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.35rem;
-    line-height: 1.4;
-    color: var(--white);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-top: 0.5rem;
   }
 
-  .where-when .line + .line {
-    margin-top: 0.2rem;
-    font-weight: 400;
-    font-size: 1.05rem;
-    color: rgba(240, 236, 228, 0.85);
+  .placard .hours {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .placard .stamp {
+    position: absolute;
+    top: -0.9rem;
+    right: -0.9rem;
+    transform: rotate(6deg);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    border: 2px solid var(--red);
+    background: #e9e2d0;
+    padding: 0.35rem 0.7rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .placard, .placard.tilt-l, .placard.tilt-r { transform: none; transition: none; }
   }
 
   /* ---- EMBEDS ---- */
@@ -364,15 +408,25 @@
 <header class="page-header">
   <a href="/" class="back-link">&larr; stoptherace.ai</a>
   <h1>Occupy <span class="red">OpenAI</span></h1>
-  <p class="blurb">Since July 22, we've been outside the offices of OpenAI in San Francisco, asking Sam Altman to call for an AI Treaty.</p>
+  <p class="blurb">Since July 22, we've been outside the offices of OpenAI in San Francisco, asking Sam Altman to call for an AI Treaty. And on Aug 18, we're starting to Occupy OpenAI in NYC too.</p>
 </header>
 
 <section class="where-when reveal">
   <div class="label">Join us outside OpenAI</div>
-  <a class="box" href="https://maps.app.goo.gl/XnuGjSh1WLuNW6sL6" target="_blank" rel="noopener">
-    <div class="line">550 Terry A Francois Blvd, SF</div>
-    <div class="line">9am &ndash; 6pm, every weekday</div>
-  </a>
+  <div class="placards">
+    <a class="placard tilt-l" href="https://maps.app.goo.gl/XnuGjSh1WLuNW6sL6" target="_blank" rel="noopener">
+      <span class="stamp">Day 21</span>
+      <span class="city">SF</span>
+      <span class="addr">550 Terry A Francois Blvd</span>
+      <span class="hours">9am &ndash; 6pm &middot; weekdays</span>
+    </a>
+    <a class="placard tilt-r" href="https://maps.app.goo.gl/RcW2cq3gsMCYgzTv7" target="_blank" rel="noopener">
+      <span class="stamp">Day 1</span>
+      <span class="city">NYC</span>
+      <span class="addr">295 Lafayette St</span>
+      <span class="hours">8:30am &ndash; 6:30pm &middot; weekdays</span>
+    </a>
+  </div>
 </section>
 
 <section class="embeds reveal">
