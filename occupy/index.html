@@ -418,21 +418,21 @@
 <header class="page-header">
   <a href="/" class="back-link">&larr; stoptherace.ai</a>
   <h1>Occupy <span class="red">OpenAI</span></h1>
-  <p class="blurb">Since July 22, we've been outside the offices of OpenAI in San Francisco, asking Sam Altman to call for an AI Treaty. And on Aug 18, we're starting to Occupy OpenAI in NYC too.</p>
+  <p class="blurb">Since July 22, we've been outside the offices of OpenAI in San Francisco, asking Sam Altman to call for an AI Treaty. And since Aug 18, we've started occupying OpenAI in NYC too.</p>
 </header>
 
 <section class="where-when reveal">
   <div class="label">Join us outside OpenAI</div>
   <div class="placards">
     <a class="placard tilt-l" href="https://maps.app.goo.gl/XnuGjSh1WLuNW6sL6" target="_blank" rel="noopener">
-      <span class="stamp">Day 21</span>
+      <span class="stamp" data-day-base="25">Day 25</span>
       <span class="city">SF</span>
       <span class="addr">550 Terry A Francois Blvd</span>
       <span class="hours">9am &ndash; 6pm &middot; weekdays</span>
       <span class="contact">Contact: ElliotCallender.27 on Signal</span>
     </a>
     <a class="placard tilt-r" href="https://maps.app.goo.gl/RcW2cq3gsMCYgzTv7" target="_blank" rel="noopener">
-      <span class="stamp">Day 1</span>
+      <span class="stamp" data-day-base="5">Day 5</span>
       <span class="city">NYC</span>
       <span class="addr">295 Lafayette St</span>
       <span class="hours">8:30am &ndash; 6:30pm &middot; weekdays</span>
@@ -483,6 +483,25 @@
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <script>
+  // Auto-increment day stamps (weekdays only).
+  // Anchor: Mon Aug 24, 2026 = Day 25 (SF) / Day 5 (NYC).
+  (function () {
+    const ANCHOR = Date.UTC(2026, 7, 24);
+    const TIMEZONES = ['America/Los_Angeles', 'America/New_York'];
+    document.querySelectorAll('[data-day-base]').forEach((el, i) => {
+      const tz = TIMEZONES[i] || TIMEZONES[0];
+      const [y, m, d] = new Intl.DateTimeFormat('en-CA', { timeZone: tz })
+        .format(new Date()).split('-').map(Number);
+      const today = Date.UTC(y, m - 1, d);
+      let count = Number(el.dataset.dayBase);
+      for (let t = ANCHOR + 86400000; t <= today; t += 86400000) {
+        const dow = new Date(t).getUTCDay();
+        if (dow !== 0 && dow !== 6) count++;
+      }
+      el.textContent = 'Day ' + count;
+    });
+  })();
+
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
