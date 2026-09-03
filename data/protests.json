@@ -31,7 +31,7 @@
     },
     {
       "id": "mistral-france",
-      "name": "Mistral AI protest",
+      "name": "Mistral AI Protest",
       "organization": "Mistral AI",
       "city": "Paris",
       "country": "France",
@@ -45,7 +45,7 @@
     },
     {
       "id": "deepmind-london",
-      "name": "Google DeepMind occupation",
+      "name": "Google DeepMind Occupation",
       "organization": "Google DeepMind",
       "city": "London",
       "country": "United Kingdom",
