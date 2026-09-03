@@ -25,6 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HN7TDTHLH6"></script>
 <script>
@@ -1077,6 +1078,92 @@
     transform: translateY(0);
   }
 
+  /* ---- GLOBAL PROTEST MAP ---- */
+  .landing-map-section {
+    padding: 6rem 2rem;
+    border-top: 1px solid rgba(240, 236, 228, 0.1);
+    border-bottom: 1px solid rgba(240, 236, 228, 0.1);
+  }
+
+  .landing-map-inner { max-width: 1120px; margin: 0 auto; }
+
+  .landing-map-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .landing-map-kicker {
+    margin-bottom: 0.75rem;
+    color: var(--red);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .landing-map-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .landing-map-intro {
+    max-width: 420px;
+    margin: 0;
+    color: rgba(240, 236, 228, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .landing-map-frame {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(240, 236, 228, 0.18);
+    background: #131313;
+  }
+
+  #landing-protest-map { width: 100%; height: 560px; }
+  #landing-protest-map .leaflet-tile-pane { filter: saturate(0) brightness(0.38) contrast(1.2); }
+  #landing-protest-map .leaflet-control-attribution { background: rgba(10, 10, 10, 0.8) !important; color: #666 !important; }
+  #landing-protest-map .leaflet-control-attribution a { color: #888 !important; }
+  #landing-protest-map .leaflet-control-zoom a { border-color: #333 !important; background: #111 !important; color: var(--white) !important; }
+
+  .landing-map-marker {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border: 2px solid var(--white);
+    border-radius: 50% 50% 50% 0;
+    background: var(--red);
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.65);
+    color: var(--white);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    transform: rotate(-45deg);
+  }
+
+  .landing-map-marker span { transform: rotate(45deg); }
+  .landing-map-marker.past { border-color: #aaa; background: #555; }
+  #landing-protest-map .leaflet-popup-content-wrapper,
+  #landing-protest-map .leaflet-popup-tip { background: #151515; color: var(--white); }
+  #landing-protest-map .leaflet-popup-content-wrapper { border: 1px solid rgba(240, 236, 228, 0.18); border-radius: 0; }
+  #landing-protest-map .leaflet-popup-content { margin: 1rem; }
+  .landing-popup-status { color: var(--red); font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .landing-popup-title { margin: 0.35rem 0; font-family: var(--font-display); font-size: 1rem; font-weight: 700; }
+  .landing-popup-location,
+  .landing-popup-copy { margin: 0.45rem 0; color: #aaa; font-size: 0.72rem; line-height: 1.55; }
+  .landing-popup-copy { color: #ccc; }
+  .landing-popup-link { display: inline-block; margin-top: 0.4rem; color: var(--red); font-family: var(--font-mono); font-size: 0.7rem; }
+
   /* ---- MOBILE ---- */
   @media (max-width: 600px) {
     .demand { padding: 4rem 1.5rem; }
@@ -1084,6 +1171,9 @@
     .cta-primary { padding: 1rem 2rem; width: 100%; max-width: 320px; text-align: center; }
     .cta-secondary { width: 100%; max-width: 320px; text-align: center; }
     .march-schedule { padding: 0 1rem; }
+    .landing-map-section { padding: 4rem 1.5rem; }
+    .landing-map-header { align-items: flex-start; flex-direction: column; }
+    #landing-protest-map { height: 440px; }
   }
 </style>
 </head>
@@ -1150,6 +1240,22 @@
 
   <div style="text-align: center; margin-top: 2.5rem;">
     <a href="/join" class="cta-primary">Join the Movement</a>
+  </div>
+</section>
+
+<!-- GLOBAL PROTEST MAP -->
+<section class="landing-map-section reveal">
+  <div class="landing-map-inner">
+    <div class="landing-map-header">
+      <div>
+        <p class="landing-map-kicker">A growing movement</p>
+        <h2 class="landing-map-title">Protests around<br>the world</h2>
+      </div>
+      <p class="landing-map-intro">From active occupations to past actions, people are organizing internationally to challenge the race toward increasingly powerful AI.</p>
+    </div>
+    <div class="landing-map-frame">
+      <div id="landing-protest-map" role="region" aria-label="Map of AI protests"></div>
+    </div>
   </div>
 </section>
 
@@ -1279,7 +1385,72 @@
 <!-- FOOTER -->
 
 <!-- Google tag (gtag.js) -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
+  // Global protest map preview
+  (function () {
+    const element = document.getElementById('landing-protest-map');
+    if (!element || !window.L) return;
+
+    const protestMap = L.map(element, { center: [38, -15], zoom: 3, minZoom: 2, scrollWheelZoom: false, worldCopyJump: true });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap',
+      maxZoom: 18
+    }).addTo(protestMap);
+
+    function popupContent(protest) {
+      const wrapper = document.createElement('div');
+      const status = document.createElement('div');
+      status.className = 'landing-popup-status';
+      status.textContent = protest.status;
+      const title = document.createElement('div');
+      title.className = 'landing-popup-title';
+      title.textContent = protest.name;
+      const location = document.createElement('p');
+      location.className = 'landing-popup-location';
+      location.textContent = `${protest.city}, ${protest.country}${protest.address ? ' · ' + protest.address : ''}`;
+      const description = document.createElement('p');
+      description.className = 'landing-popup-copy';
+      description.textContent = protest.description;
+      wrapper.append(status, title, location, description);
+      if (protest.schedule) {
+        const schedule = document.createElement('p');
+        schedule.className = 'landing-popup-copy';
+        schedule.textContent = protest.schedule;
+        wrapper.appendChild(schedule);
+      }
+      if (protest.url) {
+        const link = document.createElement('a');
+        link.className = 'landing-popup-link';
+        link.href = protest.url;
+        link.textContent = 'View action →';
+        wrapper.appendChild(link);
+      }
+      return wrapper;
+    }
+
+    fetch('/data/protests.json')
+      .then(response => {
+        if (!response.ok) throw new Error(`Protest data returned ${response.status}`);
+        return response.json();
+      })
+      .then(data => {
+        const bounds = [];
+        (data.protests || []).forEach(protest => {
+          const icon = L.divIcon({
+            className: '',
+            html: `<div class="landing-map-marker ${protest.status === 'past' ? 'past' : ''}"><span>${protest.organization.charAt(0)}</span></div>`,
+            iconSize: [28, 28],
+            iconAnchor: [14, 28],
+            popupAnchor: [0, -30]
+          });
+          L.marker(protest.coordinates, { icon }).bindPopup(popupContent(protest)).addTo(protestMap);
+          bounds.push(protest.coordinates);
+        });
+        if (bounds.length) protestMap.fitBounds(bounds, { padding: [55, 55], maxZoom: 4 });
+      });
+  })();
+
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {

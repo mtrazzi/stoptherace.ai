@@ -1,0 +1,61 @@
+{
+  "updated_at": "2026-09-03",
+  "protests": [
+    {
+      "id": "openai-sf",
+      "name": "Occupy OpenAI — San Francisco",
+      "organization": "OpenAI",
+      "city": "San Francisco",
+      "country": "United States",
+      "coordinates": [37.7694815, -122.3865719],
+      "location_precision": "venue",
+      "address": "550 Terry A Francois Blvd",
+      "status": "active",
+      "schedule": "Weekdays, 9am–6pm",
+      "description": "An ongoing occupation calling on Sam Altman to support an international AI Treaty.",
+      "url": "/occupy/"
+    },
+    {
+      "id": "openai-nyc",
+      "name": "Occupy OpenAI — New York City",
+      "organization": "OpenAI",
+      "city": "New York City",
+      "country": "United States",
+      "coordinates": [40.724465, -73.995705],
+      "location_precision": "venue",
+      "address": "295 Lafayette St",
+      "status": "active",
+      "schedule": "Weekdays, 8:30am–6:30pm",
+      "description": "The New York occupation of OpenAI, calling for an international AI Treaty.",
+      "url": "/occupy/"
+    },
+    {
+      "id": "mistral-france",
+      "name": "Mistral AI protest",
+      "organization": "Mistral AI",
+      "city": "Paris",
+      "country": "France",
+      "coordinates": [48.8566, 2.3522],
+      "location_precision": "city",
+      "address": null,
+      "status": "past",
+      "schedule": null,
+      "description": "A protest in France focused on Mistral AI.",
+      "url": null
+    },
+    {
+      "id": "deepmind-london",
+      "name": "Google DeepMind occupation",
+      "organization": "Google DeepMind",
+      "city": "London",
+      "country": "United Kingdom",
+      "coordinates": [51.5072, -0.1276],
+      "location_precision": "city",
+      "address": null,
+      "status": "past",
+      "schedule": null,
+      "description": "A past occupation of Google DeepMind in London organized by Sean.",
+      "url": null
+    }
+  ]
+}
