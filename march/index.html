@@ -1,12 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/jpeg" href="/favicon.jpeg">
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0;url=https://partiful.com/e/J3T0BiZLyTpGHkmzSHa1">
-<title>Redirecting...</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/jpeg" href="/favicon.jpeg">
+<title>March To Stop The AI Race — Thursday, Sep 17</title>
+<meta name="description" content="Thursday, Sep 17, 9am–12pm. We march from OpenAI to Anthropic to City Hall, asking AI company employees to join us in calling on San Francisco to declare an AI Emergency and pause frontier AI development.">
+<meta property="og:title" content="March To Stop The AI Race — Thursday, Sep 17">
+<meta property="og:description" content="9am at OpenAI. We march from OpenAI to Anthropic to City Hall, calling on San Francisco to declare an AI Emergency and pause frontier AI development.">
+<meta property="og:image" content="https://stoptherace.ai/media-kit-july/rachel_bujalski_3_web.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://stoptherace.ai/march">
+<meta property="og:site_name" content="Stop The AI Race">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://stoptherace.ai/media-kit-july/rachel_bujalski_3_web.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "March To Stop The AI Race",
+  "startDate": "2026-09-17T09:00:00-07:00",
+  "endDate": "2026-09-17T12:00:00-07:00",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "OpenAI",
+    "address": { "@type": "PostalAddress", "streetAddress": "1455 3rd St", "addressLocality": "San Francisco", "addressRegion": "CA", "addressCountry": "US" }
+  },
+  "image": "https://stoptherace.ai/media-kit-july/rachel_bujalski_3_web.jpg",
+  "description": "We will be marching from OpenAI to Anthropic to City Hall, asking AI company employees to join us in calling the Mayor of San Francisco and the Board of Supervisors to declare an AI Emergency and enforce a full pausing of frontier AI model development in San Francisco.",
+  "organizer": { "@type": "Organization", "name": "Stop The AI Race", "url": "https://stoptherace.ai" },
+  "url": "https://stoptherace.ai/march"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HN7TDTHLH6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HN7TDTHLH6');
+</script>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f0ece4;
+    --red: #d62828;
+    --red-glow: #ff3333;
+    --gray: #888;
+    --line: rgba(240, 236, 228, 0.12);
+    --font-display: 'Outfit', sans-serif;
+    --font-body: 'Libre Baskerville', serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  ::selection { background: var(--red); color: var(--white); }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat; background-size: 256px 256px;
+  }
+  a { color: inherit; }
+
+  /* ---- NAV ---- */
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav a { text-decoration: none; }
+  .brand {
+    font-family: var(--font-display); font-weight: 800; font-size: 0.95rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .brand span { color: var(--red); }
+  .nav-rsvp {
+    font-family: var(--font-mono); font-weight: 600; font-size: 0.72rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    background: var(--red); color: var(--white); padding: 0.5rem 1.1rem;
+    transition: background 0.2s ease;
+  }
+  .nav-rsvp:hover { background: var(--red-glow); }
+
+  /* ---- HERO ---- */
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    min-height: calc(100vh - 57px);
+  }
+  .hero > * { min-width: 0; }
+  .hero-photo {
+    position: relative; overflow: hidden; min-height: 320px;
+  }
+  .hero-photo img {
+    width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; display: block;
+  }
+  .hero-photo figcaption {
+    position: absolute; bottom: 0.6rem; right: 0.8rem;
+    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.05em;
+    color: rgba(240,236,228,0.75); text-shadow: 0 0 6px #0a0a0a, 0 0 6px #0a0a0a;
+  }
+  .hero-info {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 3rem 3rem 3rem 3.5rem;
+    border-left: 3px solid var(--red);
+  }
+  .eyebrow {
+    font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 1rem;
+  }
+  h1 {
+    font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+    font-size: clamp(2.2rem, 3.6vw, 3.6rem); line-height: 0.98; overflow-wrap: anywhere; letter-spacing: -0.01em;
+    margin-bottom: 1.75rem;
+  }
+  h1 em { font-style: normal; color: var(--red); }
+  .meta { list-style: none; margin-bottom: 2rem; }
+  .meta li {
+    display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 1rem;
+    padding: 0.7rem 0; border-top: 1px solid var(--line);
+    font-family: var(--font-mono); font-size: 0.9rem;
+  }
+  .meta li:last-child { border-bottom: 1px solid var(--line); }
+  .meta .k { color: var(--gray); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; padding-top: 0.2rem; }
+  .meta .v strong { font-weight: 700; color: var(--white); }
+  .meta .v { min-width: 0; overflow-wrap: anywhere; }
+  .meta .v small { display: block; color: var(--gray); font-size: 0.8rem; }
+
+  .btn {
+    display: inline-block; text-decoration: none; text-align: center;
+    font-family: var(--font-mono); font-weight: 700; font-size: 1rem;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    background: var(--red); color: var(--white);
+    padding: 1.05rem 2.6rem; border: 2px solid var(--red);
+    box-shadow: 0 0 0 0 rgba(214,40,40,0.5);
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .btn:hover { background: var(--red-glow); border-color: var(--red-glow); box-shadow: 0 0 28px rgba(255,51,51,0.45); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--white); border-color: rgba(240,236,228,0.3);
+    font-size: 0.78rem; padding: 0.85rem 1.4rem; box-shadow: none;
+  }
+  .btn-ghost:hover { background: rgba(240,236,228,0.06); border-color: var(--white); box-shadow: none; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; }
+  .cta-note { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray); margin-top: 0.9rem; letter-spacing: 0.05em; }
+
+  /* ---- SECTIONS ---- */
+  section { padding: 4.5rem 1.5rem; border-top: 1px solid var(--line); }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 1rem;
+  }
+  h2 {
+    font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+    font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.05; margin-bottom: 1.5rem;
+  }
+  .about { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 3rem; align-items: start; }
+  .lede { font-size: 1.15rem; line-height: 1.75; }
+  .lede strong { color: var(--white); }
+  .lede p + p { margin-top: 1rem; }
+  .demand {
+    border: 1px solid var(--line); border-left: 3px solid var(--red);
+    padding: 1.5rem 1.75rem; background: rgba(240,236,228,0.03);
+  }
+  .demand .k { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); margin-bottom: 0.75rem; }
+  .demand p { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; line-height: 1.25; }
+  .demand p + p { margin-top: 0.9rem; }
+  .demand em { font-style: normal; color: var(--red); }
+
+  /* ---- SCHEDULE ---- */
+  .schedule-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 3rem; align-items: start; }
+  .timeline { list-style: none; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 9.2rem; top: 0.6rem; bottom: 0.6rem; width: 2px; background: var(--line); }
+  .timeline li { display: grid; grid-template-columns: 8rem 1.4rem minmax(0,1fr); gap: 0.6rem; align-items: start; padding: 0.85rem 0; }
+  .timeline .t { font-family: var(--font-mono); font-size: 0.82rem; color: var(--gray); text-align: right; padding-top: 0.25rem; white-space: nowrap; }
+  .timeline .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--black); border: 2px solid var(--gray); margin: 0.45rem auto 0; position: relative; z-index: 1; }
+  .timeline li.rally .dot { background: var(--red); border-color: var(--white); box-shadow: 0 0 14px rgba(214,40,40,0.6); }
+  .timeline .what { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; line-height: 1.25; }
+  .timeline .where { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray); margin-top: 0.15rem; }
+  .timeline li.march .what { font-weight: 400; color: rgba(240,236,228,0.8); font-size: 1rem; }
+  .timeline li.march .what::before { content: '↓ '; color: var(--red); }
+
+  /* ---- MAP ---- */
+  #map { width: 100%; height: 520px; border: 1px solid var(--line); background: #111; }
+  .leaflet-container { font-family: var(--font-mono); }
+  .leaflet-control-attribution { background: rgba(10,10,10,0.8) !important; color: #555 !important; font-size: 9px !important; }
+  .leaflet-control-attribution a { color: #666 !important; }
+  .leaflet-control-zoom a { background: rgba(10,10,10,0.85) !important; color: #f0ece4 !important; border-color: rgba(214,40,40,0.3) !important; }
+  .legend { display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; margin-top: 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray); }
+  .legend b { color: var(--white); font-weight: 600; }
+  .legend .n { display: inline-block; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: var(--red); color: var(--white); text-align: center; line-height: 1.4rem; font-weight: 700; margin-right: 0.5rem; }
+  .stop-pin { width: 24px; height: 24px; border-radius: 50%; background: #d62828; color: #f0ece4; border: 2px solid #f0ece4; font: 700 12px/20px 'IBM Plex Mono', monospace; text-align: center; box-shadow: 0 0 12px rgba(214,40,40,0.7); }
+  .stop-label { white-space: nowrap; font-family: 'IBM Plex Mono', monospace; }
+  .stop-label b { display: block; font-size: 12px; font-weight: 700; color: #f0ece4; text-shadow: 0 0 6px #0a0a0a, 0 0 6px #0a0a0a; }
+  .stop-label span { font-size: 10px; color: #aaa; text-shadow: 0 0 4px #0a0a0a, 0 0 4px #0a0a0a; }
+
+  /* ---- FINAL CTA ---- */
+  .final { text-align: center; padding: 5rem 1.5rem; }
+  .final h2 { margin-bottom: 0.75rem; }
+  .final p { color: var(--gray); font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 2rem; }
+  .final .btn { font-size: 1.15rem; padding: 1.2rem 3.2rem; }
+
+  footer { border-top: 1px solid var(--line); padding: 2rem 1.5rem; text-align: center; font-family: var(--font-mono); font-size: 0.72rem; color: var(--gray); letter-spacing: 0.05em; }
+  footer a { color: var(--white); text-decoration: none; }
+  footer a:hover { color: var(--red); }
+
+  /* ---- MOBILE ---- */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: 0; }
+    .hero-photo { height: 58vw; min-height: 240px; max-height: 420px; }
+    .hero-info { padding: 2rem 1.25rem 2.5rem; border-left: none; border-top: 3px solid var(--red); }
+    .about, .schedule-grid { grid-template-columns: 1fr; gap: 2rem; }
+    section { padding: 3rem 1rem; }
+    #map { height: 400px; }
+    .timeline::before { left: 7.7rem; }
+    .timeline li { grid-template-columns: 6.5rem 1.4rem minmax(0,1fr); }
+    .timeline .t { font-size: 0.72rem; }
+    .btn { width: 100%; }
+  }
+</style>
 </head>
 <body>
-<p>Redirecting to <a href="https://partiful.com/e/J3T0BiZLyTpGHkmzSHa1">the march event page</a>...</p>
+
+<nav class="nav">
+  <a href="/" class="brand">Stop The <span>AI</span> Race</a>
+  <a href="https://partiful.com/e/J3T0BiZLyTpGHkmzSHa1" class="nav-rsvp" target="_blank" rel="noopener">RSVP</a>
+</nav>
+
+<header class="hero">
+  <figure class="hero-photo">
+    <img src="/media-kit-july/rachel_bujalski_3_web.jpg" alt="A marcher holds a sign reading Let's Stop Frontier AI Together during the July march on OpenAI, Anthropic and Google DeepMind.">
+    <figcaption>Photo: Rachel Bujalski — July 11 march</figcaption>
+  </figure>
+  <div class="hero-info">
+    <p class="eyebrow">San Francisco · Thursday, September 17</p>
+    <h1>March To <em>Stop</em> The AI Race</h1>
+    <ul class="meta">
+      <li><span class="k">When</span><span class="v"><strong>Thursday, Sep 17</strong><small>9:00am – 12:00pm</small></span></li>
+      <li><span class="k">Start</span><span class="v"><strong>OpenAI</strong><small>1455 3rd St, San Francisco, CA</small></span></li>
+      <li><span class="k">Route</span><span class="v"><strong>OpenAI → Anthropic → City Hall</strong><small>About 4 miles on foot, three rallies</small></span></li>
+      <li><span class="k">Host</span><span class="v"><strong>Stop The AI Race</strong></span></li>
+    </ul>
+    <div class="cta-row">
+      <a href="https://partiful.com/e/J3T0BiZLyTpGHkmzSHa1" class="btn" target="_blank" rel="noopener">RSVP</a>
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=March+To+Stop+The+AI+Race&amp;dates=20260917T160000Z/20260917T190000Z&amp;location=OpenAI,+1455+3rd+St,+San+Francisco,+CA&amp;details=We+march+from+OpenAI+to+Anthropic+to+City+Hall.+Details+and+RSVP:+https://stoptherace.ai/march" class="btn btn-ghost" target="_blank" rel="noopener">+ Add to calendar</a>
+    </div>
+    <p class="cta-note">RSVP opens on Partiful. Free, open to everyone.</p>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <p class="section-label">Why we march</p>
+      <h2>From OpenAI to Anthropic to City Hall</h2>
+      <div class="lede">
+        <p>We will be marching from OpenAI to Anthropic to City Hall, asking AI company employees to join us in calling on the Mayor of San Francisco and the Board of Supervisors to <strong>declare an AI Emergency</strong> and enforce a <strong>full pausing of frontier AI model development in San Francisco</strong>.</p>
+        <p>The frontier labs are headquartered here. The people building these systems live here. The city that hosts the AI race can be the city that stops it.</p>
+      </div>
+    </div>
+    <div class="demand">
+      <p class="k">Our demand to San Francisco</p>
+      <p><em>Declare an AI Emergency.</em></p>
+      <p>Enforce a full pause on frontier AI model development in San Francisco.</p>
+    </div>
+  </div>
+</section>
+
+<section id="schedule">
+  <div class="wrap schedule-grid">
+    <div>
+      <p class="section-label">Schedule</p>
+      <h2>Three rallies,<br>one morning</h2>
+      <p class="lede">Join at the start, or meet us at any rally along the way. Bring signs, water, and friends.</p>
+    </div>
+    <ol class="timeline">
+      <li class="rally"><span class="t">9:00am</span><span class="dot"></span><div><div class="what">Rally at OpenAI</div><div class="where">1455 3rd St</div></div></li>
+      <li class="march"><span class="t">10:00 – 10:45am</span><span class="dot"></span><div><div class="what">March to Anthropic</div></div></li>
+      <li class="rally"><span class="t">10:45am</span><span class="dot"></span><div><div class="what">Rally at Anthropic</div><div class="where">500 Howard St</div></div></li>
+      <li class="march"><span class="t">11:00 – 11:30am</span><span class="dot"></span><div><div class="what">March to City Hall</div></div></li>
+      <li class="rally"><span class="t">11:30am</span><span class="dot"></span><div><div class="what">Rally at City Hall</div><div class="where">1 Dr Carlton B Goodlett Pl</div></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="route">
+  <div class="wrap">
+    <p class="section-label">Route</p>
+    <h2>The march route</h2>
+    <div id="map"></div>
+    <div class="legend">
+      <div><span class="n">1</span><b>OpenAI</b> · 1455 3rd St · 9:00am</div>
+      <div><span class="n">2</span><b>Anthropic</b> · 500 Howard St · 10:45am</div>
+      <div><span class="n">3</span><b>City Hall</b> · Polk St steps · 11:30am</div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <p class="section-label">Thursday, Sep 17 · 9:00am · OpenAI</p>
+  <h2>Will you be there?</h2>
+  <p>Let us know you're coming so we can plan for the crowd.</p>
+  <a href="https://partiful.com/e/J3T0BiZLyTpGHkmzSHa1" class="btn" target="_blank" rel="noopener">RSVP on Partiful</a>
+</section>
+
+<footer>
+  <a href="/">stoptherace.ai</a> &nbsp;·&nbsp; <a href="/join">Join</a> &nbsp;·&nbsp; <a href="/press">Press</a> &nbsp;·&nbsp; <a href="/signal">Signal</a>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function () {
+  var map = L.map('map', { center: [37.7820, -122.4050], zoom: 13, scrollWheelZoom: false, minZoom: 11 });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap', maxZoom: 19
+  }).addTo(map);
+  var tilePane = document.querySelector('#map .leaflet-tile-pane');
+  if (tilePane) tilePane.style.filter = 'saturate(0) brightness(0.35) contrast(1.2)';
+
+  // LEG 1: OpenAI (1455 3rd St) -> Anthropic (500 Howard St)
+  // North on 3rd, left on Mission Bay Blvd N, right up 4th over the bridge,
+  // right on Townsend, left up 2nd, right on Mission, right down 1st to Howard.
+  var openai = [37.7701, -122.3893];
+  var anthropic = [37.78838571623302, -122.39641255924988];
+  var cityHall = [37.7794, -122.4186];
+
+  var leg1 = [
+    openai,
+    [37.77111814524673, -122.38942225044988],
+    [37.771021853540326, -122.3912372507816],
+    [37.774476307391, -122.39160244881813],
+    [37.77711626979975, -122.39499403460314],
+    [37.78063159078087, -122.39055144862938],
+    [37.78805899667852, -122.39980306212492],
+    [37.789763229458174, -122.39758209999967],
+    [37.78853889743718, -122.39608752638394],
+    anthropic
+  ];
+
+  // LEG 2: Anthropic (500 Howard St) -> City Hall
+  // Back up 1st St to Market, along Market St to UN Plaza (7th St),
+  // then through UN Plaza and Civic Center Plaza to the Polk St steps of City Hall.
+  var leg2 = [
+    anthropic,
+    [37.78853889743718, -122.39608752638394], // Howard / 1st
+    [37.789763229458174, -122.39758209999967], // Mission / 1st
+    [37.7912, -122.3994],   // Market / 1st
+    [37.7803, -122.4131],   // Market / 7th (UN Plaza)
+    [37.7800, -122.4152],   // Fulton / Hyde
+    [37.7797, -122.4168],   // Fulton / Larkin (Civic Center Plaza)
+    cityHall
+  ];
+
+  var route = leg1.concat(leg2.slice(1));
+
+  L.polyline(route, { color: '#ffffff', weight: 9, opacity: 0.25, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  var routeLine = L.polyline(route, { color: '#d62828', weight: 5, opacity: 0.95, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+
+  var stops = [
+    { n: 1, coord: openai, label: 'OpenAI', sub: '9:00am · 1455 3rd St', side: 'right' },
+    { n: 2, coord: anthropic, label: 'Anthropic', sub: '10:45am · 500 Howard St', side: 'right' },
+    { n: 3, coord: cityHall, label: 'City Hall', sub: '11:30am · Polk St steps', side: 'left' }
+  ];
+
+  var narrow = window.innerWidth < 600;
+  stops.forEach(function (s) {
+    L.marker(s.coord, {
+      icon: L.divIcon({ className: '', html: '<div class="stop-pin">' + s.n + '</div>', iconSize: [24, 24], iconAnchor: [12, 12] }),
+      interactive: false, zIndexOffset: 1000
+    }).addTo(map);
+    var html, anchor;
+    if (narrow) {
+      html = '<div class="stop-label" style="text-align:center;transform:translateX(-50%)"><b>' + s.label + '</b><span>' + s.sub + '</span></div>';
+      anchor = [0, -16];
+    } else {
+      html = '<div class="stop-label" style="text-align:' + (s.side === 'left' ? 'right' : 'left') + '"><b>' + s.label + '</b><span>' + s.sub + '</span></div>';
+      anchor = s.side === 'left' ? [160, 14] : [-18, 14];
+    }
+    L.marker(s.coord, {
+      icon: L.divIcon({ className: '', html: html, iconSize: [0, 0], iconAnchor: anchor }),
+      interactive: false
+    }).addTo(map);
+  });
+
+  map.fitBounds(routeLine.getBounds().pad(narrow ? 0.15 : 0.12));
+  map.on('click', function () { map.scrollWheelZoom.enable(); });
+})();
+</script>
 </body>
 </html>
