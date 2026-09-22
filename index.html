@@ -25,7 +25,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HN7TDTHLH6"></script>
 <script>
@@ -193,97 +192,29 @@
     box-shadow: 0 0 40px rgba(240,236,228,0.15);
   }
 
-  /* ---- DEMAND ---- */
-  .demand {
-    padding: 6rem 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-  }
+  /* ---- KEY EVENTS TIMELINE ---- */
+  .timeline { padding: 3.5rem 2rem; max-width: 1120px; margin: 0 auto; }
+  .timeline-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); text-align: center; margin-bottom: 2.25rem; }
+  .timeline-track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+  .timeline-track::before { content: ''; position: absolute; left: 0; right: 0; top: 7px; height: 1px; background: rgba(240,236,228,0.18); }
+  .timeline-item { position: relative; padding: 0 1rem 0 0; }
+  .timeline-item::before { content: ''; position: absolute; left: 0; top: 3px; width: 9px; height: 9px; background: var(--red); border-radius: 50%; z-index: 1; }
+  .timeline-item.is-now::before { box-shadow: 0 0 0 4px rgba(214,40,40,0.25); }
+  .timeline-date { display: block; margin-top: 1.5rem; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); }
+  .timeline-text { margin-top: 0.5rem; font-family: var(--font-body); font-size: 0.88rem; line-height: 1.55; color: rgba(240,236,228,0.8); }
+  .timeline-text strong { color: var(--white); font-weight: 700; }
+  .timeline-cta { text-align: center; margin-top: 3rem; }
 
-  .demand::before {
-    content: '"';
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 18rem;
-    color: var(--red);
-    opacity: 0.06;
-    position: absolute;
-    top: -1rem;
-    left: -2rem;
-    line-height: 1;
-    pointer-events: none;
+  @media (max-width: 860px) {
+    .timeline { padding: 3rem 1.5rem; }
+    .timeline-track { grid-template-columns: repeat(2, 1fr); gap: 2rem 0; }
+    .timeline-track::before { display: none; }
+    .timeline-item { padding-left: 1.1rem; padding-right: 1rem; }
+    .timeline-item::before { top: 6px; }
+    .timeline-date { margin-top: 0; }
   }
-
-  .demand-label {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 2rem;
-    padding-left: 0;
-  }
-
-  .demand-text {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(1.6rem, 4vw, 3rem);
-    line-height: 1.2;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-  }
-
-  .demand-text .highlight {
-    color: var(--red);
-  }
-
-  /* ---- CONTEXT / ARGUMENT ---- */
-  .context {
-    padding: 4rem 2rem 2rem;
-    max-width: 680px;
-    margin: 0 auto;
-  }
-
-  .context p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    color: rgba(240, 236, 228, 0.85);
-  }
-
-  .context p:first-child::first-letter {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 3.5rem;
-    float: left;
-    line-height: 0.8;
-    margin-right: 0.15em;
-    margin-top: 0.1em;
-    color: var(--red);
-  }
-
-  .context strong {
-    color: var(--white);
-    font-weight: 700;
-  }
-
-  .context .quote-block {
-    border-left: 3px solid var(--red);
-    padding: 1rem 1.5rem;
-    margin: 2rem 0;
-    font-style: italic;
-    color: rgba(240, 236, 228, 0.9);
-  }
-
-  .context .quote-block cite {
-    display: block;
-    font-style: normal;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--gray);
-    margin-top: 0.75rem;
-    letter-spacing: 0.05em;
+  @media (max-width: 560px) {
+    .timeline-track { grid-template-columns: 1fr; gap: 1.6rem; }
   }
 
   /* ---- DARIO'S WORDS ---- */
@@ -800,136 +731,6 @@
     .floating-cta-text { display: none; }
   }
 
-  /* ---- VIDEO MODAL ---- */
-  .video-trigger {
-    color: var(--white);
-    font-weight: 700;
-    cursor: pointer;
-    border-bottom: 1px dotted rgba(214, 40, 40, 0.5);
-    transition: all 0.2s ease;
-    display: inline-block;
-  }
-  
-  .video-trigger:hover {
-    color: var(--red);
-    border-bottom: 1px solid var(--red);
-  }
-
-  .video-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 2000;
-    background: rgba(0, 0, 0, 0.95);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .video-modal.active {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .video-container {
-    position: relative;
-    width: fit-content;
-    height: fit-content;
-    max-width: 90vw;
-    max-height: 80vh;
-    background: #000;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  /* Tech corners */
-  .video-container::before,
-  .video-container::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--red);
-    transition: all 0.3s ease;
-    opacity: 0.5;
-    pointer-events: none;
-    z-index: 10;
-  }
-
-  .video-container::before {
-    top: -1px;
-    left: -1px;
-    border-right: none;
-    border-bottom: none;
-  }
-
-  .video-container::after {
-    bottom: -1px;
-    right: -1px;
-    border-left: none;
-    border-top: none;
-  }
-
-  .video-container:hover::before,
-  .video-container:hover::after {
-    opacity: 1;
-    width: 30px;
-    height: 30px;
-  }
-
-  .video-container video {
-    display: block;
-    max-width: 100%;
-    max-height: 70vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    filter: contrast(1.1);
-  }
-
-  .close-video {
-    position: absolute;
-    top: -2.5rem;
-    right: 0;
-    background: none;
-    border: none;
-    color: var(--gray);
-    font-size: 1.5rem;
-    font-family: var(--font-mono);
-    cursor: pointer;
-    transition: color 0.2s;
-  }
-
-  .close-video:hover {
-    color: var(--red);
-  }
-
-  .video-caption {
-    margin-top: 1rem;
-    text-align: center;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    line-height: 1.6;
-    max-width: 90%;
-  }
-
-  .video-caption a {
-    color: var(--gray);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .video-caption a:hover {
-    color: var(--red);
-    text-decoration: underline;
-  }
-
   .subtle-link {
     color: inherit;
     text-decoration: none;
@@ -1078,182 +879,60 @@
     transform: translateY(0);
   }
 
-  /* ---- GLOBAL PROTEST MAP ---- */
-  .landing-map-section {
-    padding: 6rem 2rem;
-    border-top: 1px solid rgba(240, 236, 228, 0.1);
-    border-bottom: 1px solid rgba(240, 236, 228, 0.1);
-  }
-
-  .landing-map-inner { max-width: 1120px; margin: 0 auto; }
-
-  .landing-map-header {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .landing-map-kicker {
-    margin-bottom: 0.75rem;
-    color: var(--red);
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-  }
-
-  .landing-map-title {
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    text-transform: uppercase;
-  }
-
-  .landing-map-intro {
-    max-width: 420px;
-    margin: 0;
-    color: rgba(240, 236, 228, 0.7);
-    font-size: 0.9rem;
-    line-height: 1.7;
-  }
-
-  .landing-map-frame {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(240, 236, 228, 0.18);
-    background: #131313;
-  }
-
-  #landing-protest-map { width: 100%; height: 560px; }
-  #landing-protest-map .leaflet-tile-pane { filter: saturate(0) brightness(0.38) contrast(1.2); }
-  #landing-protest-map .leaflet-control-attribution { background: rgba(10, 10, 10, 0.8) !important; color: #666 !important; }
-  #landing-protest-map .leaflet-control-attribution a { color: #888 !important; }
-  #landing-protest-map .leaflet-control-zoom a { border-color: #333 !important; background: #111 !important; color: var(--white) !important; }
-
-  .landing-map-marker {
-    display: grid;
-    width: 28px;
-    height: 28px;
-    place-items: center;
-    border: 2px solid var(--white);
-    border-radius: 50% 50% 50% 0;
-    background: var(--red);
-    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.65);
-    color: var(--white);
-    font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: 600;
-    transform: rotate(-45deg);
-  }
-
-  .landing-map-marker span { transform: rotate(45deg); }
-  .landing-map-marker.past { border-color: #aaa; background: #555; }
-  #landing-protest-map .leaflet-popup-content-wrapper,
-  #landing-protest-map .leaflet-popup-tip { background: #151515; color: var(--white); }
-  #landing-protest-map .leaflet-popup-content-wrapper { border: 1px solid rgba(240, 236, 228, 0.18); border-radius: 0; }
-  #landing-protest-map .leaflet-popup-content { margin: 1rem; }
-  .landing-popup-status { color: var(--red); font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; }
-  .landing-popup-title { margin: 0.35rem 0; font-family: var(--font-display); font-size: 1rem; font-weight: 700; }
-  .landing-popup-location,
-  .landing-popup-copy { margin: 0.45rem 0; color: #aaa; font-size: 0.72rem; line-height: 1.55; }
-  .landing-popup-copy { color: #ccc; }
-  .landing-popup-link { display: inline-block; margin-top: 0.4rem; color: var(--red); font-family: var(--font-mono); font-size: 0.7rem; }
-
   /* ---- PRESS COVERAGE ---- */
-  /* Shared press primitives */
-  .pc-section { padding: 6rem 2rem; border-top: 1px solid rgba(240,236,228,0.1); border-bottom: 1px solid rgba(240,236,228,0.1); }
+  .pc-section { padding: 3.5rem 2rem 3rem; border-top: 1px solid rgba(240,236,228,0.1); border-bottom: 1px solid rgba(240,236,228,0.1); }
   .pc-inner { max-width: 1120px; margin: 0 auto; }
-  .pc-kicker { display: block; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 0.75rem; }
-  .pc-title { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; font-size: clamp(1.8rem, 4vw, 3rem); }
-  .pc-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .pc-kicker { display: block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 0.4rem; }
+  .pc-title { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; font-size: clamp(1.4rem, 2.6vw, 1.9rem); }
+  .pc-head { display: flex; align-items: flex-end; gap: 2rem; flex-wrap: wrap; }
 
-  /* C: tabbed grid */
-  .pc-tabs { display: flex; flex-wrap: wrap; margin-top: 2.5rem; border-bottom: 1px solid rgba(240,236,228,0.1); }
-  .pc-tab { background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; color: var(--gray); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.8rem 1.1rem; transition: color 0.2s ease, border-color 0.2s ease; }
-  .pc-tab:hover { color: var(--white); }
-  .pc-tab[aria-selected="true"] { color: var(--white); border-bottom-color: var(--red); }
-  .pc-tab .n { color: var(--red); margin-left: 0.4rem; }
-  .pc-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-  .pc-card { display: flex; flex-direction: column; text-decoration: none; color: var(--white); border: 1px solid rgba(240,236,228,0.1); background: #141311; transition: border-color 0.2s ease, transform 0.2s ease; }
+  /* one row per coverage type */
+  .pc-row { margin-top: 2rem; }
+  .pc-row-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(240,236,228,0.1); }
+  .pc-row-label { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); }
+  .pc-row-label.is-feature { color: var(--red); }
+
+  /* arrows */
+  .pc-nav { display: flex; gap: 0.4rem; }
+  .pc-arrow { width: 28px; height: 28px; display: grid; place-items: center; cursor: pointer; background: none; color: var(--white); border: 1px solid rgba(240,236,228,0.25); font-size: 0.8rem; line-height: 1; transition: border-color 0.2s, background 0.2s, opacity 0.2s; }
+  .pc-arrow:hover:not(:disabled) { border-color: var(--red); background: rgba(214,40,40,0.12); }
+  .pc-arrow:disabled { opacity: 0.25; cursor: default; }
+  .pc-nav[hidden] { display: none; }
+
+  /* horizontally scrollable track, 3 cards per view */
+  .pc-track {
+    display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 2 * 1rem) / 3);
+    gap: 1rem; margin-top: 1rem; overflow-x: auto; scroll-snap-type: x mandatory;
+    scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none;
+  }
+  .pc-track::-webkit-scrollbar { display: none; }
+  .pc-card { scroll-snap-align: start; display: flex; flex-direction: column; text-decoration: none; color: var(--white); border: 1px solid rgba(240,236,228,0.1); background: #141311; transition: border-color 0.2s ease, transform 0.2s ease; }
   .pc-card:hover { border-color: rgba(214,40,40,0.6); transform: translateY(-3px); }
-  .pc-card[hidden] { display: none; }
-  .pc-thumb { aspect-ratio: 16 / 9; max-width: 100%; width: 100%; position: relative; overflow: hidden; background: radial-gradient(120% 80% at 20% 0%, rgba(214,40,40,0.35), transparent 60%), linear-gradient(160deg, #2a2320, #0e0d0c); border-bottom: 1px solid rgba(240,236,228,0.1); }
-  .pc-thumb::after { content: attr(data-mark); position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 3rem; color: rgba(240,236,228,0.12); letter-spacing: -0.04em; }
-  .pc-thumb.is-video::before { content: ''; position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform: translate(-40%, -50%); border-left: 18px solid var(--white); border-top: 11px solid transparent; border-bottom: 11px solid transparent; z-index: 1; }
-  .pc-card-body { padding: 1.1rem 1.2rem 1.3rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
-  .pc-card-meta { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.15em; text-transform: uppercase; }
+  .pc-thumb { aspect-ratio: 2 / 1; width: 100%; position: relative; overflow: hidden; background: #0e0d0c; border-bottom: 1px solid rgba(240,236,228,0.1); }
+  .pc-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.8) contrast(1.05); transition: filter 0.25s ease, transform 0.4s ease; }
+  .pc-card:hover .pc-thumb img { filter: saturate(1) contrast(1); transform: scale(1.03); }
+  @media (prefers-reduced-motion: reduce) { .pc-card:hover .pc-thumb img { transform: none; } .pc-track { scroll-behavior: auto; } }
+  .pc-card-body { padding: 0.75rem 0.9rem 0.9rem; display: flex; flex-direction: column; gap: 0.4rem; flex: 1; }
+  .pc-card-meta { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; }
   .pc-card-meta .outlet { color: var(--red); font-weight: 600; }
   .pc-card-meta .date { color: var(--gray); font-variant-numeric: tabular-nums; }
-  .pc-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; line-height: 1.25; letter-spacing: -0.01em; }
-  .pc-card p { font-family: var(--font-body); font-size: 0.86rem; line-height: 1.6; color: rgba(240,236,228,0.7); }
-  .pc-cards-foot { margin-top: 2.5rem; text-align: center; }
-  @media (max-width: 860px) { .pc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 560px) { .pc-grid { grid-template-columns: 1fr; } }
+  .pc-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; line-height: 1.25; letter-spacing: -0.01em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
-  .pc-wt { font-family: var(--font-mono); font-size: 0.6em; color: var(--gray); margin-left: 0.15em; cursor: help; }
-  .pc-footnote { margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.65rem; color: rgba(240,236,228,0.3); letter-spacing: 0.05em; }
-
-  /* article images */
-  .pc-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.8) contrast(1.05); transition: filter 0.25s ease, transform 0.4s ease; }
-  .pc-thumb.has-img::after { content: none; }
-  .pc-thumb.has-img::before { z-index: 2; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6)); }
-  .pc-thumb.has-img { background: #0e0d0c; }
-  .pc-card:hover .pc-thumb img { filter: saturate(1) contrast(1); transform: scale(1.03); }
-  @media (prefers-reduced-motion: reduce) { .pc-card:hover .pc-thumb img { transform: none; } }
-  .pc-card h3 { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
-
-  /* expand / collapse */
-  .pc-cards-foot { position: relative; }
-  .pc-expand {
-    display: inline-flex; align-items: center; gap: 0.9rem; background: transparent; cursor: pointer;
-    font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white);
-    padding: 0.9rem 2.2rem; border: 1px solid rgba(240,236,228,0.35); transition: border-color 0.2s ease, background 0.2s ease;
+  @media (max-width: 860px) {
+    .pc-section { padding: 3rem 1.5rem 2.5rem; }
+    .pc-track { grid-auto-columns: calc((100% - 1rem) / 2); }
   }
-  .pc-expand:hover { border-color: var(--red); background: rgba(214,40,40,0.08); }
-  .pc-expand[hidden] { display: none; }
-  .pc-expand-arrow { color: var(--red); font-size: 1rem; line-height: 1; }
-  .pc-cards-foot::before {
-    content: ''; position: absolute; left: 0; right: 0; bottom: 100%; height: 6rem; pointer-events: none;
-    background: linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.85) 100%);
+  @media (max-width: 560px) {
+    .pc-track { grid-auto-columns: 78%; }
+    .pc-nav { display: none; }
   }
-  .pc-grid { position: relative; }
-  .pc-cards-foot { margin-top: 0; padding-top: 2.5rem; }
-
-  /* compact grid (option C) */
-  .pc-compact { padding: 3.5rem 2rem 3rem; }
-  .pc-compact .pc-title { font-size: clamp(1.4rem, 2.6vw, 1.9rem); }
-  .pc-compact .pc-kicker { margin-bottom: 0.4rem; font-size: 0.68rem; }
-  .pc-compact-stats { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); }
-  .pc-compact .pc-tabs { margin-top: 1.5rem; }
-  .pc-compact .pc-tab { padding: 0.6rem 0.9rem; font-size: 0.66rem; }
-  .pc-compact .pc-grid { gap: 1rem; margin-top: 1.25rem; }
-  .pc-compact .pc-thumb { aspect-ratio: 2 / 1; }
-  .pc-compact .pc-thumb::after { font-size: 2rem; }
-  .pc-compact .pc-thumb.is-video::before { border-left-width: 14px; border-top-width: 9px; border-bottom-width: 9px; }
-  .pc-compact .pc-card-body { padding: 0.75rem 0.9rem 0.9rem; gap: 0.4rem; }
-  .pc-compact .pc-card-meta { font-size: 0.6rem; }
-  .pc-compact .pc-card h3 { font-size: 0.95rem; line-height: 1.25; -webkit-line-clamp: 3; }
-  .pc-compact .pc-cards-foot { padding-top: 1.5rem; }
-  .pc-compact .pc-cards-foot::before { height: 3rem; }
-  .pc-compact .pc-expand { padding: 0.7rem 1.6rem; font-size: 0.68rem; }
-  .pc-compact .pc-footnote { margin-top: 0.9rem; }
-  @media (max-width: 860px) { .pc-compact { padding: 3rem 1.5rem 2.5rem; } }
 
   /* ---- MOBILE ---- */
   @media (max-width: 600px) {
     .demand { padding: 4rem 1.5rem; }
-    .context { padding: 3rem 1.5rem; }
     .cta-primary { padding: 1rem 2rem; width: 100%; max-width: 320px; text-align: center; }
     .cta-secondary { width: 100%; max-width: 320px; text-align: center; }
     .march-schedule { padding: 0 1rem; }
-    .landing-map-section { padding: 4rem 1.5rem; }
-    .landing-map-header { align-items: flex-start; flex-direction: column; }
-    #landing-protest-map { height: 440px; }
   }
 </style>
 </head>
@@ -1272,110 +951,64 @@
   </div>
 </section>
 
-<!-- GLOBAL PROTEST MAP -->
-<section class="landing-map-section reveal">
-  <div class="landing-map-inner">
-    <div class="landing-map-header">
-      <div>
-        <p class="landing-map-kicker">A growing movement</p>
-        <h2 class="landing-map-title">Protests around<br>the world</h2>
-      </div>
-      <p class="landing-map-intro">From active occupations to past actions, people are organizing internationally to challenge the race toward increasingly powerful AI.</p>
-    </div>
-    <div class="landing-map-frame">
-      <div id="landing-protest-map" role="region" aria-label="Map of AI protests"></div>
-    </div>
-  </div>
-</section>
-
-<!-- THE DEMAND -->
-<section class="demand reveal">
-  <p class="demand-label">Our Single Demand</p>
-  <p class="demand-text">
-    Every major AI lab CEO must <span class="highlight">publicly commit</span> to pausing frontier model development <span class="highlight">if every other major lab in the world</span> credibly does the same.
-  </p>
-</section>
-
-<!-- VIDEO: WHY WE MARCH -->
-<section class="video-section reveal" style="padding: 6rem 2rem; max-width: 1120px; margin: 0 auto;">
-  <div class="video-split-grid" style="display: grid; grid-template-columns: 1.45fr 1fr; gap: 3rem; align-items: center;">
-    <div>
-      <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid rgba(214,40,40,0.3); background: #000;">
-        <iframe src="https://www.youtube.com/embed/-qWFq2aF8ZU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>
-    <div>
-      <p style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem;">As seen on</p>
-      <h2 style="font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1.1; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 1.25rem;">The hunger strike that started this.</h2>
-      <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.7; color: rgba(240, 236, 228, 0.85); margin-bottom: 1.25rem;">Eighteen days outside Google DeepMind. <a href="https://x.com/MichaelTrazzi/status/2013787511189876959?s=20" target="_blank" rel="noopener" class="subtle-link">Google DeepMind CEO answered</a>. So did <a href="https://www.theverge.com/ai-artificial-intelligence/778773/the-hunger-strike-to-end-ai-anthropic-google-deepmind-agi" target="_blank" rel="noopener" class="subtle-link">The Verge</a>, <a href="https://www.telegraph.co.uk/business/2025/09/20/anti-ai-doom-prophets-launch-hunger-strike-outside-google/" target="_blank" rel="noopener" class="subtle-link">The Telegraph</a>, and <a href="https://news.sky.com/video/hunger-strikers-want-end-to-superhuman-ai-13434270" target="_blank" rel="noopener" class="subtle-link">Sky News</a>.</p>
-      <p style="font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gray); text-transform: uppercase;">September 2025</p>
-    </div>
-  </div>
-</section>
-<style>
-  @media (max-width: 760px) {
-    .video-split-grid { grid-template-columns: 1fr !important; gap: 1.75rem !important; }
-  }
-</style>
-
 <!-- PRESS COVERAGE -->
-<section class="pc-section pc-compact reveal" id="press-coverage"><div class="pc-inner">
-  <div class="pc-head"><div><span class="pc-kicker">Media coverage</span><h2 class="pc-title">What the press is reporting</h2></div>
-  <p class="pc-compact-stats">23 stories · 18 outlets · 4 countries</p></div>
-  <div class="pc-tabs" role="tablist" aria-label="Filter coverage">
-    <button class="pc-tab" role="tab" aria-selected="true" data-filter="all">All <span class="n">23</span></button>
-    <button class="pc-tab" role="tab" aria-selected="false" data-filter="national">US national <span class="n">13</span></button>
-    <button class="pc-tab" role="tab" aria-selected="false" data-filter="bayarea">Bay Area <span class="n">5</span></button>
-    <button class="pc-tab" role="tab" aria-selected="false" data-filter="intl">International <span class="n">5</span></button>
-    <button class="pc-tab" role="tab" aria-selected="false" data-filter="video">Video <span class="n">3</span></button>
+<section class="pc-section reveal" id="press-coverage"><div class="pc-inner">
+  <div class="pc-head"><div><span class="pc-kicker">Media coverage</span><h2 class="pc-title">What the press is saying</h2></div></div>
+  <div class="pc-row">
+    <div class="pc-row-head">
+      <span class="pc-row-label is-feature">Feature stories</span>
+      <div class="pc-nav">
+        <button type="button" class="pc-arrow" data-dir="-1" aria-label="Scroll Feature stories left">&#8249;</button>
+        <button type="button" class="pc-arrow" data-dir="1" aria-label="Scroll Feature stories right">&#8250;</button>
+      </div>
+    </div>
+    <div class="pc-track">
+      <a class="pc-card" href="https://www.sfchronicle.com/bayarea/article/open-ai-anthropic-extinction-protest-22435148.php" target="_blank" rel="noopener"><div class="pc-thumb"><img src="press/sfchronicle-2026-09-17.webp" alt="Stop The AI Race organizer Michaël Trazzi speaks to a crowd of protesters outside OpenAI headquarters in San Francisco" loading="lazy" width="1200" height="600"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">San Francisco Chronicle</span><span class="date">17 Sep 2026</span></div><h3>Protesters call on S.F. OpenAI, Anthropic employees to quit their jobs over &#x27;extinction&#x27; fears</h3></div></a>
+      <a class="pc-card" href="https://www.sfchronicle.com/tech/article/san-francisco-ai-protest-22340835.php" target="_blank" rel="noopener"><div class="pc-thumb"><img src="press/sfchronicle-2026-07-11.webp" alt="Michaël Trazzi addresses protesters through a megaphone outside OpenAI’s Mission Bay headquarters" loading="lazy" width="1200" height="600"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">San Francisco Chronicle</span><span class="date">11 Jul 2026</span></div><h3>S.F. protesters march on OpenAI, Anthropic and Google DeepMind to demand: ‘Stop the AI race’</h3></div></a>
+      <a class="pc-card" href="https://sfstandard.com/2026/07/11/anti-ai-protest-openai-anthropic-google-san-francisco/" target="_blank" rel="noopener"><div class="pc-thumb"><img src="press/sfstandard-2026-07-11.webp" alt="Protesters chant and carry handmade signs reading ‘Everyone Dies’ during the San Francisco anti-AI march" loading="lazy" width="1200" height="600"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">The San Francisco Standard</span><span class="date">11 Jul 2026</span></div><h3>SF&#x27;s anti-AI protesters just marched past three tech giants</h3></div></a>
+      <a class="pc-card" href="https://www.latimes.com/business/story/2026-07-22/they-built-ai-now-silicon-valley-workers-protest-its-threat-to-jobs-humanity" target="_blank" rel="noopener"><div class="pc-thumb"><img src="press/latimes-2026-07-22.webp" alt="Marchers carry a large ‘Stop the AI Race’ banner down a San Francisco street" loading="lazy" width="1200" height="600"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Los Angeles Times</span><span class="date">22 Jul 2026</span></div><h3>They built AI. Now Silicon Valley workers protest its threat to jobs and humanity</h3></div></a>
+    </div>
   </div>
-  <div class="pc-grid" id="pc-grid">
-    <a class="pc-card" data-tags="national" href="https://www.vox.com/today-explained-newsletter/502790/dario-amodei-ai-panic-regulations" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/vox-2026-09-14-what-an-ai-slowdown-could-look.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Vox</span><span class="date">14 Sep 2026</span></div><h3>What an AI “slowdown” could look like</h3></div></a>
-    <a class="pc-card" data-tags="national video" href="https://www.yahoo.com/news/politics/articles/anthropic-ceo-dario-amodei-control-130000647.html" target="_blank" rel="noopener"><div class="pc-thumb is-video has-img" data-mark=""><img src="press/coverage/cbs-news-2026-09-13-dario-amodei-i-would-give-cont.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">CBS News</span><span class="date">13 Sep 2026</span></div><h3>Dario Amodei: I would give control over AI to &#x27;the right combination of democratically-elected governments&#x27;</h3></div></a>
-    <a class="pc-card" data-tags="national" href="https://nypost.com/2026/09/12/us-news/ai-ceos-demand-the-industry-slow-the-pace-of-advancements/" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/new-york-post-2026-09-12-ai-ceos-demand-the-industry-sl.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">New York Post</span><span class="date">12 Sep 2026</span></div><h3>AI CEOs demand the industry &#x27;slow the pace&#x27; of advancements</h3></div></a>
-    <a class="pc-card" data-tags="national" href="https://www.latimes.com/california/newsletter/2026-09-11/chabria-column-ai-regulation-jacob-coxon" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/los-angeles-times-2026-09-11-will-coxon-day-save-us-from-ai.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Los Angeles Times</span><span class="date">11 Sep 2026</span></div><h3>Will &#x27;Coxon Day&#x27; save us from AI destruction?</h3></div></a>
-    <a class="pc-card" data-tags="national" href="https://www.washingtonpost.com/technology/2026/09/10/years-they-warned-ai-could-kill-all-humans-now-people-are-listening/" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/the-washington-post-2026-09-10-for-years-they-warned-ai-could.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">The Washington Post</span><span class="date">10 Sep 2026</span></div><h3>For years they warned AI could kill all humans. Now people are listening</h3></div></a>
-    <a class="pc-card" data-tags="national" href="https://www.nytimes.com/2026/09/09/technology/anthropic-researchers-raise-alarm.html" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/the-new-york-times-2026-09-09-anthropic-researchers-raise-al.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">The New York Times</span><span class="date">9 Sep 2026</span></div><h3>Anthropic Researchers Raise Alarm Over A.I. Acceleration, Warning of Threat to Humanity</h3></div></a>
-    <a class="pc-card" data-tags="intl" href="https://www.lemonde.fr/economie/article/2026/09/09/les-gens-qui-construisent-l-ia-croient-qu-elle-pourrait-tous-nous-tuer-d-ici-a-la-fin-de-la-decennie-le-chercheur-jacob-coxon-qui-a-travaille-pour-anthropic-et-openai-quitte-l-industrie_6768853_3234.html" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/le-monde-2026-09-09-les-gens-qui-construisent-l.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Le Monde</span><span class="date">9 Sep 2026</span></div><h3>« Les gens qui construisent l’IA croient qu’elle pourrait tous nous tuer d’ici à la fin de la décennie » : le chercheur Jacob Coxon, qui a travaillé pour Anthropic et OpenAI, quitte l’industrie</h3></div></a>
-    <a class="pc-card" data-tags="bayarea" href="https://www.sfchronicle.com/politics/article/ai-whistleblowers-kill-humans-22424000.php" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/san-francisco-chronicle-2026-09-09-how-could-ai-kill-all-humans.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">San Francisco Chronicle</span><span class="date">9 Sep 2026</span></div><h3>How could AI ‘kill all humans’ or ‘cause human extinction’? Here’s what experts say</h3></div></a>
-    <a class="pc-card" data-tags="intl" href="https://www.liberation.fr/economie/economie-numerique/on-sassoit-devant-lentreprise-avec-des-chaises-de-camping-michael-trazzi-le-militant-qui-squatte-lentree-dopenai-depuis-un-mois-20260905_HVSPSFXHBRGB3GD3IBFF2UNAAI/" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/liberation-2026-09-05-on-s-assoit-devant-l-entreprise.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Libération</span><span class="date">5 Sep 2026</span></div><h3>« On s’assoit devant l’entreprise avec des chaises de camping » : Michaël Trazzi, le militant qui squatte l’entrée d’OpenAI depuis un mois</h3></div></a>
-    <a class="pc-card" data-tags="intl" href="https://www.asahi.com/articles/ASV7P5QBYV7PUHBI029M.html?iref=pc_ss_date_article" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/the-asahi-shimbun-2026-08-09-ai.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">The Asahi Shimbun</span><span class="date">9 Aug 2026</span></div><h3>若者に反AI感情のうねり　止まらぬ開発競争、ブームの震源地で何が</h3></div></a>
-    <a class="pc-card" data-tags="intl" href="https://www.estadao.com.br/economia/revolta-geracao-z-contra-ia-trabalho/" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/estad-o-2026-08-o-que-est-por-tr-s-da-revolta.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Estadão</span><span class="date">Aug 2026</span></div><h3>O que está por trás da revolta da geração Z contra a inteligência artificial no trabalho</h3></div></a>
-    <a class="pc-card" data-tags="national" href="https://archive.is/20260729115725/https://www.washingtonpost.com/technology/2026/07/29/openai-anthropic-endorse-call-government-pace-ai-progress/" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/the-washington-post-2026-07-29-openai-anthropic-ask-u-s-gov.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">The Washington Post</span><span class="date">29 Jul 2026</span></div><h3>OpenAI, Anthropic ask U.S. government to consider slowing down AI</h3></div></a>
-    <a class="pc-card" data-tags="national" href="https://www.bloomberg.com/opinion/newsletters/2026-07-25/the-quitgpt-movement-is-a-wake-up-call-for-ai-bulls" target="_blank" rel="noopener"><div class="pc-thumb" data-mark="B"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Bloomberg Opinion</span><span class="date">25 Jul 2026</span></div><h3>The QuitGPT movement is a wake-up call for AI bulls<sup class="pc-wt" title="Working title taken from the URL">†</sup></h3></div></a>
-    <a class="pc-card" data-tags="national video" href="https://www.bloomberg.com/news/videos/2026-07-23/opinion-ai-s-most-alarming-new-trend-video" target="_blank" rel="noopener"><div class="pc-thumb is-video" data-mark=""></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Bloomberg</span><span class="date">23 Jul 2026</span></div><h3>Opinion: AI&#x27;s most alarming new trend<sup class="pc-wt" title="Working title taken from the URL">†</sup></h3></div></a>
-    <a class="pc-card" data-tags="national" href="https://www.latimes.com/business/story/2026-07-22/they-built-ai-now-silicon-valley-workers-protest-its-threat-to-jobs-humanity" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/los-angeles-times-2026-07-22-they-built-ai-now-silicon-val.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Los Angeles Times</span><span class="date">22 Jul 2026</span></div><h3>They built AI. Now Silicon Valley workers protest its threat to jobs and humanity</h3></div></a>
-    <a class="pc-card" data-tags="intl" href="https://www.nouvelobs.com/economie/20260722.OBS116893/cette-colere-qui-monte-contre-l-intelligence-artificielle-l-ia-fait-courir-des-dangers-extremes-a-court-terme.html" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/le-nouvel-obs-2026-07-22-cette-col-re-qui-monte-contre.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Le Nouvel Obs</span><span class="date">22 Jul 2026</span></div><h3>Cette colère qui monte contre l&#x27;intelligence artificielle : « L&#x27;IA fait courir des dangers extrêmes à court terme »</h3></div></a>
-    <a class="pc-card" data-tags="national" href="https://nypost.com/2026/07/16/business/man-snuck-into-anthropic-office-to-warn-exec-was-going-to-be-killed-as-violent-threats-mount-report/" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/new-york-post-2026-07-16-man-snuck-into-anthropic-offic.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">New York Post</span><span class="date">16 Jul 2026</span></div><h3>Man snuck into Anthropic office to warn exec &#x27;was going to be killed&#x27; as violent threats mount</h3></div></a>
-    <a class="pc-card" data-tags="bayarea" href="https://www.dailycal.org/news/largest-ai-protest-in-american-history-sees-hundreds-march-on-downtown-san-francisco/article_8253b059-e793-4de4-a012-cc20ddc5ad69.html" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/the-daily-californian-2026-07-12-nation-s-1st-major-anti-ai-pro.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">The Daily Californian</span><span class="date">12 Jul 2026</span></div><h3>Nation&#x27;s 1st major anti-AI protest sees hundreds march on downtown San Francisco</h3></div></a>
-    <a class="pc-card" data-tags="national" href="https://www.wsj.com/tech/ai/anti-ai-activists-disappearance-sam-kirchner-6872879f" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/the-wall-street-journal-2026-07-11-the-hard-line-activists-rampin.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">The Wall Street Journal</span><span class="date">11 Jul 2026</span></div><h3>The Hard-Line Activists Ramping Up for the War With AI</h3></div></a>
-    <a class="pc-card" data-tags="national video" href="https://www.reutersconnect.com/item/us-hundreds-rally-in-san-francisco-against-ai-race-demand-training-pause/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX09XU1BDQzI2MDE0NTMwMQ" target="_blank" rel="noopener"><div class="pc-thumb is-video" data-mark=""></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Reuters</span><span class="date">11 Jul 2026</span></div><h3>Hundreds rally in San Francisco against AI race, demand training pause<sup class="pc-wt" title="Working title taken from the URL">†</sup></h3></div></a>
-    <a class="pc-card" data-tags="bayarea" href="https://www.sfchronicle.com/tech/article/san-francisco-ai-protest-22340835.php" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/san-francisco-chronicle-2026-07-11-s-f-protesters-march-on-opena.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">San Francisco Chronicle</span><span class="date">11 Jul 2026</span></div><h3>S.F. protesters march on OpenAI, Anthropic and Google DeepMind to demand: ‘Stop the AI race’</h3></div></a>
-    <a class="pc-card" data-tags="bayarea" href="https://sfstandard.com/2026/07/11/anti-ai-protest-openai-anthropic-google-san-francisco/" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/the-san-francisco-standard-2026-07-11-sf-s-anti-ai-protesters-just-m.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">The San Francisco Standard</span><span class="date">11 Jul 2026</span></div><h3>SF&#x27;s anti-AI protesters just marched past three tech giants</h3></div></a>
-    <a class="pc-card" data-tags="bayarea" href="https://missionlocal.org/2026/07/san-francisco-protest-ai-openai-anthropic-google/" target="_blank" rel="noopener"><div class="pc-thumb has-img" data-mark=""><img src="press/coverage/mission-local-2026-07-11-photos-hundreds-protest-at-op.jpg" alt="" loading="lazy" width="800" height="400"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Mission Local</span><span class="date">11 Jul 2026</span></div><h3>Photos: Hundreds protest at OpenAI, Anthropic offices in San Francisco</h3></div></a>
+  <div class="pc-row">
+    <div class="pc-row-head">
+      <span class="pc-row-label">Appears in</span>
+      <div class="pc-nav">
+        <button type="button" class="pc-arrow" data-dir="-1" aria-label="Scroll Appears in left">&#8249;</button>
+        <button type="button" class="pc-arrow" data-dir="1" aria-label="Scroll Appears in right">&#8250;</button>
+      </div>
+    </div>
+    <div class="pc-track">
+      <a class="pc-card" href="https://www.nytimes.com/2026/09/09/technology/anthropic-researchers-raise-alarm.html" target="_blank" rel="noopener"><div class="pc-thumb"><img src="press/nyt-2026-09-09.webp" alt="Protesters with flags and a literature table outside an AI company office" loading="lazy" width="1200" height="600"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">The New York Times</span><span class="date">9 Sep 2026</span></div><h3>Anthropic Researchers Raise Alarm Over A.I. Acceleration, Warning of Threat to Humanity</h3></div></a>
+      <a class="pc-card" href="https://www.washingtonpost.com/technology/2026/09/10/years-they-warned-ai-could-kill-all-humans-now-people-are-listening/" target="_blank" rel="noopener"><div class="pc-thumb"><img src="press/wapo-2026-09-10.webp" alt="Protesters carry the ‘Stop the AI Race’ banner across a downtown San Francisco intersection" loading="lazy" width="1200" height="600"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">The Washington Post</span><span class="date">10 Sep 2026</span></div><h3>For years they warned AI could kill all humans. Now people are listening</h3></div></a>
+      <a class="pc-card" href="https://www.vox.com/today-explained-newsletter/502790/dario-amodei-ai-panic-regulations" target="_blank" rel="noopener"><div class="pc-thumb"><img src="press/vox-2026-09-14.webp" alt="A protester in a ‘Stop the AI Race’ shirt among a crowd holding hand-painted signs" loading="lazy" width="1200" height="600"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Vox</span><span class="date">14 Sep 2026</span></div><h3>What an AI “slowdown” could look like</h3></div></a>
+    </div>
   </div>
-  <div class="pc-cards-foot"><button type="button" class="pc-expand" id="pc-expand" aria-expanded="false" aria-controls="pc-grid"><span class="pc-expand-label">Show 14 more stories</span><span class="pc-expand-arrow" aria-hidden="true">↓</span></button><p class="pc-footnote">† working title taken from the URL</p></div>
+  <div class="pc-row">
+    <div class="pc-row-head">
+      <span class="pc-row-label">International</span>
+      <div class="pc-nav">
+        <button type="button" class="pc-arrow" data-dir="-1" aria-label="Scroll International left">&#8249;</button>
+        <button type="button" class="pc-arrow" data-dir="1" aria-label="Scroll International right">&#8250;</button>
+      </div>
+    </div>
+    <div class="pc-track">
+      <a class="pc-card" href="https://www.asahi.com/articles/ASV7P5QBYV7PUHBI029M.html?iref=pc_ss_date_article" target="_blank" rel="noopener"><div class="pc-thumb"><img src="press/asahi-2026-08-09.webp" alt="Young demonstrators shout and hold anti-AI placards during a San Francisco protest" loading="lazy" width="1200" height="600"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">The Asahi Shimbun</span><span class="date">9 Aug 2026</span></div><h3>若者に反AI感情のうねり　止まらぬ開発競争、ブームの震源地で何が</h3></div></a>
+      <a class="pc-card" href="https://www.estadao.com.br/economia/revolta-geracao-z-contra-ia-trabalho/" target="_blank" rel="noopener"><div class="pc-thumb"><img src="press/estadao-2026-08.webp" alt="A protester leads chants with a megaphone ahead of a ‘Pause AI’ banner during the march" loading="lazy" width="1200" height="600"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Estadão</span><span class="date">Aug 2026</span></div><h3>O que está por trás da revolta da geração Z contra a inteligência artificial no trabalho</h3></div></a>
+      <a class="pc-card" href="https://www.liberation.fr/economie/economie-numerique/on-sassoit-devant-lentreprise-avec-des-chaises-de-camping-michael-trazzi-le-militant-qui-squatte-lentree-dopenai-depuis-un-mois-20260905_HVSPSFXHBRGB3GD3IBFF2UNAAI/" target="_blank" rel="noopener"><div class="pc-thumb"><img src="press/liberation-2026-09-05.webp" alt="Michaël Trazzi speaks into a megaphone in front of a large crossed-out AI banner" loading="lazy" width="1200" height="600"></div><div class="pc-card-body"><div class="pc-card-meta"><span class="outlet">Libération</span><span class="date">5 Sep 2026</span></div><h3>« On s’assoit devant l’entreprise avec des chaises de camping » : Michaël Trazzi, le militant qui squatte l’entrée d’OpenAI depuis un mois</h3></div></a>
+    </div>
+  </div>
 </div></section>
 
-<!-- CONTEXT -->
-<section class="context reveal">
-  <p>The architects of these systems <a href="https://www.safe.ai/statement-on-ai-risk" target="_blank" rel="noopener" class="subtle-link">know the race is reckless</a>. They've <a href="https://www.youtube.com/watch?v=dXhoTrU1Kkw" target="_blank" rel="noopener" class="subtle-link">warned</a> <a href="https://www.cnbc.com/2018/03/13/elon-musk-at-sxsw-a-i-is-more-dangerous-than-nuclear-weapons.html" target="_blank" rel="noopener" class="subtle-link">us</a> about the <a href="https://superintelligence-statement.org/" target="_blank" rel="noopener" class="subtle-link">existential risks</a> themselves, repeatedly. But each argues they can't slow down because they need to beat the others and geopolitical adversaries.</p>
-
-  <p>We're not asking anyone to stop alone. Just to say: <strong>if the others pause, I will too.</strong></p>
-
-  <p>In September 2025, we protested at Google DeepMind with the same demand. <span class="video-trigger" id="demis-trigger">Demis Hassabis said he'd be open to it</span> — but that international coordination was the key bottleneck.</p>
-
-  <p>Then in February 2026, Dario Amodei's Anthropic <a href="https://www.lesswrong.com/posts/HzKuzrKfaDJvQqmjh/responsible-scaling-policy-v3" target="_blank" rel="noopener" class="subtle-link">dropped its commitment to pause development</a> if its own AI became too dangerous.</p>
-
-  <p>So on March 21st, we marched on Anthropic, OpenAI, and xAI to call for a conditional pause, which was <a href="https://www.nytimes.com/2026/04/10/us/open-ai-sam-altman-molotov-cocktail.html" target="_blank" rel="noopener" class="subtle-link">featured</a> in the <a href="https://www.nytimes.com/2026/04/10/briefing/claude-mythos-preview.html" target="_blank" rel="noopener" class="subtle-link">NYT</a>, <a href="https://www.washingtonpost.com/technology/2026/04/18/ai-doom-influencers-safety/" target="_blank" rel="noopener" class="subtle-link">Washington Post</a> and <a href="https://www.theatlantic.com/technology/2026/04/ai-industry-self-improving-bots/686686/" target="_blank" rel="noopener" class="subtle-link">The Atlantic</a>. Since then, Anthropic wrote it expects it "would slow down or temporarily pause" if other labs verifiably did too, and OpenAI <a href="https://openai.com/index/built-to-benefit-everyone-our-plan/" target="_blank" rel="noopener" class="subtle-link">wrote</a> it expects coordination, including slowing frontier development, to become more important.</p>
-
-  <p>But 'expects' isn't a commitment. So since June, we've escalated the pressure. On July 11 we organized the <a href="https://www.instagram.com/p/Day9MyiES_m" target="_blank" rel="noopener" class="subtle-link">largest AI protest in US history</a>. And since July 22, we've been outside OpenAI <a href="/occupy" class="subtle-link">every single day</a>, first in San Francisco, now in New York City too. <strong>We'll keep showing up until Sam Altman commits to pause if the others do.</strong></p>
-
-  <p>They claim they are building safely for the benefit of humanity. <strong>It's time they prove it.</strong></p>
-
-  <div style="text-align: center; margin-top: 2.5rem;">
-    <a href="/join" class="cta-primary">Join the Movement</a>
+<!-- KEY EVENTS -->
+<section class="timeline reveal">
+  <p class="timeline-label">How we got here</p>
+  <div class="timeline-track">
+    <div class="timeline-item"><span class="timeline-date">Feb 2026</span><p class="timeline-text">Anthropic <a href="https://www.lesswrong.com/posts/HzKuzrKfaDJvQqmjh/responsible-scaling-policy-v3" target="_blank" rel="noopener" class="subtle-link">drops its commitment</a> to pause development if its own AI became too dangerous.</p></div>
+    <div class="timeline-item"><span class="timeline-date">Mar 21, 2026</span><p class="timeline-text">We march on Anthropic, OpenAI and xAI for a conditional pause. Covered by the <a href="https://www.nytimes.com/2026/04/10/briefing/claude-mythos-preview.html" target="_blank" rel="noopener" class="subtle-link">NYT</a>, <a href="https://www.washingtonpost.com/technology/2026/04/18/ai-doom-influencers-safety/" target="_blank" rel="noopener" class="subtle-link">Washington Post</a> and <a href="https://www.theatlantic.com/technology/2026/04/ai-industry-self-improving-bots/686686/" target="_blank" rel="noopener" class="subtle-link">The Atlantic</a>.</p></div>
+    <div class="timeline-item"><span class="timeline-date">Jul 11, 2026</span><p class="timeline-text">About 400 people march on OpenAI, Anthropic and Google DeepMind, the <a href="https://www.instagram.com/p/Day9MyiES_m" target="_blank" rel="noopener" class="subtle-link">largest AI protest in US history</a>.</p></div>
+    <div class="timeline-item is-now"><span class="timeline-date">Now</span><p class="timeline-text">After 39 weekdays outside OpenAI in San Francisco, that occupation is paused. We’re in New York <a href="/occupy" class="subtle-link">every weekday</a> at 295 Lafayette St, <strong>until they pause their training runs.</strong></p></div>
   </div>
+  <div class="timeline-cta"><a href="/join" class="cta-primary">Join the Movement</a></div>
 </section>
 
 <!-- MEDIA KIT -->
@@ -1401,41 +1034,8 @@
   </div>
 </section>
 
-<!-- VIDEO MODAL -->
-<div class="video-modal" id="video-modal">
-  <div class="video-container">
-    <video id="demis-video" controls playsinline preload="none">
-      <source data-src="demis_pause.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <button class="close-video" id="close-video">CLOSE ×</button>
-  </div>
-  <div class="video-caption">
-    <a href="https://youtu.be/Xcyox1CP1Wk?si=I0cW8MZfDcbjpr6T&t=704" target="_blank" rel="noopener">
-      Demis Hassabis on an AI Shift Bigger Than Industrial Age<br>
-      Bloomberg · Davos · Jan 20th, 2026
-    </a>
-  </div>
-</div>
-
-<!-- OCCUPY CTA -->
-<section class="event reveal">
-  <p class="event-label">The Occupation</p>
-  <p style="text-align:center; margin: 1.5rem auto 2.5rem; max-width: 600px; font-size: 1.05rem; line-height: 1.6;">Since July 22, we've been Occupying OpenAI.</p>
-  <div class="cta-group">
-    <a href="/occupy" class="cta-primary">Occupy OpenAI</a>
-  </div>
-</section>
-
 <!-- FAQ -->
 <section class="faq reveal">
-  <details class="faq-item">
-    <summary>Is this protest nonviolent?</summary>
-    <div class="faq-answer">
-      Yes. This is a peaceful assembly of concerned citizens, families, and researchers. We are not here to disrupt, and we welcome employees of these companies to join us.
-    </div>
-  </details>
-
   <details class="faq-item">
     <summary>What about China?</summary>
     <div class="faq-answer">
@@ -1478,6 +1078,9 @@
             <path d="M16.6 5.82a4.28 4.28 0 0 1-1.05-2.82h-3.3v13.18a2.59 2.59 0 0 1-2.59 2.59 2.59 2.59 0 1 1 .73-5.07v-3.36a5.9 5.9 0 0 0-.73-.05 5.95 5.95 0 1 0 5.95 5.95V9.01a7.55 7.55 0 0 0 4.4 1.41V7.12a4.28 4.28 0 0 1-3.41-1.3z"/>
           </svg>
         </a>
+        <a href="https://discord.gg/vJJvtdNFQc" target="_blank" rel="noopener" aria-label="Discord">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -1501,75 +1104,8 @@
   <a href="/join" class="floating-cta-btn">Join</a>
 </div>
 
-<!-- FOOTER -->
-
 <!-- Google tag (gtag.js) -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-  // Global protest map preview
-  (function () {
-    const element = document.getElementById('landing-protest-map');
-    if (!element || !window.L) return;
-
-    const protestMap = L.map(element, { center: [38, -15], zoom: 3, minZoom: 2, scrollWheelZoom: false, worldCopyJump: true });
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap',
-      maxZoom: 18
-    }).addTo(protestMap);
-
-    function popupContent(protest) {
-      const wrapper = document.createElement('div');
-      const status = document.createElement('div');
-      status.className = 'landing-popup-status';
-      status.textContent = protest.status;
-      const title = document.createElement('div');
-      title.className = 'landing-popup-title';
-      title.textContent = protest.name;
-      const location = document.createElement('p');
-      location.className = 'landing-popup-location';
-      location.textContent = `${protest.city}, ${protest.country}${protest.address ? ' · ' + protest.address : ''}`;
-      const description = document.createElement('p');
-      description.className = 'landing-popup-copy';
-      description.textContent = protest.description;
-      wrapper.append(status, title, location, description);
-      if (protest.schedule) {
-        const schedule = document.createElement('p');
-        schedule.className = 'landing-popup-copy';
-        schedule.textContent = protest.schedule;
-        wrapper.appendChild(schedule);
-      }
-      if (protest.url) {
-        const link = document.createElement('a');
-        link.className = 'landing-popup-link';
-        link.href = protest.url;
-        link.textContent = 'View action →';
-        wrapper.appendChild(link);
-      }
-      return wrapper;
-    }
-
-    fetch('/data/protests.json')
-      .then(response => {
-        if (!response.ok) throw new Error(`Protest data returned ${response.status}`);
-        return response.json();
-      })
-      .then(data => {
-        const bounds = [];
-        (data.protests || []).forEach(protest => {
-          const icon = L.divIcon({
-            className: '',
-            html: `<div class="landing-map-marker ${protest.status === 'past' ? 'past' : ''}"><span>${protest.organization.charAt(0)}</span></div>`,
-            iconSize: [28, 28],
-            iconAnchor: [14, 28],
-            popupAnchor: [0, -30]
-          });
-          L.marker(protest.coordinates, { icon }).bindPopup(popupContent(protest)).addTo(protestMap);
-          bounds.push(protest.coordinates);
-        });
-        if (bounds.length) protestMap.fitBounds(bounds, { padding: [55, 55], maxZoom: 4 });
-      });
-  })();
-
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -1581,10 +1117,10 @@
   }, { threshold: 0.15 });
   reveals.forEach(el => observer.observe(el));
 
-  // Floating CTA: show after scrolling past hero, hide when event section is visible
+  // Floating CTA: show after scrolling past hero, hide once the signup block is in view
   const floatingCta = document.getElementById('floating-cta');
   const heroSection = document.querySelector('.hero');
-  const eventSection = document.querySelector('.event');
+  const endSection = document.querySelector('.signup');
 
   const floatObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1596,7 +1132,7 @@
           floatingCta.classList.remove('visible');
         }
       }
-      if (entry.target === eventSection) {
+      if (entry.target === endSection) {
         if (entry.isIntersecting) {
           floatingCta.classList.add('hide');
         } else if (!heroSection.getBoundingClientRect().bottom > 0) {
@@ -1607,7 +1143,7 @@
   }, { threshold: 0.1 });
 
   floatObserver.observe(heroSection);
-  floatObserver.observe(eventSection);
+  if (endSection) floatObserver.observe(endSection);
 
   // Keyboard shortcut: press R to join the movement
   document.addEventListener('keydown', (e) => {
@@ -1616,48 +1152,7 @@
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
       window.location.href = '/join';
     }
-    if (e.key === 'Escape') {
-       closeVideoModal();
-    }
   });
-
-  // Video Modal Logic
-  const demisTrigger = document.getElementById('demis-trigger');
-  const videoModal = document.getElementById('video-modal');
-  const demisVideo = document.getElementById('demis-video');
-  const closeVideo = document.getElementById('close-video');
-
-  function openVideoModal() {
-    var source = demisVideo.querySelector('source');
-    if (source.dataset.src) {
-      source.src = source.dataset.src;
-      demisVideo.load();
-    }
-    videoModal.classList.add('active');
-    demisVideo.play();
-  }
-
-  function closeVideoModal() {
-    videoModal.classList.remove('active');
-    demisVideo.pause();
-    demisVideo.currentTime = 0;
-  }
-
-  if (demisTrigger) {
-    demisTrigger.addEventListener('click', openVideoModal);
-  }
-  
-  if (closeVideo) {
-    closeVideo.addEventListener('click', closeVideoModal);
-  }
-
-  if (videoModal) {
-    videoModal.addEventListener('click', (e) => {
-      if (e.target === videoModal) {
-        closeVideoModal();
-      }
-    });
-  }
 </script>
 
 <script>
@@ -1736,46 +1231,32 @@
 </script>
 
 <script>
-  // Press coverage: filter tabs + expand/collapse
-  (function () {
-    var LIMIT = 9, expanded = false, filter = 'all';
-    var tabs = document.querySelectorAll('.pc-tab');
-    var cards = document.querySelectorAll('.pc-grid .pc-card');
-    var grid = document.getElementById('pc-grid');
-    var expandBtn = document.getElementById('pc-expand');
-    if (!grid || !expandBtn) return;
-    var expandLabel = expandBtn.querySelector('.pc-expand-label');
-    var expandArrow = expandBtn.querySelector('.pc-expand-arrow');
-    function render() {
-      var shown = 0, matching = 0;
-      cards.forEach(function (c) {
-        var ok = filter === 'all' || (c.dataset.tags || '').split(' ').indexOf(filter) !== -1;
-        if (ok) matching++;
-        if (ok && !expanded && shown >= LIMIT) ok = false;
-        c.hidden = !ok; if (ok) shown++;
-      });
-      var rest = matching - LIMIT;
-      expandBtn.hidden = rest <= 0;
-      expandBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-      expandLabel.textContent = expanded ? 'Show fewer' : 'Show ' + rest + ' more ' + (rest === 1 ? 'story' : 'stories');
-      expandArrow.textContent = expanded ? '↑' : '↓';
+  // Press coverage: one horizontally scrollable row per coverage type
+  document.querySelectorAll('.pc-row').forEach(function (row) {
+    var track = row.querySelector('.pc-track');
+    var nav = row.querySelector('.pc-nav');
+    var arrows = row.querySelectorAll('.pc-arrow');
+    if (!track || !nav) return;
+
+    function step() {
+      var card = track.querySelector('.pc-card');
+      return card ? card.getBoundingClientRect().width + 16 : track.clientWidth;
     }
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        filter = tab.dataset.filter; expanded = false;
-        tabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
-        render();
+    function sync() {
+      var overflow = track.scrollWidth - track.clientWidth;
+      nav.hidden = overflow < 4;
+      arrows[0].disabled = track.scrollLeft < 4;
+      arrows[1].disabled = track.scrollLeft > overflow - 4;
+    }
+    arrows.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        track.scrollBy({ left: Number(btn.dataset.dir) * step(), behavior: 'smooth' });
       });
     });
-    expandBtn.addEventListener('click', function () {
-      expanded = !expanded; render();
-      if (!expanded) {
-        var y = grid.getBoundingClientRect().top + window.scrollY - 140;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    });
-    render();
-  })();
+    track.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  });
 </script>
 
 </body>
