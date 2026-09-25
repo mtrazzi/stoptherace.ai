@@ -927,6 +927,22 @@
     .pc-nav { display: none; }
   }
 
+  /* ---- UPCOMING EVENTS ---- */
+  .ev { padding: 4rem 2rem; }
+  .ev-inner { max-width: 760px; margin: 0 auto; }
+  .ev-kicker { display: block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 0.4rem; }
+  .ev-title { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; font-size: clamp(1.4rem, 2.6vw, 1.9rem); margin-bottom: 1.5rem; }
+  /* red corner brackets instead of a full border */
+  .ev-box { position: relative; padding: 14px; }
+  .ev-box::before, .ev-box::after { content: ''; position: absolute; width: 36px; height: 36px; border: 2px solid var(--red); }
+  .ev-box::before { top: 0; left: 0; border-right: none; border-bottom: none; }
+  .ev-box::after { bottom: 0; right: 0; border-left: none; border-top: none; }
+  .ev-frame { display: block; width: 100%; height: 520px; border: 0; background: #131313; }
+  .ev-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.9rem 1.1rem; background: #131313; border-top: 1px solid rgba(214,40,40,0.35); font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,236,228,0.7); }
+  .ev-foot a { color: var(--white); background: var(--red); padding: 0.5rem 0.9rem; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
+  .ev-foot a:hover { background: var(--red-glow); }
+  @media (max-width: 600px) { .ev { padding: 3rem 1rem; } .ev-frame { height: 480px; } .ev-foot { flex-direction: column; text-align: center; } }
+
   /* ---- MOBILE ---- */
   @media (max-width: 600px) {
     .demand { padding: 4rem 1.5rem; }
@@ -950,6 +966,19 @@
     <a href="/join" class="hero-cta secondary">Join the Movement</a>
   </div>
 </section>
+
+<!-- UPCOMING EVENTS -->
+<section class="ev reveal" id="events"><div class="ev-inner">
+  <span class="ev-kicker">Get involved</span>
+  <h2 class="ev-title">Upcoming events</h2>
+  <div class="ev-box">
+    <iframe class="ev-frame" src="https://luma.com/embed/calendar/cal-WNFStRRMsLxeEZv/events?lt=dark" title="Stop The AI Race events on Luma" loading="lazy" allowfullscreen></iframe>
+    <div class="ev-foot">
+      <span>Never miss an action</span>
+      <a href="https://luma.com/stop-the-ai-race" target="_blank" rel="noopener">Follow the calendar &rarr;</a>
+    </div>
+  </div>
+</div></section>
 
 <!-- PRESS COVERAGE -->
 <section class="pc-section reveal" id="press-coverage"><div class="pc-inner">
@@ -1005,8 +1034,8 @@
   <div class="timeline-track">
     <div class="timeline-item"><span class="timeline-date">Feb 2026</span><p class="timeline-text">Anthropic <a href="https://www.lesswrong.com/posts/HzKuzrKfaDJvQqmjh/responsible-scaling-policy-v3" target="_blank" rel="noopener" class="subtle-link">drops its commitment</a> to pause development if its own AI became too dangerous.</p></div>
     <div class="timeline-item"><span class="timeline-date">Mar 21, 2026</span><p class="timeline-text">We march on Anthropic, OpenAI and xAI for a conditional pause. Covered by the <a href="https://www.nytimes.com/2026/04/10/briefing/claude-mythos-preview.html" target="_blank" rel="noopener" class="subtle-link">NYT</a>, <a href="https://www.washingtonpost.com/technology/2026/04/18/ai-doom-influencers-safety/" target="_blank" rel="noopener" class="subtle-link">Washington Post</a> and <a href="https://www.theatlantic.com/technology/2026/04/ai-industry-self-improving-bots/686686/" target="_blank" rel="noopener" class="subtle-link">The Atlantic</a>.</p></div>
-    <div class="timeline-item"><span class="timeline-date">Jul 11, 2026</span><p class="timeline-text">About 400 people march on OpenAI, Anthropic and Google DeepMind, the <a href="https://www.instagram.com/p/Day9MyiES_m" target="_blank" rel="noopener" class="subtle-link">largest AI protest in US history</a>.</p></div>
-    <div class="timeline-item is-now"><span class="timeline-date">Now</span><p class="timeline-text">After 39 weekdays outside OpenAI in San Francisco, that occupation is paused. We’re in New York <a href="/occupy" class="subtle-link">every weekday</a> at 295 Lafayette St, <strong>until they pause their training runs.</strong></p></div>
+    <div class="timeline-item"><span class="timeline-date">Jul 11, 2026</span><p class="timeline-text">About 400 people, including <a href="https://theprotest.ai" target="_blank" rel="noopener" class="subtle-link">12 coalition partners</a>, marched on OpenAI, Anthropic and Google DeepMind, the <a href="https://www.instagram.com/p/Day9MyiES_m" target="_blank" rel="noopener" class="subtle-link">largest AI protest in US history</a>.</p></div>
+    <div class="timeline-item is-now"><span class="timeline-date">Jul 20, 2026 &ndash; Now</span><p class="timeline-text">Since July 22 in SF, and Aug 18 in NYC, we&rsquo;ve been Occupying OpenAI asking Sam Altman to call for an AI Treaty. After Altman and Dario called for a pacing on Sep 12, we stopped our protest in SF, but continue in NYC.</p></div>
   </div>
   <div class="timeline-cta"><a href="/join" class="cta-primary">Join the Movement</a></div>
 </section>
