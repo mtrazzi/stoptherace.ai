@@ -498,14 +498,24 @@
   }
 
   .signup-form {
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     gap: 0.5rem;
     max-width: 480px;
     margin: 0 auto;
   }
 
-  .signup-form input[type="email"] {
-    flex: 1;
+  .signup-form input[type="email"],
+  .signup-form button {
+    grid-column: 1 / -1;
+  }
+
+  .signup-form .signup-hp {
+    display: none;
+  }
+
+  .signup-form input {
+    min-width: 0;
     padding: 0.75rem 1rem;
     font-family: var(--font-body);
     font-size: 0.95rem;
@@ -517,11 +527,11 @@
     transition: border-color 0.2s;
   }
 
-  .signup-form input[type="email"]::placeholder {
+  .signup-form input::placeholder {
     color: rgba(240, 236, 228, 0.35);
   }
 
-  .signup-form input[type="email"]:focus {
+  .signup-form input:focus {
     border-color: var(--red);
     box-shadow: 0 0 8px rgba(214, 40, 40, 0.2);
   }
@@ -554,10 +564,15 @@
     margin-top: 1rem;
   }
 
+  .signup-error {
+    display: none;
+    font-size: 0.9rem;
+    color: rgba(240, 236, 228, 0.7);
+    margin-top: 1rem;
+  }
+
   @media (max-width: 600px) {
-    .signup-form {
-      flex-direction: column;
-    }
+    .signup-form { grid-template-columns: 1fr; }
   }
 
   /* ---- FAQ ---- */
@@ -1108,12 +1123,17 @@
 <section class="signup reveal">
   <div class="signup-title">Stay informed</div>
   <p class="signup-subtitle">Get updates on the movement to stop the AI race.</p>
-  <form class="signup-form" id="signup-form" action="https://formspree.io/f/mojkrzja" method="POST">
-    <input type="email" name="email" placeholder="Your email" required>
+  <form class="signup-form" id="signup-form">
+    <input type="text" name="fullname" placeholder="Name" autocomplete="name" required>
+    <input type="text" name="zip" placeholder="Zip code" autocomplete="postal-code" required>
+    <input type="email" name="email" placeholder="Email" autocomplete="email" required>
+    <input type="text" name="website" class="signup-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <button type="submit">Sign up</button>
   </form>
   <p class="signup-thanks" id="signup-thanks">Thanks for signing up!</p>
+  <p class="signup-error" id="signup-error"></p>
 </section>
+<script src="/signup.js"></script>
 
 <!-- FLOATING CTA -->
 <div class="floating-cta" id="floating-cta">
@@ -1218,25 +1238,6 @@
 <script src="/map.js"></script>
 <script>
   initRouteMap('route-map');
-</script>
-
-<script>
-  // Email signup form
-  const signupForm = document.getElementById('signup-form');
-  const signupThanks = document.getElementById('signup-thanks');
-  signupForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    fetch(signupForm.action, {
-      method: 'POST',
-      body: new FormData(signupForm),
-      headers: { 'Accept': 'application/json' }
-    }).then(function(response) {
-      if (response.ok) {
-        signupForm.style.display = 'none';
-        signupThanks.style.display = 'block';
-      }
-    });
-  });
 </script>
 
 </body>

@@ -150,7 +150,8 @@
     font-family: var(--font-display);
     font-weight: 600;
     font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    max-width: 600px;
+    max-width: 700px;
+    text-wrap: balance;
     margin: 1.5rem auto 0;
     line-height: 1.5;
     color: var(--white);
@@ -483,14 +484,24 @@
   }
 
   .signup-form {
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     gap: 0.5rem;
     max-width: 480px;
     margin: 0 auto;
   }
 
-  .signup-form input[type="email"] {
-    flex: 1;
+  .signup-form input[type="email"],
+  .signup-form button {
+    grid-column: 1 / -1;
+  }
+
+  .signup-form .signup-hp {
+    display: none;
+  }
+
+  .signup-form input {
+    min-width: 0;
     padding: 0.75rem 1rem;
     font-family: var(--font-body);
     font-size: 0.95rem;
@@ -502,11 +513,11 @@
     transition: border-color 0.2s;
   }
 
-  .signup-form input[type="email"]::placeholder {
+  .signup-form input::placeholder {
     color: rgba(240, 236, 228, 0.35);
   }
 
-  .signup-form input[type="email"]:focus {
+  .signup-form input:focus {
     border-color: var(--red);
     box-shadow: 0 0 8px rgba(214, 40, 40, 0.2);
   }
@@ -539,10 +550,15 @@
     margin-top: 1rem;
   }
 
+  .signup-error {
+    display: none;
+    font-size: 0.9rem;
+    color: rgba(240, 236, 228, 0.7);
+    margin-top: 1rem;
+  }
+
   @media (max-width: 600px) {
-    .signup-form {
-      flex-direction: column;
-    }
+    .signup-form { grid-template-columns: 1fr; }
   }
 
   /* ---- SOCIAL ---- */
@@ -960,10 +976,9 @@
     <source src="walking_video.mp4" type="video/mp4">
   </video>
   <h1 class="hero-title">Stop The<br><span class="red">AI Race</span></h1>
-  <p class="hero-subtitle">On July 11, about 400 protesters marched on AI companies to stop the AI race. And now, since July 22, we're Occupying OpenAI.</p>
+  <p class="hero-subtitle">On July 11, about 400 protesters marched on AI companies to stop the AI race. And since July 22, we're occupying OpenAI.</p>
   <div class="hero-ctas">
-    <a href="/occupy" class="hero-cta">Occupy OpenAI</a>
-    <a href="/join" class="hero-cta secondary">Join the Movement</a>
+    <a href="/join" class="hero-cta">Join the Movement</a>
   </div>
 </section>
 
@@ -1035,7 +1050,7 @@
     <div class="timeline-item"><span class="timeline-date">Feb 2026</span><p class="timeline-text">Anthropic <a href="https://www.lesswrong.com/posts/HzKuzrKfaDJvQqmjh/responsible-scaling-policy-v3" target="_blank" rel="noopener" class="subtle-link">drops its commitment</a> to pause development if its own AI became too dangerous.</p></div>
     <div class="timeline-item"><span class="timeline-date">Mar 21, 2026</span><p class="timeline-text">We march on Anthropic, OpenAI and xAI for a conditional pause. Covered by the <a href="https://www.nytimes.com/2026/04/10/briefing/claude-mythos-preview.html" target="_blank" rel="noopener" class="subtle-link">NYT</a>, <a href="https://www.washingtonpost.com/technology/2026/04/18/ai-doom-influencers-safety/" target="_blank" rel="noopener" class="subtle-link">Washington Post</a> and <a href="https://www.theatlantic.com/technology/2026/04/ai-industry-self-improving-bots/686686/" target="_blank" rel="noopener" class="subtle-link">The Atlantic</a>.</p></div>
     <div class="timeline-item"><span class="timeline-date">Jul 11, 2026</span><p class="timeline-text">About 400 people, including <a href="https://theprotest.ai" target="_blank" rel="noopener" class="subtle-link">12 coalition partners</a>, marched on OpenAI, Anthropic and Google DeepMind, the <a href="https://www.instagram.com/p/Day9MyiES_m" target="_blank" rel="noopener" class="subtle-link">largest AI protest in US history</a>.</p></div>
-    <div class="timeline-item is-now"><span class="timeline-date">Jul 22, 2026 &ndash; Now</span><p class="timeline-text">Since July 22 in SF, and Aug 18 in NYC, we&rsquo;ve been Occupying OpenAI asking Sam Altman to call for an AI Treaty. After Altman and Dario called for a pacing on Sep 12, we stopped our protest in SF, but continue in NYC.</p></div>
+    <div class="timeline-item is-now"><span class="timeline-date">Jul 22, 2026 &ndash; Now</span><p class="timeline-text">Since July 22 in SF, and Aug 18 in NYC, we&rsquo;ve been <a href="/occupy" class="subtle-link">Occupying OpenAI</a> asking Sam Altman to call for an AI Treaty. After Altman and Dario called for a pacing on Sep 12, we stopped our protest in SF, but continue in NYC.</p></div>
   </div>
   <div class="timeline-cta"><a href="/join" class="cta-primary">Join the Movement</a></div>
 </section>
@@ -1119,12 +1134,17 @@
 <section class="signup reveal">
   <div class="signup-title">Stay informed</div>
   <p class="signup-subtitle">Get updates on the movement to stop the AI race.</p>
-  <form class="signup-form" id="signup-form" action="https://formspree.io/f/mojkrzja" method="POST">
-    <input type="email" name="email" placeholder="Your email" required>
+  <form class="signup-form" id="signup-form">
+    <input type="text" name="fullname" placeholder="Name" autocomplete="name" required>
+    <input type="text" name="zip" placeholder="Zip code" autocomplete="postal-code" required>
+    <input type="email" name="email" placeholder="Email" autocomplete="email" required>
+    <input type="text" name="website" class="signup-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <button type="submit">Sign up</button>
   </form>
   <p class="signup-thanks" id="signup-thanks">Thanks for signing up!</p>
+  <p class="signup-error" id="signup-error"></p>
 </section>
+<script src="/signup.js"></script>
 
 
 <!-- FLOATING CTA -->
@@ -1241,22 +1261,6 @@
     });
   })();
 
-  // Email signup form
-  const signupForm = document.getElementById('signup-form');
-  const signupThanks = document.getElementById('signup-thanks');
-  signupForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    fetch(signupForm.action, {
-      method: 'POST',
-      body: new FormData(signupForm),
-      headers: { 'Accept': 'application/json' }
-    }).then(function(response) {
-      if (response.ok) {
-        signupForm.style.display = 'none';
-        signupThanks.style.display = 'block';
-      }
-    });
-  });
 </script>
 
 <script>
