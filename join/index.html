@@ -365,6 +365,20 @@
     margin-top: 1rem;
   }
 
+  /* ---- CALENDAR ---- */
+  .ev { padding: 0 2rem 3rem; max-width: 680px; margin: 0 auto; scroll-margin-top: 2rem; }
+  .ev-kicker { display: block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 0.4rem; }
+  .ev-title { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; font-size: clamp(1.4rem, 2.6vw, 1.9rem); margin-bottom: 1.5rem; }
+  .ev-box { position: relative; padding: 14px; }
+  .ev-box::before, .ev-box::after { content: ''; position: absolute; width: 36px; height: 36px; border: 2px solid var(--red); }
+  .ev-box::before { top: 0; left: 0; border-right: none; border-bottom: none; }
+  .ev-box::after { bottom: 0; right: 0; border-left: none; border-top: none; }
+  .ev-frame { display: block; width: 100%; height: 520px; border: 0; background: #131313; }
+  .ev-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.9rem 1.1rem; background: #131313; border-top: 1px solid rgba(214,40,40,0.35); font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,236,228,0.7); }
+  .ev-foot a { color: var(--white); background: var(--red); padding: 0.5rem 0.9rem; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
+  .ev-foot a:hover { background: var(--red-glow); }
+  @media (max-width: 600px) { .ev { padding: 0 1rem 3rem; } .ev-frame { height: 480px; } .ev-foot { flex-direction: column; text-align: center; } }
+
   /* ---- ANIMATIONS ---- */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -467,6 +481,19 @@
     </div>
   </details>
 </div>
+
+<!-- CALENDAR -->
+<section class="ev reveal" id="calendar">
+  <span class="ev-kicker">Calendar</span>
+  <h2 class="ev-title">Meetings &amp; calls</h2>
+  <div class="ev-box">
+    <iframe class="ev-frame" src="https://luma.com/embed/calendar/cal-WNFStRRMsLxeEZv/events?lt=dark" title="Stop The AI Race events on Luma" loading="lazy" allowfullscreen></iframe>
+    <div class="ev-foot">
+      <span>Never miss an action</span>
+      <a href="https://luma.com/stop-the-ai-race" target="_blank" rel="noopener">Follow the calendar &rarr;</a>
+    </div>
+  </div>
+</section>
 
 <!-- EMAIL SIGNUP -->
 <section class="signup reveal">
