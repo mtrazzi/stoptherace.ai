@@ -958,26 +958,19 @@
   .ev { padding: 4rem 2rem; }
   .ev-inner { max-width: 760px; margin: 0 auto; }
   .ev-kicker { display: block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); margin-bottom: 0.4rem; }
-  .ev-kicker + .ev-box { margin-top: 0.9rem; }
   .ev-title { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; font-size: clamp(1.4rem, 2.6vw, 1.9rem); margin-bottom: 1.5rem; }
   /* red corner brackets instead of a full border */
   .ev-box { position: relative; padding: 14px; }
   .ev-box::before, .ev-box::after { content: ''; position: absolute; width: 36px; height: 36px; border: 2px solid var(--red); }
   .ev-box::before { top: 0; left: 0; border-right: none; border-bottom: none; }
   .ev-box::after { bottom: 0; right: 0; border-left: none; border-top: none; }
-  .ev-feature { display: block; color: var(--white); text-decoration: none; }
-  .ev-img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
-  .ev-card { background: #131313; padding: 1.75rem 1.5rem; border-top: 1px solid rgba(214,40,40,0.35); }
-  .ev-when { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); }
-  .ev-name { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; font-size: clamp(2rem, 5vw, 3.2rem); margin: 0.5rem 0 1.25rem; }
-  .ev-sched { list-style: none; font-size: 0.95rem; line-height: 1.5; color: rgba(240,236,228,0.8); margin-bottom: 1.5rem; }
-  .ev-sched li { display: flex; gap: 0.9rem; padding: 0.3rem 0; }
-  .ev-sched b { flex: 0 0 3.2rem; font-family: var(--font-mono); font-weight: 600; font-size: 0.85rem; color: var(--white); }
-  .ev-rsvp { display: inline-block; font-family: var(--font-mono); font-weight: 600; font-size: 1rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--red); padding: 0.9rem 1.5rem; transition: background 0.2s; }
-  .ev-feature:hover .ev-rsvp { background: var(--red-glow); }
-  .ev-more { display: block; text-align: center; margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); text-decoration: none; }
-  .ev-more:hover { color: var(--red); }
-  @media (max-width: 600px) { .ev { padding: 3rem 1rem; } .ev-card { padding: 1.5rem 1.1rem; } .ev-rsvp { display: block; text-align: center; } }
+  @media (max-width: 600px) { .ev { padding: 3rem 1rem; } }
+
+  .ev-frame { display: block; width: 100%; height: 520px; border: 0; background: #131313; }
+  .ev-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.9rem 1.1rem; background: #131313; border-top: 1px solid rgba(214,40,40,0.35); font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,236,228,0.7); }
+  .ev-foot a { color: var(--white); background: var(--red); padding: 0.5rem 0.9rem; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
+  .ev-foot a:hover { background: var(--red-glow); }
+  @media (max-width: 600px) { .ev-frame { height: 480px; } .ev-foot { flex-direction: column; text-align: center; } }
 
   /* ---- MOBILE ---- */
   @media (max-width: 600px) {
@@ -1005,23 +998,15 @@
 
 <!-- NEXT ACTION -->
 <section class="ev reveal" id="events"><div class="ev-inner">
-  <span class="ev-kicker">Next action</span>
-  <a class="ev-box ev-feature" href="https://partiful.com/e/IKicFMI9yxmA0qZOJN0E" target="_blank" rel="noopener">
-    <img class="ev-img" src="/nov14.jpg" alt="Stop Building AI march, November 14" width="1200" height="800">
-    <div class="ev-card">
-      <div class="ev-when">Saturday, Nov 14 &middot; 12&ndash;3 PM &middot; San Francisco</div>
-      <h2 class="ev-name">Stop Building AI</h2>
-      <ul class="ev-sched">
-        <li><b>12:00</b> Rally at OpenAI (1455 3rd St)</li>
-        <li><b>12:30</b> Speeches &amp; chants</li>
-        <li><b>1:00</b> Walk to the Veterans Building (401 Van Ness Ave), where the UN Charter was signed</li>
-        <li><b>2:30</b> Rally at the Veterans Building</li>
-        <li><b>3:00</b> Afterparty at Civic Center Plaza</li>
-      </ul>
-      <span class="ev-rsvp">RSVP on Partiful &rarr;</span>
+  <span class="ev-kicker">Get involved</span>
+  <h2 class="ev-title">Upcoming events</h2>
+  <div class="ev-box">
+    <iframe class="ev-frame" src="https://luma.com/embed/calendar/cal-WNFStRRMsLxeEZv/events?lt=dark" title="Stop The AI Race events on Luma" loading="lazy" allowfullscreen></iframe>
+    <div class="ev-foot">
+      <span>Never miss an action</span>
+      <a href="https://luma.com/stop-the-ai-race" target="_blank" rel="noopener">Follow the calendar &rarr;</a>
     </div>
-  </a>
-  <a class="ev-more" href="/join#calendar">Weekly meetings &amp; calls &rarr;</a>
+  </div>
 </div></section>
 
 <!-- PRESS COVERAGE -->
@@ -1178,7 +1163,7 @@
 
 <!-- FLOATING CTA -->
 <div class="floating-cta" id="floating-cta">
-  <span class="floating-cta-text">Join the movement <kbd class="kbd">R</kbd></span>
+  <span class="floating-cta-text">Join the movement <kbd class="kbd">J</kbd></span>
   <a href="/join" class="floating-cta-btn">Join</a>
 </div>
 
@@ -1223,9 +1208,9 @@
   floatObserver.observe(heroSection);
   if (endSection) floatObserver.observe(endSection);
 
-  // Keyboard shortcut: press R to join the movement
+  // Keyboard shortcut: press J to join the movement
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'r' || e.key === 'R') {
+    if (e.key === 'j' || e.key === 'J') {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
       window.location.href = '/join';
