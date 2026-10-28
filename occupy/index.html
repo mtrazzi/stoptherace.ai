@@ -319,6 +319,23 @@
     max-width: 100% !important;
   }
 
+  .embeds-row .embed-block {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .embed-caption {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    text-align: center;
+    margin-bottom: 0.25rem;
+  }
+
+  .embed-caption.past { color: var(--gray); }
+
   /* ---- CTA ---- */
   .cta-section {
     padding: 3rem 2rem 5rem;
@@ -400,8 +417,15 @@
 <section class="embeds reveal">
   <div class="embeds-row">
     <div class="embed-block">
+      <div class="embed-caption">NYC &middot; ongoing</div>
       <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
         <a href="https://twitter.com/canadabirdie/status/2089863463845736938"></a>
+      </blockquote>
+    </div>
+    <div class="embed-block">
+      <div class="embed-caption past">SF &middot; July 22 &ndash; Sept 2026 &middot; paused</div>
+      <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
+        <a href="https://twitter.com/MichaelTrazzi/status/2082878640979939555"></a>
       </blockquote>
     </div>
   </div>
