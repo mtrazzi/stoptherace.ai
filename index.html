@@ -991,8 +991,16 @@
   <h1 class="hero-title">Stop The<br><span class="red">AI Race</span></h1>
   <p class="hero-subtitle">On November 14, 1000 of us marched in six countries for an AI Treaty. This is just the beginning.</p>
   <div class="hero-ctas">
-    <a href="/join" class="hero-cta">Join the Movement</a>
+    <a href="https://partiful.com/e/wjTfLLps7J3XRKRzS64i" target="_blank" rel="noopener" class="hero-cta" id="cta-banrsi">Protest Tomorrow</a>
+    <a href="/join" class="hero-cta gray" id="cta-join">Join the Movement</a>
   </div>
+  <script>
+    // Ban RSI rally, Thu Nov 19 2026 11am PT: hide the button once it's over and make Join red again.
+    if (Date.now() > Date.parse('2026-11-19T13:00:00-08:00')) {
+      document.getElementById('cta-banrsi').remove();
+      document.getElementById('cta-join').classList.remove('gray');
+    }
+  </script>
 </section>
 
 <!-- NEXT ACTION -->
