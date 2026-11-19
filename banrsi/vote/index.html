@@ -23,7 +23,7 @@
       <div>
         <p class="eyebrow">Ban RSI · San Francisco · Nov 19</p>
         <h1>Which would you click?</h1>
-        <p class="lede">Tap the photo you'd rather see in your feed. Your picks decide what we post. 16 photos, 120 match-ups.</p>
+        <p class="lede">Tap the photo you'd rather see in your feed. Your picks decide what we post. 12 photos, 66 match-ups.</p>
       </div>
       <p class="count"><b id="count">0</b> picks</p>
     </div>
@@ -56,7 +56,7 @@
 </main>
 <footer class="foot">© 2026 Ban RSI / <a href="https://stoptherace.ai/">Stop the AI Race</a>. All rights reserved.</footer>
 <script>
-window.VOTE = { album: 'banrsi', count: 16 };
+window.VOTE = { album: 'banrsi', count: 16, hidden: [8, 11, 13, 15] };   // hidden: 0H9A3011, 0H9A3043, 0H9A3124, 0H9A2908
 // The vote API is the same Cloudflare Worker as aitreatymarch.org/vote (code in the aitreatymarch repo, /vote-api).
 window.VOTE_API = 'https://aitreatymarch-vote.vote-api.workers.dev';
 </script>

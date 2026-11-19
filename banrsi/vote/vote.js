@@ -2,9 +2,12 @@
 // Each pick goes to the vote API (window.VOTE_API, the aitreatymarch-vote Cloudflare Worker, album "banrsi").
 // "Top picks" ranks the photos with rank.js (Bradley–Terry fit + bootstrap).
 (function () {
-  const { album, count } = window.VOTE;
+  const { album, count, hidden = [] } = window.VOTE;
   const API = (window.VOTE_API || '').replace(/\/$/, '');
-  const ids = Array.from({ length: count }, (_, i) => `${album}-${String(i + 1).padStart(3, '0')}`);
+  // Photo numbers stay fixed (votes are stored by id); `hidden` takes photos out of the face-off and the ranking.
+  const allIds = Array.from({ length: count }, (_, i) => `${album}-${String(i + 1).padStart(3, '0')}`);
+  const ids = allIds.filter((_, i) => !hidden.includes(i + 1));
+  const n = ids.length;
   const src = id => `/banrsi/vote/p/${id}.webp?v=3`;   // bump v when the photo files change (v=3: diagonal PREVIEW ONLY watermark)
   const TOPK = window.VOTE.topK || 3;
   const $ = s => document.querySelector(s);
@@ -34,13 +37,13 @@
   // ---------- voting ----------
   const pickA = $('#pickA'), pickB = $('#pickB');
   let current = null, next = null, busy = false;
-  const allPairs = count * (count - 1) / 2;
+  const allPairs = n * (n - 1) / 2;
   const taken = p => seenPairs.has(key(p)) || (current && key(p) === key(current));
 
   // Unseen pairs, least-shown photos first, picked at random from the best third.
   function makePair() {
     const open = [];
-    for (let i = 0; i < count; i++) for (let j = i + 1; j < count; j++)
+    for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++)
       if (!taken([ids[i], ids[j]])) open.push([ids[i], ids[j]]);
     if (!open.length) return null;
     open.sort((x, y) => (shows[x[0]] + shows[x[1]]) - (shows[y[0]] + shows[y[1]]) || Math.random() - 0.5);
@@ -150,7 +153,7 @@
       : `${(d.votes || 0).toLocaleString()} votes · ${(d.voters || 0).toLocaleString()} people voting`;
     if (!d.votes) { grid.innerHTML = '<p class="empty">No votes yet.</p>'; return; }
     await new Promise(r => setTimeout(r, 0));   // let "Loading…" paint before the number crunching
-    const rows = window.rankPhotos(ids, d.pairs, { topK: TOPK }).filter(r => r.shows > 0);
+    const rows = window.rankPhotos(allIds, d.pairs, { topK: TOPK, among: ids }).filter(r => r.shows > 0);
     grid.innerHTML = rows.map((r, i) => {
       const [cls, label] = verdict(r);
       return `
@@ -161,7 +164,7 @@
           <div class="score"><b>${Math.round(r.score)}</b><span>likely ${Math.round(r.low)}–${Math.round(r.high)}</span></div>
           <div class="range" aria-hidden="true"><i style="left:${r.low}%;width:${Math.max(1, r.high - r.low)}%"></i><u style="left:${r.score}%"></u></div>
           <dl><div><dt>Chance #1</dt><dd>${pctTxt(r.pFirst)}</dd></div><div><dt>Top ${TOPK}</dt><dd>${pctTxt(r.pTop)}</dd></div><div><dt>Won</dt><dd>${r.wins}/${r.shows}</dd></div></dl>
-          <span class="pid">Photo #${ids.indexOf(r.id) + 1}</span>
+          <span class="pid">Photo #${allIds.indexOf(r.id) + 1}</span>
         </figcaption>
       </figure>`;
     }).join('');
