@@ -5,7 +5,7 @@
   const { album, count } = window.VOTE;
   const API = (window.VOTE_API || '').replace(/\/$/, '');
   const ids = Array.from({ length: count }, (_, i) => `${album}-${String(i + 1).padStart(3, '0')}`);
-  const src = id => `/banrsi/vote/p/${id}.webp`;
+  const src = id => `/banrsi/vote/p/${id}.webp?v=2`;   // bump v when the photo files change (watermark added: v=2)
   const TOPK = window.VOTE.topK || 3;
   const $ = s => document.querySelector(s);
 
