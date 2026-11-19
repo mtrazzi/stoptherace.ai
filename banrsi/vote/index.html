@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pick the Photos · Ban RSI</title>
+<meta name="description" content="Help pick the best photos from the Ban RSI protest. Two photos at a time, tap the one you'd rather click on.">
+<meta name="robots" content="noindex, noimageindex">
+<link rel="icon" href="/banrsi/logo-pinwheel.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/banrsi/vote/vote.css">
+</head>
+<body class="loading">
+<header class="top">
+  <a class="brand" href="https://banrsi.ai/"><img src="/banrsi/logo-pinwheel.svg" alt="">BAN RSI</a>
+  <nav><a href="#" data-view="vote">Vote</a><a href="#top" data-view="top">Top picks</a></nav>
+</header>
+<main class="wrap">
+  <section id="voteView">
+    <div class="vote-head">
+      <div>
+        <p class="eyebrow">Ban RSI · San Francisco · Nov 19</p>
+        <h1>Which would you click?</h1>
+        <p class="lede">Tap the photo you'd rather see in your feed. Your picks decide what we post. 13 photos, 78 match-ups.</p>
+      </div>
+      <p class="count"><b id="count">0</b> picks</p>
+    </div>
+    <div class="pair">
+      <button class="pick" id="pickA" aria-label="Pick the left photo"><span class="key">1</span><div class="photo"></div><div class="shield"></div></button>
+      <button class="pick" id="pickB" aria-label="Pick the right photo"><span class="key">2</span><div class="photo"></div><div class="shield"></div></button>
+    </div>
+    <div class="empty" id="done" hidden>
+      <h1 style="font-size:clamp(1.7rem,4.5vw,2.6rem);color:var(--black);margin-bottom:.6rem">You've seen every pair. Thank you!</h1>
+      <a class="btn solid" href="#top">See top picks →</a>
+    </div>
+    <div class="actions">
+      <button class="btn" id="skip">Can't decide, skip</button>
+      <span class="hint keys">Keys: ← / → to pick, S to skip</span>
+      <a class="btn solid" id="toTop" href="#top" hidden>See top picks →</a>
+    </div>
+    <p class="note">Photos © Ban RSI / Stop the AI Race, shared for this vote only. Please don't download or repost them; we'll share the final picks ourselves.</p>
+  </section>
+  <section id="topView" hidden>
+    <div class="board-head">
+      <div>
+        <p class="eyebrow" id="boardMeta">&nbsp;</p>
+        <h1>Top picks so far</h1>
+      </div>
+      <a class="btn solid" href="#">Keep voting →</a>
+    </div>
+    <p class="explain"><b>Score</b> = chance the photo beats an average photo from this set (50 = average). <b>Likely</b> = the range the score probably sits in; it narrows as votes come in. <b>Chance #1 / Top 3</b> = how often it lands there when we re-run the ranking on randomly resampled votes.</p>
+    <div class="grid" id="grid"></div>
+  </section>
+</main>
+<footer class="foot">© 2026 Ban RSI / <a href="https://stoptherace.ai/">Stop the AI Race</a>. All rights reserved.</footer>
+<script>
+window.VOTE = { album: 'banrsi', count: 13 };
+// The vote API is the same Cloudflare Worker as aitreatymarch.org/vote (code in the aitreatymarch repo, /vote-api).
+window.VOTE_API = 'https://aitreatymarch-vote.vote-api.workers.dev';
+</script>
+<script src="/banrsi/vote/rank.js"></script>
+<script src="/banrsi/vote/vote.js"></script>
+</body>
+</html>
