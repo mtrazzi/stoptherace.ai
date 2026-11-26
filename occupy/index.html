@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Occupy OpenAI | Stop The AI Race</title>
-<meta name="description" content="SF is paused after 39 weekdays. New York continues every weekday outside 295 Lafayette St, until a freeze on frontier AI development.">
+<meta name="description" content="For 39 weekdays, from July 22 to September 14, 2026, we stood outside OpenAI asking Sam Altman to call for an AI Treaty.">
 <meta property="og:title" content="Occupy OpenAI | Stop The AI Race">
-<meta property="og:description" content="SF is paused after 39 weekdays. New York continues every weekday outside 295 Lafayette St, until a freeze on frontier AI development.">
+<meta property="og:description" content="For 39 weekdays, from July 22 to September 14, 2026, we stood outside OpenAI asking Sam Altman to call for an AI Treaty.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://stoptherace.ai/occupy">
 <meta property="og:image" content="https://stoptherace.ai/occupy/occupy-share.png">
@@ -391,24 +391,16 @@
 <header class="page-header">
   <a href="/" class="back-link">&larr; stoptherace.ai</a>
   <h1>Occupy <span class="red">OpenAI</span></h1>
-  <p class="blurb">For 39 weekdays we stood outside OpenAI in San Francisco, asking Sam Altman to call for an AI Treaty. He asked the US government for international coordination, so <strong>the SF occupation is paused</strong>. <strong>New York continues, every weekday</strong>, until the words become action.</p>
+  <p class="blurb">For 39 weekdays we stood outside OpenAI in San Francisco, asking Sam Altman to call for an AI Treaty. He asked the US government for international coordination, so <strong>the occupation is paused</strong>.</p>
 </header>
 
 <section class="where-when reveal">
-  <div class="label">Join us outside OpenAI in New York</div>
   <div class="placards">
-    <a class="placard tilt-l" href="https://maps.app.goo.gl/RcW2cq3gsMCYgzTv7" target="_blank" rel="noopener">
-      <span class="stamp" data-day-base="21" data-tz="America/New_York">Day 21</span>
-      <span class="city">NYC</span>
-      <span class="addr">295 Lafayette St</span>
-      <span class="hours">8:30am &ndash; 6:30pm &middot; weekdays</span>
-      <span class="contact">Contact: canadabirdie.87 on Signal</span>
-    </a>
     <a class="placard tilt-r paused" href="https://x.com/MichaelTrazzi/status/2099629408495796329" target="_blank" rel="noopener">
       <span class="stamp">Paused &middot; Day 39</span>
       <span class="city">SF</span>
       <span class="addr">550 Terry A Francois Blvd</span>
-      <span class="hours">July 22 &ndash; Sept 2026</span>
+      <span class="hours">July 22 &ndash; Sept 14, 2026</span>
       <span class="contact">Read the announcement &rarr;</span>
     </a>
   </div>
@@ -417,13 +409,7 @@
 <section class="embeds reveal">
   <div class="embeds-row">
     <div class="embed-block">
-      <div class="embed-caption">NYC &middot; ongoing</div>
-      <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
-        <a href="https://twitter.com/canadabirdie/status/2089863463845736938"></a>
-      </blockquote>
-    </div>
-    <div class="embed-block">
-      <div class="embed-caption past">SF &middot; July 22 &ndash; Sept 2026 &middot; paused</div>
+      <div class="embed-caption past">SF &middot; July 22 &ndash; Sept 14, 2026 &middot; paused</div>
       <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
         <a href="https://twitter.com/MichaelTrazzi/status/2082878640979939555"></a>
       </blockquote>
@@ -434,8 +420,6 @@
 <section class="details reveal">
   <p>At first, we started occupying Anthropic and Google DeepMind on two continents, asking their CEOs to take the first step and urge for an AI Treaty. But after the recent news of an OpenAI model committing multiple felonies, we moved on to Occupy OpenAI.</p>
   <p>Our demand was that they ask. We believe they did: over the weekend, Sam Altman and Dario Amodei called on the US Government to take the first steps towards international coordination on pacing the frontier. Altman now says that &ldquo;where we will need the help of our government is for international coordination.&rdquo; Amodei is on CBS talking about oversight by &ldquo;the right combination of democratically-elected governments.&rdquo; <strong>That is why we are pausing the occupation of OpenAI in San Francisco</strong>, after 39 straight weekdays outside 550 Terry A Francois Blvd.</p>
-  <p>But the government has yet to take a single step towards it, and these companies do not need anyone's permission to slow down. So the fight continues. <strong>Occupy OpenAI in New York City carries on every weekday at 295 Lafayette St</strong>, led by Matthew Tromp, until a complete and immediate freeze of frontier AI development.</p>
-  <p><strong>Come anytime: 8:30am&ndash;6:30pm, weekdays, 295 Lafayette St, NYC.</strong> Join the Occupy AI movement.</p>
 </section>
 </section>
 
@@ -446,24 +430,6 @@
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <script>
-  // Auto-increment day stamps (weekdays only).
-  // Anchor: Fri Sept 18, 2026 = Day 21 (NYC).
-  (function () {
-    const ANCHOR = Date.UTC(2026, 8, 18);
-    document.querySelectorAll('[data-day-base]').forEach((el) => {
-      const tz = el.dataset.tz || 'America/New_York';
-      const [y, m, d] = new Intl.DateTimeFormat('en-CA', { timeZone: tz })
-        .format(new Date()).split('-').map(Number);
-      const today = Date.UTC(y, m - 1, d);
-      let count = Number(el.dataset.dayBase);
-      for (let t = ANCHOR + 86400000; t <= today; t += 86400000) {
-        const dow = new Date(t).getUTCDay();
-        if (dow !== 0 && dow !== 6) count++;
-      }
-      el.textContent = 'Day ' + count;
-    });
-  })();
-
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
